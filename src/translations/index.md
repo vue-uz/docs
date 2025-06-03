@@ -26,7 +26,7 @@ aside: false
 - [Arabcha](https://ar.vuejs.org/) [[manba](https://github.com/vuejs-translations/docs-ar)]
 - [Ispancha](https://vue3-spanish-docs.netlify.app/) [[manba](https://github.com/icarusgk/vuejs-spanish-docs)]
 - [Nemisch](https://de.vuejs.org/) [[manba](https://github.com/vuejs-translations/docs-de)]
-- [Uzbek / Uzbekistan](https://vue.uz/) [[source](https://github.com/vue-uz/docs)]
+- [Uzbek / Uzbekistan](https://vue.uz/) [[manba](https://github.com/vue-uz/docs)]
 
 ## Yangi tarjima boshlash {#yangi-tarjima-boshlash}
 
