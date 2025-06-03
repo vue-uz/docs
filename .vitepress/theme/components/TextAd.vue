@@ -6,13 +6,13 @@ function track() {
 
 <template>
   <div class="text-ad">
-    <span class="label">Ad</span>
+    <span class="label">Reklama</span>
     <a
       href="https://aircode.io"
       target="_blank"
       rel="noopener nofollow"
       @click="track"
-      >Try it → Build and deploy your own ChatGPT bot with JavaScript in 5 minutes</a
+      >Sinab ko‘ring → O‘z ChatGPT botingizni JavaScript yordamida 5 daqiqada yarating va joylashtiring</a
     >
   </div>
 </template>

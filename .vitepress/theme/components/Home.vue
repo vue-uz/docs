@@ -13,18 +13,16 @@ onMounted(load)
   <section id="hero">
     <img id="uwu" alt="Vue.js Kawaii Logo by @icarusgkx" />
     <h1 class="tagline">
-      The
-      <span class="accent">Progressive</span>
-      <br />JavaScript Framework
+      <span class="accent">Progressiv</span>
+      <br />JavaScript Freymvorki
     </h1>
     <p class="description">
-      An approachable, performant and versatile framework for building web
-      user interfaces.
+      Veb-foydalanuvchi interfeyslarini yaratish uchun qulay, samarali va ko‘p qirrali freymvork.
     </p>
     <p class="actions">
       <VueMasteryModal />
       <a class="get-started" href="/guide/introduction.html">
-        Get Started
+        Boshlash
         <svg
           class="icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -37,9 +35,9 @@ onMounted(load)
           />
         </svg>
       </a>
-      <a class="setup" href="/guide/quick-start.html">Install</a>
+      <a class="setup" href="/guide/quick-start.html">O‘rnatish</a>
       <a class="security" href="https://v2.vuejs.org/eol/" target="_blank">
-        Get Security Updates for Vue 2
+        Vue 2 uchun xavfsizlik yangilanishlarini oling
         <svg
           class="icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +52,7 @@ onMounted(load)
   </section>
 
   <section v-if="data && data.special" id="special-spsr">
-    <span class="lead">Special Sponsor</span>
+    <span class="lead">Maxsus homiy</span>
     <template v-for="{ url, img, name, description } of data.special">
       <a :href="url" target="_blank" rel="sponsored noopener">
         <picture v-if="img.endsWith('png')">
@@ -78,39 +76,36 @@ onMounted(load)
   <section v-else id="special-spsr">
     <span>
       <a href="/sponsor/#tier-benefits">
-        Special Sponsor slot is now vacant - Inquire now
+        Maxsus homiylik joyi hozir bo‘sh – Hoziroq murojaat qiling
       </a>
     </span>
   </section>
 
   <section id="highlights" class="vt-box-container">
     <div class="vt-box">
-      <h2>Approachable</h2>
+      <h2>Qulay</h2>
       <p>
-        Builds on top of standard HTML, CSS and JavaScript with intuitive
-        API and world-class documentation.
+        Standart HTML, CSS va JavaScript ustiga qurilgan, intuitiv API va yuqori darajadagi hujjatlar bilan birga keladi.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Performant</h2>
+      <h2>Samarali</h2>
       <p>
-        Truly reactive, compiler-optimized rendering system that rarely
-        requires manual optimization.
+        Haqiqiy reaktiv, kompilyator bilan optimallashtirilgan renderlash tizimi — qo‘lda optimallashtirish deyarli talab qilinmaydi.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Versatile</h2>
+      <h2>Ko‘p qirrali</h2>
       <p>
-        A rich, incrementally adoptable ecosystem that scales between a
-        library and a full-featured framework.
+        Kutubxonadan to to‘liq funksional freymvorkgacha kengaytiriladigan boy va bosqichma-bosqich joriy qilinadigan ekotizim.
       </p>
     </div>
   </section>
 
   <section id="spsrs">
-    <h2>Platinum Sponsors</h2>
+    <h2>Platina homiylar</h2>
     <SponsorsGroup tier="platinum" placement="landing" />
-    <h2>Gold Sponsors</h2>
+    <h2>Oltin homiylar</h2>
     <SponsorsGroup tier="gold" placement="landing" />
   </section>
 

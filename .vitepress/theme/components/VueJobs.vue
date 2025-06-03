@@ -67,13 +67,13 @@ onMounted(async () => {
       </a>
     </div>
     <div class="vj-link">
-      Jobs by
+      Ish o‘rinlari
       <a
         href="https://vuejobs.com/?utm_source=vuejs&utm_medium=referral&utm_campaign=jobs_widget&utm_content=bottom_link"
         target="_blank"
         title="Hire Vue.js developers"
         >vuejobs.com</a
-      >
+      > tomonidan
     </div>
   </div>
 </template>

@@ -65,3 +65,21 @@ const items = nav
   color: var(--vt-c-text-2);
 }
 </style>
+
+
+7 GUI Ilovalari
+Hisoblagich
+Harorat konvertori
+Reys bron qilish
+Taymer
+CRUD (Yaratish, O‘qish, Yangilash, O‘chirish)
+Doira chizuvchisi
+Kataklar (Cells)
+
+Uslub bo‘yicha qo‘llanma
+Umumiy ko‘rinish
+
+A – Muhim (Zarur)
+B – Kuchli tavsiya etiladi
+C – Tavsiya etiladi
+D – Ehtiyotkorlik bilan foydalaning

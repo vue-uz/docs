@@ -5,7 +5,7 @@ import { VTLink } from '@vue/theme'
 <template>
   <section id="newsletter" class="NewsLetter">
     <div class="container">
-      <h2 class="title">Subscribe to our weekly newsletter.</h2>
+      <h2 class="title">Haftalik yangiliklarimizga obuna bo'ling.</h2>
 
       <div class="form">
         <form
@@ -22,7 +22,7 @@ import { VTLink } from '@vue/theme'
             id="member_email"
             name="member[email]"
             type="email"
-            placeholder="Email address"
+            placeholder="Elektron manzil"
             required
           />
 
@@ -32,21 +32,21 @@ import { VTLink } from '@vue/theme'
               id="member_submit"
               name="member[subscribe]"
               type="submit"
-              value="SUBSCRIBE"
+              value="OBUNA BO'LISH"
             />
           </div>
         </form>
       </div>
 
       <p class="help">
-        You can read the previous issues and listen to our podcast at
+        Siz oldingi sonlarni o'qishingiz va podkastimizni tinglashingiz mumkin
         <VTLink
           class="link"
           href="https://news.vuejs.org/"
           no-icon
-        >news.vuejs.org</VTLink>. You may also go social at
-        <VTLink class="link" href="https://twitter.com/vuejs" no-icon>Twitter</VTLink>, or join our home at
-        <VTLink class="link" href="https://discord.com/invite/vue" no-icon>Discord</VTLink>.
+        >news.vuejs.org</VTLink>. Shuningdek, siz
+        <VTLink class="link" href="https://twitter.com/vuejs" no-icon>Twitter</VTLink> ijtimoiy aloqada bo'lishingiz yoki
+        <VTLink class="link" href="https://discord.com/invite/vue" no-icon>Discord</VTLink>-dagi uyimizga qo'shilishingiz mumkin .
       </p>
     </div>
   </section>
