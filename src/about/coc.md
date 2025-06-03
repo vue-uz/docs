@@ -1,47 +1,47 @@
-# Code Of Conduct {#code-of-conduct}
+# Xulq-atvor kodeksi {#xulq-atvor-kodeksi}
 
-## Our Pledge {#our-pledge}
+## Bizning va'damiz {#bizning-vadamiz}
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, political party, or sexual identity and orientation. Note, however, that religion, political party, or other ideological affiliation provide no exemptions for the behavior we outline as unacceptable in this Code of Conduct.
+Ochiq va mehmondo'st muhitni rivojlantirish maqsadida, biz, ishtirokchilar va loyiha qo'llab-quvvatlovchilari sifatida, loyihamizda va jamoamizda ishtirok etishni har qanday yosh, tana o'lchami, nogironlik, etnik kelib chiqish, jinsiy xususiyatlar, gender identifikatsiyasi va ifodasi, tajriba darajasi, ta'lim, ijtimoiy-iqtisodiy holat, millat, shaxsiy ko'rinish, irq, din, siyosiy partiya yoki jinsiy yo'nalishdan qat'i nazar, har bir kishi uchun bezovta qilishdan xoli tajriba bo'lishiga va'da beramiz. Ammo shuni ta'kidlash kerakki, din, siyosiy partiya yoki boshqa mafkuraviy aloqalar ushbu Xulq-atvor kodeksida nomaqbul deb belgilangan xatti-harakatlar uchun hech qanday istisno bermaydi.
 
-## Our Standards {#our-standards}
+## Bizning standartlarimiz {#bizning-standartlarimiz}
 
-Examples of behavior that contributes to creating a positive environment include:
+Ijobiy muhit yaratishga hissa qo'shadigan xatti-harakatlar misollari quyidagilarni o'z ichiga oladi:
 
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Showing empathy towards other community members
+- Mehmondo'st va inklyuziv tilni qo'llash
+- Turli xil qarashlar va tajribalarga hurmat ko'rsatish
+- Konstruktiv tanqidni xushmuomalalik bilan qabul qilish
+- Jamoa uchun eng yaxshi narsaga e'tibor qaratish
+- Boshqa jamoa a'zolariga hamdardlik ko'rsatish
 
-Examples of unacceptable behavior by participants include:
+Ishtirokchilar tomonidan nomaqbul xatti-harakatlar misollari quyidagilarni o'z ichiga oladi:
 
-- The use of sexualized language or imagery and unwelcome sexual attention or advances
-- Trolling, insulting/derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others' private information, such as a physical or electronic address, without explicit permission
-- Other conduct which could reasonably be considered inappropriate in a professional setting
+- Jinsiy mazmundagi til yoki tasvirlardan foydalanish va nomaqbul jinsiy e'tibor yoki yaqinlashish
+- Trolling, haqoratli/kinoyali izohlar, shaxsiy yoki siyosiy hujumlar
+- Ommaviy yoki shaxsiy bezovtalik
+- Boshqalarning shaxsiy ma'lumotlarini, masalan, jismoniy yoki elektron manzilni, aniq ruxsatsiz nashr qilish
+- Professional muhitda asossiz deb hisoblanishi mumkin bo'lgan boshqa xatti-harakatlar
 
-## Our Responsibilities {#our-responsibilities}
+## Bizning mas'uliyatimiz {#bizning-masuliyatimiz}
 
-Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+Loyiha qo'llab-quvvatlovchilari qabul qilinadigan xatti-harakatlar standartlarini aniqlashtirish uchun mas'uldir va nomaqbul xatti-harakatlar holatlarida tegishli va adolatli tuzatish choralarini ko'rishlari kutiladi.
 
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
+Loyiha qo'llab-quvvatlovchilari ushbu Xulq-atvor kodeksiga mos kelmaydigan izohlar, kommitlar, kod, wiki tahrirlari, muammolar va boshqa hissalarni o'chirish, tahrir qilish yoki rad etish, shuningdek, nomaqbul, tahdidli, haqoratli yoki zararli deb hisoblangan boshqa xatti-harakatlar uchun ishtirokchini vaqtincha yoki doimiy ravishda cheklash huquqi va mas'uliyatiga ega.
 
-## Scope {#scope}
+## Qo'llanilish doirasi {#qollanilish-doirasi}
 
-This Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. Representation of a project may be further defined and clarified by project maintainers.
+Ushbu Xulq-atvor kodeksi loyiha maydonlarida va jamoatchilik maydonlarida, agar shaxs loyiha yoki uning jamoasini vakillik qilsa, qo'llaniladi. Loyiha yoki jamoani vakillik qilish misollari rasmiy loyiha elektron pochta manzilidan foydalanish, rasmiy ijtimoiy tarmoq hisoblarida post joylashtirish yoki onlayn yoki oflayn tadbirda tayinlangan vakil sifatida ishtirok etishni o'z ichiga oladi. Loyihani vakillik qilish loyiha qo'llab-quvvatlovchilari tomonidan yanada aniqlashtirilishi va tushuntirilishi mumkin.
 
-## Enforcement {#enforcement}
+## Ijro etish {#ijro-etish}
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at community@vuejs.org. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+Nomaqbul, bezovta qiluvchi yoki boshqa yo'l qo'yib bo'lmaydigan xatti-harakatlar holatlari haqida loyiha jamoasiga community@vuejs.org manzili orqali xabar berish mumkin. Barcha shikoyatlar ko'rib chiqiladi va tekshiriladi va holatlarga mos deb hisoblangan zarur va tegishli javob bilan yakunlanadi. Loyiha jamoasi voqea xabar bergan shaxs bo'yicha maxfiylikni saqlashga majburdir. Maxsus ijro siyosati haqida qo'shimcha ma'lumotlar alohida e'lon qilinishi mumkin.
 
-Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
+Xulq-atvor kodeksini vijdonan rioya qilmaydigan yoki ijro etmaydigan loyiha qo'llab-quvvatlovchilari loyiha rahbariyatining boshqa a'zolari tomonidan belgilangan vaqtincha yoki doimiy oqibatlarga duch kelishi mumkin.
 
-## Attribution {#attribution}
+## Mualliflik {#mualliflik}
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4, available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+Ushbu Xulq-atvor kodeksi [Contributor Covenant][homepage], 1.4 versiyasidan moslashtirilgan bo'lib, u https://www.contributor-covenant.org/version/1/4/code-of-conduct.html manzilida mavjud.
 
-For answers to common questions about this code of conduct, see https://www.contributor-covenant.org/faq
+Ushbu xulq-atvor kodeksi bo'yicha umumiy savollarning javoblari uchun https://www.contributor-covenant.org/faq manziliga qarang.
 
 [homepage]: https://www.contributor-covenant.org

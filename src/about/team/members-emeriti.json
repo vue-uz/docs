@@ -1,7 +1,7 @@
 [
   {
     "name": "Sarah Drasner",
-    "title": "Director of Engineering, Core Developer Web",
+    "title": "Muhandislik direktori, Core Developer Web",
     "company": "Google",
     "companyLink": "https://google.com",
     "projects": [
@@ -26,8 +26,8 @@
         "url": "https://github.com/sdras/ecommerce-netlify"
       }
     ],
-    "location": "Denver, CO, USA",
-    "languages": ["English"],
+    "location": "Denver, Kolorado, AQSH",
+    "languages": ["Inglizcha"],
     "website": {
       "label": "sarah.dev",
       "url": "https://sarah.dev/"
@@ -40,9 +40,9 @@
   },
   {
     "name": "Chris Fritz",
-    "title": "Educator & Consultant",
-    "location": "Durham, NC, USA",
-    "languages": ["English", "German"],
+    "title": "O‘qituvchi va Konsultant",
+    "location": "Durham, Shimoliy Karolina, AQSH",
+    "languages": ["Inglizcha", "Nemischa"],
     "socials": {
       "github": "chrisvfritz",
       "twitter": "chrisvfritz"
@@ -51,9 +51,9 @@
   },
   {
     "name": "Blake Newman",
-    "title": "Performance Specializer & Code Deleter",
-    "location": "London, UK",
-    "languages": ["English"],
+    "title": "Ishlash samaradorligi mutaxassisi va kod tozalovchi",
+    "location": "London, Buyuk Britaniya",
+    "languages": ["Inglizcha"],
     "socials": {
       "github": "blake-newman",
       "twitter": "blakenewman"
@@ -61,7 +61,7 @@
   },
   {
     "name": "kingwl",
-    "title": "Software Development Engineer",
+    "title": "Dasturiy ta'minot muhandisi",
     "company": "Chaitin",
     "companyLink": "https://chaitin.cn/",
     "projects": [
@@ -70,15 +70,12 @@
         "url": "https://github.com/vuejs/vue"
       }
     ],
-    "location": "Beijing, China",
-    "languages": ["Chinese"],
-    "socials": {
-      "github": "kingwl"
-    }
+    "location": "Pekin, Xitoy",
+    "languages": ["Xitoycha"]
   },
   {
     "name": "Alan Song",
-    "title": "Cofounder",
+    "title": "Hammuassisi",
     "company": "Futurenda",
     "companyLink": "https://www.futurenda.com/",
     "projects": [
@@ -87,41 +84,38 @@
         "url": "https://github.com/vuejs/vue-router"
       }
     ],
-    "location": "Hangzhou, China",
-    "languages": ["Chinese", "English"],
-    "socials": {
-      "github": "fnlctrl"
-    }
+    "location": "Xanchjou, Xitoy",
+    "languages": ["Xitoycha", "Inglizcha"]
   },
   {
     "name": "defcc",
-    "title": "Details Deity & Bug Surgeon",
-    "company": "Indie Developer",
+    "title": "Tafsilotlar ustasi va xatolarni tuzatuvchi",
+    "company": "Mustaqil dasturchi",
     "companyLink": "https://indiefollow.top/",
-    "location": "Chongqing, China",
-    "languages": ["Chinese", "English"],
+    "location": "Chunsin, Xitoy",
+    "languages": ["Xitoycha", "Inglizcha"],
     "socials": {
       "github": "defcc"
     }
   },
   {
     "name": "gebilaoxiong",
-    "title": "Issue Annihilator",
+    "title": "Muammo yo‘qotuvchi",
     "company": "zbj.com",
     "companyLink": "http://www.zbj.com/",
-    "location": "Chongqing, China",
-    "languages": ["Chinese", "English"],
+    "location": "Chunsin, Xitoy",
+    "languages": ["Xitoycha", "Inglizcha"],
     "socials": {
       "github": "gebilaoxiong"
     }
   },
   {
     "name": "Denis Karabaza",
-    "title": "Software Engineer",
+    "title": "Dasturiy muhandis",
     "company": "Neolant",
     "companyLink": "http://neolant.ru/",
-    "location": "Dubna, Russia",
-    "languages": ["Russian", "English"],
+    "location": "Dubna, Rossiya",
+    "languages": ["Ruscha", "Inglizcha"],
     "socials": {
       "github": "simplesmiler",
       "twitter": "simplesmiler"
@@ -129,7 +123,7 @@
   },
   {
     "name": "Edd Yerburgh",
-    "title": "Full Stack Developer",
+    "title": "Full Stack Dasturchi",
     "projects": [
       {
         "label": "vue-test-utils",
@@ -140,8 +134,8 @@
         "url": "https://github.com/avoriaz"
       }
     ],
-    "location": "London, UK",
-    "languages": ["English"],
+    "location": "London, Buyuk Britaniya",
+    "languages": ["Inglizcha"],
     "socials": {
       "github": "eddyerburgh",
       "twitter": "EddYerburgh"
@@ -160,8 +154,8 @@
         "url": "https://github.com/vuejs/vetur"
       }
     ],
-    "location": "Shanghai, China",
-    "languages": ["Chinese", "English", "Japanese"],
+    "location": "Shanxay, Xitoy",
+    "languages": ["Xitoycha", "Inglizcha", "Yaponcha"],
     "socials": {
       "github": "octref",
       "twitter": "octref"
@@ -169,7 +163,7 @@
   },
   {
     "name": "ULIVZ",
-    "title": "Senior Frontend Developer",
+    "title": "Katta frontend dasturchi",
     "company": "AntFinancial",
     "companyLink": "https://www.antfin.com",
     "projects": [
@@ -178,13 +172,16 @@
         "url": "https://www.github.com/vuejs/vuepress"
       }
     ],
-    "location": "Hangzhou, China",
-    "languages": ["Chinese", "English"],
-    "socials": { "github": "ulivz", "twitter": "_ulivz" }
+    "location": "Xanchjou, Xitoy",
+    "languages": ["Xitoycha", "Inglizcha"],
+    "socials": {
+      "github": "ulivz",
+      "twitter": "_ulivz"
+    }
   },
   {
     "name": "Katashin",
-    "title": "Software Engineer",
+    "title": "Dasturiy muhandis",
     "company": "ClassDo",
     "companyLink": "https://classdo.com",
     "projects": [
@@ -201,8 +198,8 @@
         "url": "https://github.com/ktsn/vue-designer"
       }
     ],
-    "location": "Singapore",
-    "languages": ["Japanese", "English"],
+    "location": "Singapur",
+    "languages": ["Yaponcha", "Inglizcha"],
     "socials": {
       "github": "ktsn",
       "twitter": "ktsn"
@@ -210,11 +207,11 @@
   },
   {
     "name": "Michał Sajnóg",
-    "title": "Senior Frontend Developer / Team Leader",
+    "title": "Katta frontend dasturchi / Jamoa rahbari",
     "company": "Netguru",
     "companyLink": "https://netguru.co/",
-    "location": "Poznań, Poland",
-    "languages": ["Polish", "English"],
+    "location": "Poznan, Polsha",
+    "languages": ["Polyakcha", "Inglizcha"],
     "projects": [
       {
         "label": "eslint-plugin-vue",
@@ -240,7 +237,7 @@
   },
   {
     "name": "Damian Dulisz",
-    "title": "Consultant",
+    "title": "Konsultant",
     "projects": [
       {
         "label": "news.vuejs.org",
@@ -251,8 +248,8 @@
         "url": "https://vue-multiselect.js.org/"
       }
     ],
-    "location": "Wrocław, Poland",
-    "languages": ["Polish", "English"],
+    "location": "Vrotslav, Polsha",
+    "languages": ["Polyakcha", "Inglizcha"],
     "socials": {
       "github": "shentao",
       "twitter": "DamianDulisz"
@@ -261,15 +258,15 @@
   },
   {
     "name": "HcySunYang",
-    "title": "Developer",
+    "title": "Dasturchi",
     "projects": [
       {
         "label": "vuejs/core",
         "url": "https://github.com/vuejs/core"
       }
     ],
-    "location": "Beijing, China",
-    "languages": ["Chinese", "English"],
+    "location": "Pekin, Xitoy",
+    "languages": ["Xitoycha", "Inglizcha"],
     "socials": {
       "github": "HcySunYang",
       "twitter": "HcySunYang"
@@ -277,7 +274,7 @@
   },
   {
     "name": "Rahul Kadyan",
-    "title": "Software Engineer",
+    "title": "Dasturiy muhandis",
     "company": "Grammarly",
     "companyLink": "https://grammarly.com/",
     "projects": [
@@ -285,14 +282,17 @@
         "label": "vuejs/core",
         "url": "https://github.com/vuejs/core"
       },
-      { "label": "VueDX", "url": "https://github.com/vuedx" },
+      {
+        "label": "VueDX",
+        "url": "https://github.com/vuedx"
+      },
       {
         "label": "rollup-plugin-vue",
         "url": "https://github.com/vuejs/rollup-plugin-vue"
       }
     ],
-    "location": "Bangalore, India",
-    "languages": ["Hindi", "English"],
+    "location": "Bengaluru, Hindiston",
+    "languages": ["Hindi", "Inglizcha"],
     "socials": {
       "github": "znck",
       "twitter": "znck0"

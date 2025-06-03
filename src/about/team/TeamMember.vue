@@ -20,8 +20,8 @@ const props = defineProps<{
 
 const avatarUrl = computed(() => {
   return (
-    props.member.avatarPic ??
-    `https://www.github.com/${props.member.socials.github}.png`
+    props?.member?.avatarPic ??
+    `https://www.github.com/${props?.member?.socials?.github}.png`
   )
 })
 
@@ -35,10 +35,10 @@ function arrayify(value: string | string[]): string[] {
     <VTLink
       v-if="member.sponsor"
       class="sponsor"
-      :href="`https://github.com/sponsors/${member.socials.github}`"
+      :href="`https://github.com/sponsors/${member?.socials?.github}`"
       no-icon
     >
-      <VTIconHeart class="sponsor-icon" /> Sponsor
+      <VTIconHeart class="sponsor-icon" /> Homiy
     </VTLink>
 
     <figure class="avatar">
@@ -94,7 +94,7 @@ function arrayify(value: string | string[]): string[] {
 
         <section class="desc">
           <div class="desc-title">
-            <h2 class="sr-only">Location</h2>
+            <h2 class="sr-only">Manzil</h2>
             <VTIconMapPin class="desc-icon" />
           </div>
           <ul class="desc-list">
@@ -110,7 +110,7 @@ function arrayify(value: string | string[]): string[] {
 
         <section class="desc">
           <div class="desc-title">
-            <h2 class="sr-only">Languages</h2>
+            <h2 class="sr-only">Til</h2>
             <VTIconGlobe class="desc-icon" />
           </div>
           <ul class="desc-list">
@@ -126,7 +126,7 @@ function arrayify(value: string | string[]): string[] {
 
         <section v-if="member.website" class="desc">
           <div class="desc-title">
-            <h2 class="sr-only">Website</h2>
+            <h2 class="sr-only">Veb sayti</h2>
             <VTIconLink class="desc-icon" />
           </div>
           <p class="desc-text">
@@ -141,37 +141,37 @@ function arrayify(value: string | string[]): string[] {
         </section>
 
         <ul class="social-list">
-          <li v-if="member.socials.github" class="social-item">
+          <li v-if="member?.socials?.github" class="social-item">
             <VTLink
               class="social-link"
-              :href="`https://github.com/${member.socials.github}`"
+              :href="`https://github.com/${member?.socials?.github}`"
               :no-icon="true"
             >
               <VTIconGitHub class="social-icon" />
             </VTLink>
           </li>
-          <li v-if="member.socials.twitter" class="social-item">
+          <li v-if="member?.socials?.twitter" class="social-item">
             <VTLink
               class="social-link"
-              :href="`https://twitter.com/${member.socials.twitter}`"
+              :href="`https://twitter.com/${member?.socials?.twitter}`"
               :no-icon="true"
             >
               <VTIconX class="social-icon" />
             </VTLink>
           </li>
-          <li v-if="member.socials.linkedin" class="social-item">
+          <li v-if="member?.socials?.linkedin" class="social-item">
             <VTLink
               class="social-link"
-              :href="`https://www.linkedin.com/in/${member.socials.linkedin}`"
+              :href="`https://www.linkedin.com/in/${member?.socials?.linkedin}`"
               :no-icon="true"
             >
               <VTIconLinkedIn class="social-icon" />
             </VTLink>
           </li>
-          <li v-if="member.socials.codepen" class="social-item">
+          <li v-if="member?.socials?.codepen" class="social-item">
             <VTLink
               class="social-link"
-              :href="`https://codepen.io/${member.socials.codepen}`"
+              :href="`https://codepen.io/${member?.socials?.codepen}`"
               :no-icon="true"
             >
               <VTIconCodePen class="social-icon" />

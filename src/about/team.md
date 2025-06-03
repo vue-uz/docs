@@ -1,6 +1,6 @@
 ---
 page: true
-title: Meet the Team
+title: Jamoa bilan tanishing
 ---
 
 <script setup>
