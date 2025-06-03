@@ -13,21 +13,6 @@ onMounted(async () => {
 })
 </script>
 
----
-outline: deep
----
-
-<script setup>
-import { ref, onMounted } from 'vue'
-
-const version = ref()
-
-onMounted(async () => {
-  const res = await fetch('https://api.github.com/repos/vuejs/core/releases/latest')
-  version.value = (await res.json()).name
-})
-</script>
-
 # Relizlar {#relizlar}
 
 <p v-if="version">
