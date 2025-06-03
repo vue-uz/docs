@@ -777,7 +777,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     editLink: {
-      repo: 'SombraDigital/docs-uz',
+      repo: 'vue-uz/docs',
       text: 'bu sahifani GitHub\'da tahrirlash'
     },
 
