@@ -2,9 +2,9 @@
 aside: false
 ---
 
-# Tarjimalar {#tarjimalar}
+# Tarjimalar {#translations}
 
-## Mavjud tillar {#mavjud-tillar}
+## Mavjud tillar {#available-languages}
 
 - [Inglizcha](https://vuejs.org/) [[manba](https://github.com/vuejs/docs)]
 - [Soddalashtirilgan Xitoycha](https://cn.vuejs.org/) [[manba](https://github.com/vuejs-translations/docs-zh-cn)]
@@ -21,14 +21,13 @@ aside: false
 - [An'anaviy Xitoycha](https://zh-hk.vuejs.org/) [[manba](https://github.com/vuejs-translations/docs-zh-hk)]
 - [Polyakcha](https://pl.vuejs.org/) [[manba](https://github.com/vuejs-translations/docs-pl)]
 
-## Jarayondagi tillar {#jarayondagi-tillar}
+## Jarayondagi tillar {#work-in-progress-languages}
 
 - [Arabcha](https://ar.vuejs.org/) [[manba](https://github.com/vuejs-translations/docs-ar)]
 - [Ispancha](https://vue3-spanish-docs.netlify.app/) [[manba](https://github.com/icarusgk/vuejs-spanish-docs)]
 - [Nemisch](https://de.vuejs.org/) [[manba](https://github.com/vuejs-translations/docs-de)]
-- [Uzbek / Uzbekistan](https://vue.uz/) [[manba](https://github.com/vue-uz/docs)]
 
-## Yangi tarjima boshlash {#yangi-tarjima-boshlash}
+## Yangi tarjima boshlash {#starting-a-new-translation}
 
 Vue hujjatlari yaqinda katta qayta ko'rib chiqishdan o'tdi, shuning uchun boshqa tillardagi tarjimalar hali ham yo'q yoki jarayonda.
 

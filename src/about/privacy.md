@@ -1,4 +1,4 @@
-# Vue.js Maxfiylik Siyosati {#vue.js-maxfiylik-siyosati}
+# Vue.js Maxfiylik Siyosati {#vue.js-privacy-policy}
 
 > Amal qilish sanasi: 2024 yil 3 may
 
@@ -14,7 +14,7 @@ Aniqlik kiritish uchun, ushbu Maxfiylik Siyosati quyidagilarga taalluqli emas:
 
 4. Brauzer / IDE kengaytmalarimizning foydalanish statistikasi, brauzer / IDE yetkazib beruvchilari tomonidan to'planadi. Bunday statistikalar yetkazib beruvchilarning tegishli shartlari va qoidalari bilan tartibga solinadi.
 
-## Biz qanday ma'lumotlarni to'playmiz? {#biz-qanday-malumotlarni-toplaymiz}
+## Biz qanday ma'lumotlarni to'playmiz? {#what-kinds-of-information-do-we-collect}
 
 Biz veb-saytlarimiz orqali yoki nashr etilgan npm paketlari yoki brauzer / IDE kengaytmalari orqali **hech qanday shaxsiy ma'lumotlarni to'plamaymiz yoki saqlamaymiz**.
 
@@ -29,14 +29,14 @@ Biz veb-saytlarimizda integratsiyalangan uchinchi tomon xizmatlari orqali anonim
   - Algolia Maxfiylik Siyosati: https://www.algolia.com/policies/privacy/
   - Algolia xavfsizlik va maxfiylik muvofiqligi: https://www.algolia.com/distributed-secure/security-compliance/
 
-## Ma'lumotlarni qanday ishlatamiz? {#malumotlarni-qanday-ishlatamiz}
+## Ma'lumotlarni qanday ishlatamiz? {#how-do-we-use-information}
 
 Yuqorida tilga olingan ma'lumotlarni to'plashning yagona maqsadi veb-saytimiz trafigi va foydalanishini eng maxfiylikka mos tarzda tushunishdir, shunda biz veb-saytimiz va hujjatlar sifatini doimiy ravishda yaxshilashimiz mumkin. GDPR bo'yicha qonuniy asos "6(1)(f) modda; bu yerda bizning qonuniy manfaatlarimiz veb-saytimiz va biznesimizni doimiy ravishda yaxshilashdir." Tushuntirishga ko'ra, hech qanday shaxsiy ma'lumot vaqt o'tishi bilan saqlanmaydi.
 
-## Ma'lumotlarni saqlash {#malumotlarni-saqlash}
+## Ma'lumotlarni saqlash {#data-retention}
 
 To'plangan barcha ma'lumotlar yuqorida tilga olingan uchinchi tomon xizmatlarida saqlanadi va ularning tegishli ma'lumotlarni saqlash siyosatlariga bo'ysunadi.
 
-## Savollar {#savollar}
+## Savollar {#questions}
 
 Agar ushbu Maxfiylik Siyosati yoki amaliyotlarimiz haqida savollaringiz bo'lsa, iltimos, hello@vuejs.org elektron pochta manzili orqali biz bilan bog'laning.

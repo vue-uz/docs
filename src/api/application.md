@@ -1,22 +1,22 @@
-# Application API {#application-api}
+# Ilova API {#application-api}
 
 ## createApp() {#createapp}
 
-Creates an application instance.
+Ilova instansiyasini yaratadi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function createApp(rootComponent: Component, rootProps?: object): App
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  The first argument is the root component. The second optional argument is the props to be passed to the root component.
+  Birinchi argument ildiz komponentidir. Ixtiyoriy ikkinchi argument ildiz komponentiga uzatiladigan propslardir.
 
-- **Example**
+- **Misol**
 
-  With inline root component:
+  Inline ildiz komponenti bilan:
 
   ```js
   import { createApp } from 'vue'
@@ -26,7 +26,7 @@ Creates an application instance.
   })
   ```
 
-  With imported component:
+  Import qilingan komponent bilan:
 
   ```js
   import { createApp } from 'vue'
@@ -35,17 +35,17 @@ Creates an application instance.
   const app = createApp(App)
   ```
 
-- **See also** [Guide - Creating a Vue Application](/guide/essentials/application)
+- **Qarang** [Qo'llanma - Vue ilovasini yaratish](/guide/essentials/application)
 
 ## createSSRApp() {#createssrapp}
 
-Creates an application instance in [SSR Hydration](/guide/scaling-up/ssr#client-hydration) mode. Usage is exactly the same as `createApp()`.
+[SSR hidratsiyasi](/guide/scaling-up/ssr#client-hydration) rejimida ilova instansiyasini yaratadi. Foydalanish `createApp()` bilan aynan bir xil.
 
 ## app.mount() {#app-mount}
 
-Mounts the application instance in a container element.
+Ilova instansiyasini konteyner elementiga o'rnatadi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface App {
@@ -53,17 +53,17 @@ Mounts the application instance in a container element.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  The argument can either be an actual DOM element or a CSS selector (the first matched element will be used). Returns the root component instance.
+  Argument haqiqiy DOM elementi yoki CSS selektori bo'lishi mumkin (birinchi mos keladigan element ishlatiladi). Ildiz komponent instansiyasini qaytaradi.
 
-  If the component has a template or a render function defined, it will replace any existing DOM nodes inside the container. Otherwise, if the runtime compiler is available, the `innerHTML` of the container will be used as the template.
+  Agar komponentda shablon yoki render funksiyasi aniqlangan bo'lsa, konteynerdagi mavjud DOM tugunlarini almashtiradi. Aks holda, agar runtime kompilyatori mavjud bo'lsa, konteynerning `innerHTML` shablon sifatida ishlatiladi.
 
-  In SSR hydration mode, it will hydrate the existing DOM nodes inside the container. If there are [mismatches](/guide/scaling-up/ssr#hydration-mismatch), the existing DOM nodes will be morphed to match the expected output.
+  SSR hidratsiyasi rejimida u konteynerdagi mavjud DOM tugunlarini hidratsiya qiladi. Agar [mos kelmasliklar](/guide/scaling-up/ssr#hydration-mismatch) bo'lsa, mavjud DOM tugunlari kutilgan chiqishga mos ravishda o'zgartiriladi.
 
-  For each app instance, `mount()` can only be called once.
+  Har bir ilova instansiyasi uchun `mount()` faqat bir marta chaqirilishi mumkin.
 
-- **Example**
+- **Misol**
 
   ```js
   import { createApp } from 'vue'
@@ -72,7 +72,7 @@ Mounts the application instance in a container element.
   app.mount('#app')
   ```
 
-  Can also mount to an actual DOM element:
+  Haqiqiy DOM elementiga ham o'rnatish mumkin:
 
   ```js
   app.mount(document.body.firstChild)
@@ -80,9 +80,9 @@ Mounts the application instance in a container element.
 
 ## app.unmount() {#app-unmount}
 
-Unmounts a mounted application instance, triggering the unmount lifecycle hooks for all components in the application's component tree.
+O'rnatilgan ilova instansiyasini olib tashlaydi va ilovaning komponent daraxtidagi barcha komponentlar uchun unmount hayot tsikli hooklarini ishga tushiradi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface App {
@@ -92,9 +92,9 @@ Unmounts a mounted application instance, triggering the unmount lifecycle hooks 
 
 ## app.onUnmount() <sup class="vt-badge" data-text="3.5+" /> {#app-onunmount}
 
-Registers a callback to be called when the app is unmounted.
+Ilova o'rnatilganidan so'ng chaqiriladigan qayta chaqiruv funksiyasini ro'yxatga oladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface App {
@@ -104,9 +104,9 @@ Registers a callback to be called when the app is unmounted.
 
 ## app.component() {#app-component}
 
-Registers a global component if passing both a name string and a component definition, or retrieves an already registered one if only the name is passed.
+Agar nom satri va komponent ta'rifi berilsa, global komponentni ro'yxatga oladi yoki faqat nom berilsa, allaqachon ro'yxatga olingan komponentni oladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface App {
@@ -115,29 +115,29 @@ Registers a global component if passing both a name string and a component defin
   }
   ```
 
-- **Example**
+- **Misol**
 
   ```js
   import { createApp } from 'vue'
 
   const app = createApp({})
 
-  // register an options object
+  // opsiyalar ob'ektini ro'yxatga olish
   app.component('MyComponent', {
     /* ... */
   })
 
-  // retrieve a registered component
+  // ro'yxatga olingan komponentni olish
   const MyComponent = app.component('MyComponent')
   ```
 
-- **See also** [Component Registration](/guide/components/registration)
+- **Qarang** [Komponentni ro'yxatga olish](/guide/components/registration)
 
 ## app.directive() {#app-directive}
 
-Registers a global custom directive if passing both a name string and a directive definition, or retrieves an already registered one if only the name is passed.
+Agar nom satri va direktiva ta'rifi berilsa, global maxsus direktivani ro'yxatga oladi yoki faqat nom berilsa, allaqachon ro'yxatga olingan direktivani oladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface App {
@@ -146,7 +146,7 @@ Registers a global custom directive if passing both a name string and a directiv
   }
   ```
 
-- **Example**
+- **Misol**
 
   ```js
   import { createApp } from 'vue'
@@ -155,27 +155,27 @@ Registers a global custom directive if passing both a name string and a directiv
     /* ... */
   })
 
-  // register (object directive)
+  // ob'ekt direktivasini ro'yxatga olish
   app.directive('myDirective', {
     /* custom directive hooks */
   })
 
-  // register (function directive shorthand)
+  // funksiya direktivasi qisqartmasini ro'yxatga olish
   app.directive('myDirective', () => {
     /* ... */
   })
 
-  // retrieve a registered directive
+  // ro'yxatga olingan direktivani olish
   const myDirective = app.directive('myDirective')
   ```
 
-- **See also** [Custom Directives](/guide/reusability/custom-directives)
+- **Qarang** [Maxsus direktivalar](/guide/reusability/custom-directives)
 
 ## app.use() {#app-use}
 
-Installs a [plugin](/guide/reusability/plugins).
+[Plaginni](/guide/reusability/plugins) o'rnatadi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface App {
@@ -183,15 +183,15 @@ Installs a [plugin](/guide/reusability/plugins).
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Expects the plugin as the first argument, and optional plugin options as the second argument.
+  Birinchi argument sifatida plagin kutiladi, ikkinchi argument sifatida esa ixtiyoriy plagin opsiyalari.
 
-  The plugin can either be an object with an `install()` method, or just a function that will be used as the `install()` method. The options (second argument of `app.use()`) will be passed along to the plugin's `install()` method.
+  Plagin `install()` metodiga ega ob'ekt yoki faqat `install()` metodi sifatida ishlatiladigan funksiya bo'lishi mumkin. Opsiyalar (`app.use()` ning ikkinchi argumenti) plaginning `install()` metodiga uzatiladi.
 
-  When `app.use()` is called on the same plugin multiple times, the plugin will be installed only once.
+  Agar `app.use()` bir xil plagin uchun bir necha marta chaqirilsa, plagin faqat bir marta o'rnatiladi.
 
-- **Example**
+- **Misol**
 
   ```js
   import { createApp } from 'vue'
@@ -204,19 +204,19 @@ Installs a [plugin](/guide/reusability/plugins).
   app.use(MyPlugin)
   ```
 
-- **See also** [Plugins](/guide/reusability/plugins)
+- **Qarang** [Plaginlar](/guide/reusability/plugins)
 
 ## app.mixin() {#app-mixin}
 
-Applies a global mixin (scoped to the application). A global mixin applies its included options to every component instance in the application.
+Ilovaga xos global miksinni qo'llaydi. Global miksin ilovadagi har bir komponent instansiyasiga o'z ichiga olgan opsiyalarni qo'llaydi.
 
-:::warning Not Recommended
-Mixins are supported in Vue 3 mainly for backwards compatibility, due to their widespread use in ecosystem libraries. Use of mixins, especially global mixins, should be avoided in application code.
+:::warning Tavsiya etilmaydi
+Miksinlar Vue 3-da asosan orqaga moslik uchun qo'llab-quvvatlanadi, chunki ular ekotizim kutubxonalarida keng qo'llaniladi. Miksinlardan, ayniqsa global miksinlardan, ilova kodida foydalanishdan qochish kerak.
 
-For logic reuse, prefer [Composables](/guide/reusability/composables) instead.
+Mantiqni qayta ishlatish uchun [Kompozables](/guide/reusability/composables) ni afzal ko'ring.
 :::
 
-- **Type**
+- **Turi**
 
   ```ts
   interface App {
@@ -226,9 +226,9 @@ For logic reuse, prefer [Composables](/guide/reusability/composables) instead.
 
 ## app.provide() {#app-provide}
 
-Provide a value that can be injected in all descendant components within the application.
+Ilova ichidagi barcha avlod komponentlarda injeksiya qilinishi mumkin bo'lgan qiymatni ta'minlaydi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface App {
@@ -236,11 +236,11 @@ Provide a value that can be injected in all descendant components within the app
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Expects the injection key as the first argument, and the provided value as the second. Returns the application instance itself.
+  Birinchi argument sifatida injeksiya kaliti, ikkinchi argument sifatida esa ta'minlangan qiymat kutiladi. Ilova instansiyasining o'zini qaytaradi.
 
-- **Example**
+- **Misol**
 
   ```js
   import { createApp } from 'vue'
@@ -250,7 +250,7 @@ Provide a value that can be injected in all descendant components within the app
   app.provide('message', 'hello')
   ```
 
-  Inside a component in the application:
+  Ilova ichidagi komponentda:
 
   <div class="composition-api">
 
@@ -278,18 +278,18 @@ Provide a value that can be injected in all descendant components within the app
 
   </div>
 
-- **See also**
-  - [Provide / Inject](/guide/components/provide-inject)
-  - [App-level Provide](/guide/components/provide-inject#app-level-provide)
+- **Qarang**
+  - [Ta'minlash / Injektsiya](/guide/components/provide-inject)
+  - [Ilova darajasidagi ta'minlash](/guide/components/provide-inject#app-level-provide)
   - [app.runWithContext()](#app-runwithcontext)
 
 ## app.runWithContext() {#app-runwithcontext}
 
-- Only supported in 3.3+
+- Faqat 3.3+ da qo'llab-quvvatlanadi
 
-Execute a callback with the current app as injection context.
+Joriy ilova sifatida injeksiya konteksti bilan qayta chaqiruv funksiyasini bajaradi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface App {
@@ -297,11 +297,11 @@ Execute a callback with the current app as injection context.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Expects a callback function and runs the callback immediately. During the synchronous call of the callback, `inject()` calls are able to look up injections from the values provided by the current app, even when there is no current active component instance. The return value of the callback will also be returned.
+  Qayta chaqiruv funksiyasini kutadi va qayta chaqiruvni darhol bajaradi. Qayta chaqiruvning sinxron chaqiruvi davomida `inject()` chaqiruvlari joriy ilova tomonidan ta'minlangan qiymatlardan injektsiyalarni qidirishi mumkin, hatto joriy faol komponent instansiyasi bo'lmasa ham. Qayta chaqiruvning qaytarilgan qiymati ham qaytariladi.
 
-- **Example**
+- **Misol**
 
   ```js
   import { inject } from 'vue'
@@ -317,9 +317,9 @@ Execute a callback with the current app as injection context.
 
 ## app.version {#app-version}
 
-Provides the version of Vue that the application was created with. This is useful inside [plugins](/guide/reusability/plugins), where you might need conditional logic based on different Vue versions.
+Ilova yaratilgan Vue versiyasini ta'minlaydi. Bu [plaginlarda](/guide/reusability/plugins) foydali bo'lib, unda turli Vue versiyalariga asoslangan shartli mantiq kerak bo'lishi mumkin.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface App {
@@ -327,9 +327,9 @@ Provides the version of Vue that the application was created with. This is usefu
   }
   ```
 
-- **Example**
+- **Misol**
 
-  Performing a version check inside a plugin:
+  Plagin ichida versiya tekshiruvi amalga oshirilmoqda:
 
   ```js
   export default {
@@ -342,11 +342,11 @@ Provides the version of Vue that the application was created with. This is usefu
   }
   ```
 
-- **See also** [Global API - version](/api/general#version)
+- **Qarang** [Global API - version](/api/general#version)
 
 ## app.config {#app-config}
 
-Every application instance exposes a `config` object that contains the configuration settings for that application. You can modify its properties (documented below) before mounting your application.
+Har bir ilova instansiyasi ilova uchun sozlash sozlamalarini o'z ichiga olgan `config` ob'ektini ochib beradi. Ilovangizni o'rnatishdan oldin uning xususiyatlarini (quyida hujjatlashtirilgan) o'zgartirishingiz mumkin.
 
 ```js
 import { createApp } from 'vue'
@@ -358,53 +358,53 @@ console.log(app.config)
 
 ## app.config.errorHandler {#app-config-errorhandler}
 
-Assign a global handler for uncaught errors propagating from within the application.
+Ilova ichidan tarqalgan ushlanmagan xatolarni boshqarish uchun global ishlov beruvchini belgilaydi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface AppConfig {
     errorHandler?: (
       err: unknown,
       instance: ComponentPublicInstance | null,
-      // `info` is a Vue-specific error info,
-      // e.g. which lifecycle hook the error was thrown in
+      // `info` Vue-ga xos xato ma'lumoti,
+      // masalan, xato qaysi hayot tsikli hookida yuzaga kelgan
       info: string
     ) => void
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  The error handler receives three arguments: the error, the component instance that triggered the error, and an information string specifying the error source type.
+  Xato ishlov beruvchisi uchta argumentni qabul qiladi: xato, xatoni keltirib chiqargan komponent instansiyasi va xato manbai turini ko'rsatuvchi ma'lumot satri.
 
-  It can capture errors from the following sources:
+  Quyidagi manbalardan xatolarni ushlashi mumkin:
 
-  - Component renders
-  - Event handlers
-  - Lifecycle hooks
-  - `setup()` function
-  - Watchers
-  - Custom directive hooks
-  - Transition hooks
+  - Komponent renderlari
+  - Tadbir ishlov beruvchilari
+  - Hayot tsikli hooklari
+  - `setup()` funksiyasi
+  - Kuzatuvchilar
+  - Maxsus direktiva hooklari
+  - O'tish hooklari
 
   :::tip
-  In production, the 3rd argument (`info`) will be a shortened code instead of the full information string. You can find the code to string mapping in the [Production Error Code Reference](/error-reference/#runtime-errors).
+  Ishlab chiqarishda uchinchi argument (`info`) to'liq ma'lumot satri o'rniga qisqa kod bo'ladi. Kodni satrga moslashtirishni [Ishlab chiqarish xato kodi ma'lumotnomasida](/error-reference/#runtime-errors) topishingiz mumkin.
   :::
 
-- **Example**
+- **Misol**
 
   ```js
   app.config.errorHandler = (err, instance, info) => {
-    // handle error, e.g. report to a service
+    // xatoni boshqarish, masalan, xizmatga xabar berish
   }
   ```
 
 ## app.config.warnHandler {#app-config-warnhandler}
 
-Assign a custom handler for runtime warnings from Vue.
+Vue-dan keladigan runtime ogohlantirishlari uchun maxsus ishlov beruvchini belgilaydi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface AppConfig {
@@ -416,86 +416,86 @@ Assign a custom handler for runtime warnings from Vue.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  The warning handler receives the warning message as the first argument, the source component instance as the second argument, and a component trace string as the third.
+  Ogohlantirish ishlov beruvchisi ogohlantirish xabarini birinchi argument sifatida, manba komponent instansiyasini ikkinchi argument sifatida va komponent ierarxiyasi izini uchinchi argument sifatida qabul qiladi.
 
-  It can be used to filter out specific warnings to reduce console verbosity. All Vue warnings should be addressed during development, so this is only recommended during debug sessions to focus on specific warnings among many, and should be removed once the debugging is done.
+  U konsolning ko'p so'zliligini kamaytirish uchun muayyan ogohlantirishlarni filtrlaydi. Vue ogohlantirishlarining barchasi ishlab chiqarish paytida hal qilinishi kerak, shuning uchun bu faqat disk raskadrovka sessiyalari paytida ko'p ogohlantirishlar orasida muayyanlarga e'tibor qaratish uchun tavsiya etiladi va disk raskadrovka tugagach olib tashlanishi kerak.
 
   :::tip
-  Warnings only work during development, so this config is ignored in production mode.
+  Ogohlantirishlar faqat ishlab chiqarish paytida ishlaydi, shuning uchun bu sozlama ishlab chiqarish rejimida e'tiborga olinmaydi.
   :::
 
-- **Example**
+- **Misol**
 
   ```js
   app.config.warnHandler = (msg, instance, trace) => {
-    // `trace` is the component hierarchy trace
+    // `trace` komponent ierarxiyasi izidir
   }
   ```
 
 ## app.config.performance {#app-config-performance}
 
-Set this to `true` to enable component init, compile, render and patch performance tracing in the browser devtool performance/timeline panel. Only works in development mode and in browsers that support the [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API.
+Buni `true` ga o'rnatish brauzer devtool ishlash/vaqt chizig'i panelida komponentni ishga tushirish, kompilyatsiya, render va yamoq ishlashini kuzatishni yoqadi. Faqat ishlab chiqarish rejimida va [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API-ni qo'llab-quvvatlaydigan brauzerlarda ishlaydi.
 
-- **Type:** `boolean`
+- **Turi:** `boolean`
 
-- **See also** [Guide - Performance](/guide/best-practices/performance)
+- **Qarang** [Qo'llanma - Ishlash](/guide/best-practices/performance)
 
 ## app.config.compilerOptions {#app-config-compileroptions}
 
-Configure runtime compiler options. Values set on this object will be passed to the in-browser template compiler and affect every component in the configured app. Note you can also override these options on a per-component basis using the [`compilerOptions` option](/api/options-rendering#compileroptions).
+Runtime kompilyator opsiyalarini sozlash. Ushbu ob'ektda o'rnatilgan qiymatlar brauzerdagi shablon kompilyatoriga uzatiladi va sozlangan ilovadagi har bir komponentga ta'sir qiladi. E'tibor bering, siz bu opsiyalarni har bir komponent asosida [`compilerOptions` opsiyasi](/api/options-rendering#compileroptions) yordamida ham bekor qilishingiz mumkin.
 
-::: warning Important
-This config option is only respected when using the full build (i.e. the standalone `vue.js` that can compile templates in the browser). If you are using the runtime-only build with a build setup, compiler options must be passed to `@vue/compiler-dom` via build tool configurations instead.
+::: warning Muhim
+Bu sozlash opsiyasi faqat to'liq qurilishda (ya'ni brauzerda shablonlarni kompilyatsiya qila oladigan mustaqil `vue.js`) hurmat qilinadi. Agar siz qurilish sozlamasi bilan runtime-faqat qurilishdan foydalanayotgan bo'lsangiz, kompilyator opsiyalari `@vue/compiler-dom` ga qurilish vositasi sozlamalari orqali uzatilishi kerak.
 
-- For `vue-loader`: [pass via the `compilerOptions` loader option](https://vue-loader.vuejs.org/options.html#compileroptions). Also see [how to configure it in `vue-cli`](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
+- `vue-loader` uchun: [loader opsiyasi orqali uzatish](https://vue-loader.vuejs.org/options.html#compileroptions). Shuningdek, [`vue-cli` da qanday sozlash haqida](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader) qarang.
 
-- For `vite`: [pass via `@vitejs/plugin-vue` options](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#options).
+- `vite` uchun: [`@vitejs/plugin-vue` opsiyalari orqali uzatish](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#options).
   :::
 
 ### app.config.compilerOptions.isCustomElement {#app-config-compileroptions-iscustomelement}
 
-Specifies a check method to recognize native custom elements.
+Tabiiy maxsus elementlarni aniqlash uchun tekshirish usulini belgilaydi.
 
-- **Type:** `(tag: string) => boolean`
+- **Turi:** `(tag: string) => boolean`
 
-- **Details**
+- **Tafsilotlar**
 
-  Should return `true` if the tag should be treated as a native custom element. For a matched tag, Vue will render it as a native element instead of attempting to resolve it as a Vue component.
+  Agar tegga tabiiy maxsus element sifatida qaralishi kerak bo'lsa, `true` qaytarishi kerak. Mos keladigan tegga Vue uni Vue komponenti sifatida hal qilishga urinmasdan, tabiiy element sifatida render qiladi.
 
-  Native HTML and SVG tags don't need to be matched in this function - Vue's parser recognizes them automatically.
+  Tabiiy HTML va SVG teglari ushbu funksiyada moslashtirilishi shart emas - Vue parseri ularni avtomatik ravishda taniydi.
 
-- **Example**
+- **Misol**
 
   ```js
-  // treat all tags starting with 'ion-' as custom elements
+  // 'ion-' bilan boshlanadigan barcha teglarni maxsus elementlar sifatida qabul qilish
   app.config.compilerOptions.isCustomElement = (tag) => {
     return tag.startsWith('ion-')
   }
   ```
 
-- **See also** [Vue and Web Components](/guide/extras/web-components)
+- **Qarang** [Vue va Veb-komponentlar](/guide/extras/web-components)
 
 ### app.config.compilerOptions.whitespace {#app-config-compileroptions-whitespace}
 
-Adjusts template whitespace handling behavior.
+Shablon bo'shliqlarini boshqarish xatti-harakatlarini sozlaydi.
 
-- **Type:** `'condense' | 'preserve'`
+- **Turi:** `'condense' | 'preserve'`
 
-- **Default:** `'condense'`
+- **Standart:** `'condense'`
 
-- **Details**
+- **Tafsilotlar**
 
-  Vue removes / condenses whitespace characters in templates to produce more efficient compiled output. The default strategy is "condense", with the following behavior:
+  Vue shablonlarda bo'shliq belgilarini olib tashlaydi/yig'adi, bu esa samaraliroq kompilyatsiya qilingan chiqish hosil qiladi. Standart strategiya "condense" bo'lib, quyidagi xatti-harakatga ega:
 
-  1. Leading / ending whitespace characters inside an element are condensed into a single space.
-  2. Whitespace characters between elements that contain newlines are removed.
-  3. Consecutive whitespace characters in text nodes are condensed into a single space.
+  1. Element ichidagi boshlang'ich/oxirgi bo'shliq belgilari bitta bo'shliqqa yig'iladi.
+  2. Yangi qatorlarni o'z ichiga olgan elementlar orasidagi bo'shliq belgilari olib tashlanadi.
+  3. Matn tugunlaridagi ketma-ket bo'shliq belgilari bitta bo'shliqqa yig'iladi.
 
-  Setting this option to `'preserve'` will disable (2) and (3).
+  Ushbu opsiyani `'preserve'` ga o'rnatish (2) va (3) ni o'chiradi.
 
-- **Example**
+- **Misol**
 
   ```js
   app.config.compilerOptions.whitespace = 'preserve'
@@ -503,36 +503,36 @@ Adjusts template whitespace handling behavior.
 
 ### app.config.compilerOptions.delimiters {#app-config-compileroptions-delimiters}
 
-Adjusts the delimiters used for text interpolation within the template.
+Shablon ichidagi matn interpolatsiyasi uchun ishlatiladigan delimitatorlarni sozlaydi.
 
-- **Type:** `[string, string]`
+- **Turi:** `[string, string]`
 
-- **Default:** `{{ "['\u007b\u007b', '\u007d\u007d']" }}`
+- **Standart:** `{{ "['\u007b\u007b', '\u007d\u007d']" }}`
 
-- **Details**
+- **Tafsilotlar**
 
-  This is typically used to avoid conflicting with server-side frameworks that also use mustache syntax.
+  Bu odatda mustache sintaksisidan foydalanadigan server tomonidagi frameworklar bilan ziddiyatlardan qochish uchun ishlatiladi.
 
-- **Example**
+- **Misol**
 
   ```js
-  // Delimiters changed to ES6 template string style
+  // Delimitatorlarni ES6 shablon satri uslubiga o'zgartirish
   app.config.compilerOptions.delimiters = ['${', '}']
   ```
 
 ### app.config.compilerOptions.comments {#app-config-compileroptions-comments}
 
-Adjusts treatment of HTML comments in templates.
+Shablonlardagi HTML izohlarini qayta ishlashni sozlaydi.
 
-- **Type:** `boolean`
+- **Turi:** `boolean`
 
-- **Default:** `false`
+- **Standart:** `false`
 
-- **Details**
+- **Tafsilotlar**
 
-  By default, Vue will remove the comments in production. Setting this option to `true` will force Vue to preserve comments even in production. Comments are always preserved during development. This option is typically used when Vue is used with other libraries that rely on HTML comments.
+  Standart bo'yicha Vue ishlab chiqarishda izohlarni olib tashlaydi. Ushbu opsiyani `true` ga o'rnatish Vue-ni ishlab chiqarishda ham izohlarni saqlashga majbur qiladi. Izohlar har doim ishlab chiqarish paytida saqlanadi. Bu opsiya odatda Vue HTML izohlariga tayanadigan boshqa kutubxonalar bilan birgalikda ishlatilganda qo'llaniladi.
 
-- **Example**
+- **Misol**
 
   ```js
   app.config.compilerOptions.comments = true
@@ -540,9 +540,9 @@ Adjusts treatment of HTML comments in templates.
 
 ## app.config.globalProperties {#app-config-globalproperties}
 
-An object that can be used to register global properties that can be accessed on any component instance inside the application.
+Ilova ichidagi har qanday komponent instansiyasida foydalanilishi mumkin bo'lgan global xususiyatlarni ro'yxatga olish uchun ishlatilishi mumkin bo'lgan ob'ekt.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface AppConfig {
@@ -550,19 +550,19 @@ An object that can be used to register global properties that can be accessed on
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  This is a replacement of Vue 2's `Vue.prototype` which is no longer present in Vue 3. As with anything global, this should be used sparingly.
+  Bu Vue 2-ning `Vue.prototype` o'rnini bosadi, bu Vue 3-da endi mavjud emas. Har qanday global narsa singari, bu kamdan-kam ishlatilishi kerak.
 
-  If a global property conflicts with a component’s own property, the component's own property will have higher priority.
+  Agar global xususiyat komponentning o'z xususiyati bilan ziddiyatga tushsa, komponentning o'z xususiyati yuqoriroq ustuvorlikka ega bo'ladi.
 
-- **Usage**
+- **Foydalanish**
 
   ```js
   app.config.globalProperties.msg = 'hello'
   ```
 
-  This makes `msg` available inside any component template in the application, and also on `this` of any component instance:
+  Bu `msg` ni ilovadagi har qanday komponent shablonida va har qanday komponent instansiyasining `this` da mavjud qiladi:
 
   ```js
   export default {
@@ -572,13 +572,13 @@ An object that can be used to register global properties that can be accessed on
   }
   ```
 
-- **See also** [Guide - Augmenting Global Properties](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
+- **Qarang** [Qo'llanma - Global xususiyatlarni kengaytirish](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
 
 ## app.config.optionMergeStrategies {#app-config-optionmergestrategies}
 
-An object for defining merging strategies for custom component options.
+Maxsus komponent opsiyalari uchun birlashtirish strategiyalarini aniqlash uchun ob'ekt.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface AppConfig {
@@ -588,33 +588,33 @@ An object for defining merging strategies for custom component options.
   type OptionMergeFunction = (to: unknown, from: unknown) => any
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Some plugins / libraries add support for custom component options (by injecting global mixins). These options may require special merging logic when the same option needs to be "merged" from multiple sources (e.g. mixins or component inheritance).
+  Ba'zi plaginlar/kutubxonalar global miksinlar orqali maxsus komponent opsiyalarini qo'shadi. Bu opsiyalar bir nechta manbalardan (masalan, miksinlar yoki komponent merosi) "birlashtirilishi" kerak bo'lganda maxsus birlashtirish mantiqini talab qilishi mumkin.
 
-  A merge strategy function can be registered for a custom option by assigning it on the `app.config.optionMergeStrategies` object using the option's name as the key.
+  Maxsus opsiya uchun birlashtirish strategiyasi funksiyasi `app.config.optionMergeStrategies` ob'ektida opsiya nomini kalit sifatida ishlatib ro'yxatga olinishi mumkin.
 
-  The merge strategy function receives the value of that option defined on the parent and child instances as the first and second arguments, respectively.
+  Birlashtirish strategiyasi funksiyasi ota va bola instansiyalarida aniqlangan opsiya qiymatini mos ravishda birinchi va ikkinchi argument sifatida qabul qiladi.
 
-- **Example**
+- **Misol**
 
   ```js
   const app = createApp({
-    // option from self
+    // o'zidan opsiya
     msg: 'Vue',
-    // option from a mixin
+    // miksindan opsiya
     mixins: [
       {
         msg: 'Hello '
       }
     ],
     mounted() {
-      // merged options exposed on this.$options
+      // birlashtirilgan opsiyalar this.$options da ochiladi
       console.log(this.$options.msg)
     }
   })
 
-  // define a custom merge strategy for `msg`
+  // `msg` uchun maxsus birlashtirish strategiyasini aniqlash
   app.config.optionMergeStrategies.msg = (parent, child) => {
     return (parent || '') + (child || '')
   }
@@ -623,17 +623,17 @@ An object for defining merging strategies for custom component options.
   // logs 'Hello Vue'
   ```
 
-- **See also** [Component Instance - `$options`](/api/component-instance#options)
+- **Qarang** [Komponent instansiyasi - `$options`](/api/component-instance#options)
 
 ## app.config.idPrefix <sup class="vt-badge" data-text="3.5+" /> {#app-config-idprefix}
 
-Configure a prefix for all IDs generated via [useId()](/api/composition-api-helpers.html#useid) inside this application.
+Ushbu ilova ichida [useId()](/api/composition-api-helpers.html#useid) orqali ishlab chiqarilgan barcha ID'lar uchun prefiksni sozlaydi.
 
-- **Type:** `string`
+- **Turi:** `string`
 
-- **Default:** `undefined`
+- **Standart:** `undefined`
 
-- **Example**
+- **Misol**
 
   ```js
   app.config.idPrefix = 'myApp'
@@ -647,18 +647,18 @@ Configure a prefix for all IDs generated via [useId()](/api/composition-api-help
 
 ## app.config.throwUnhandledErrorInProduction <sup class="vt-badge" data-text="3.5+" /> {#app-config-throwunhandlederrorinproduction}
 
-Force unhandled errors to be thrown in production mode.
+Ishlab chiqarish rejimida ushlanmagan xatolarni majburlab chiqarish.
 
-- **Type:** `boolean`
+- **Turi:** `boolean`
 
-- **Default:** `false`
+- **Standart:** `false`
 
-- **Details**
+- **Tafsilotlar**
 
-  By default, errors thrown inside a Vue application but not explicitly handled have different behavior between development and production modes:
+  Standart bo'yicha Vue ilovasida ushlanmagan xatolar ishlab chiqarish va rivojlanish rejimlarida turli xatti-harakatlarga ega:
 
-  - In development, the error is thrown and can possibly crash the application. This is to make the error more prominent so that it can be noticed and fixed during development.
+  - Rivojlanishda xato chiqariladi va ilova ishdan chiqishi mumkin. Bu xatoni sezilarli qilish va rivojlanish paytida tuzatish uchun qilingan.
 
-  - In production, the error will only be logged to the console to minimize the impact to end users. However, this may prevent errors that only happen in production from being caught by error monitoring services.
+  - Ishlab chiqarishda xato faqat konsolga yoziladi, bu oxirgi foydalanuvchilarga ta'sirni minimallashtiradi. Biroq, bu faqat ishlab chiqarishda yuzaga keladigan xatolarni xato monitoring xizmatlari tomonidan ushlanishini oldini olishi mumkin.
 
-  By setting `app.config.throwUnhandledErrorInProduction` to `true`, unhandled errors will be thrown even in production mode.
+  `app.config.throwUnhandledErrorInProduction` ni `true` ga o'rnatish orqali ushlanmagan xatolar ishlab chiqarish rejimida ham chiqariladi.
