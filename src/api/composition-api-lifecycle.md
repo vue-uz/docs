@@ -1,34 +1,34 @@
-# Composition API: Lifecycle Hooks {#composition-api-lifecycle-hooks}
+# Composition API: Hayot Aylanishi Hook'lari {#composition-api-lifecycle-hooks}
 
-:::info Usage Note
-All APIs listed on this page must be called synchronously during the `setup()` phase of a component. See [Guide - Lifecycle Hooks](/guide/essentials/lifecycle) for more details.
+:::info Ishlatish Eslatmasi
+Bu sahifada ro'yxatdan o'tkazilgan barcha API'lar komponentning `setup()` bosqichida sinxron ravishda chaqirilishi kerak. Batafsil ma'lumot uchun [Guide - Lifecycle Hooks](/guide/essentials/lifecycle)ni tekshiring.
 :::
 
 ## onMounted() {#onmounted}
 
-Registers a callback to be called after the component has been mounted.
+Komponent mount qilingandan keyin chaqiriladigan callback'ni ro'yxatdan o'tkazadi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function onMounted(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  A component is considered mounted after:
+  Komponent quyidagilardan keyin mount qilingan hisoblanadi:
 
-  - All of its synchronous child components have been mounted (does not include async components or components inside `<Suspense>` trees).
+  - Uning barcha sinxron farzand komponentlari mount qilingan (bu async komponentlar yoki `<Suspense>` daraxtlari ichidagi komponentlarni o'z ichiga olmaydi).
 
-  - Its own DOM tree has been created and inserted into the parent container. Note it only guarantees that the component's DOM tree is in-document if the application's root container is also in-document.
+  - Uning o'z DOM daraxti yaratilgan va ota-ona konteynerga kiritilgan. E'tibor bering, u faqat ilovaning ildiz konteyneri ham hujjatda bo'lsa, komponentning DOM daraxti hujjatda ekanligini kafolatlaydi.
 
-  This hook is typically used for performing side effects that need access to the component's rendered DOM, or for limiting DOM-related code to the client in a [server-rendered application](/guide/scaling-up/ssr).
+  Bu hook odatda komponentning render qilingan DOM'iga kirishni talab qiladigan yon ta'sirlarni bajarish yoki DOM bilan bog'liq kodni [server-render qilingan ilovada](/guide/scaling-up/ssr) mijozga cheklash uchun ishlatiladi.
 
-  **This hook is not called during server-side rendering.**
+  **Bu hook server-side rendering paytida chaqirilmaydi.**
 
-- **Example**
+- **Misol**
 
-  Accessing an element via template ref:
+  Shablon ref orqali elementga kirish:
 
   ```vue
   <script setup>
@@ -48,29 +48,29 @@ Registers a callback to be called after the component has been mounted.
 
 ## onUpdated() {#onupdated}
 
-Registers a callback to be called after the component has updated its DOM tree due to a reactive state change.
+Komponent reaktiv holat o'zgarishi tufayli o'z DOM daraxtini yangilagandan keyin chaqiriladigan callback'ni ro'yxatdan o'tkazadi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function onUpdated(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  A parent component's updated hook is called after that of its child components.
+  Ota-ona komponentning updated hook'i uning farzand komponentlaridan keyin chaqiriladi.
 
-  This hook is called after any DOM update of the component, which can be caused by different state changes, because multiple state changes can be batched into a single render cycle for performance reasons. If you need to access the updated DOM after a specific state change, use [nextTick()](/api/general#nexttick) instead.
+  Bu hook komponentning har qanday DOM yangilanishidan keyin chaqiriladi, bu turli holat o'zgarishlari tufayli bo'lishi mumkin, chunki bir nechta holat o'zgarishlari ishlash sabablari uchun bitta render aylanishiga to'planishi mumkin. Agar siz ma'lum bir holat o'zgarishidan keyin yangilangan DOM'ga kirishni xohlasangiz, buning o'rniga [nextTick()](/api/general#nexttick)ni ishlating.
 
-  **This hook is not called during server-side rendering.**
+  **Bu hook server-side rendering paytida chaqirilmaydi.**
 
   :::warning
-  Do not mutate component state in the updated hook - this will likely lead to an infinite update loop!
+  Updated hook'da komponent holatini o'zgartirmang - bu cheksiz yangilanish tsikliga olib kelishi mumkin!
   :::
 
-- **Example**
+- **Misol**
 
-  Accessing updated DOM:
+  Yangilangan DOM'ga kirish:
 
   ```vue
   <script setup>
@@ -79,7 +79,7 @@ Registers a callback to be called after the component has updated its DOM tree d
   const count = ref(0)
 
   onUpdated(() => {
-    // text content should be the same as current `count.value`
+    // matn mazmuni joriy `count.value` bilan bir xil bo'lishi kerak
     console.log(document.getElementById('count').textContent)
   })
   </script>
@@ -91,27 +91,27 @@ Registers a callback to be called after the component has updated its DOM tree d
 
 ## onUnmounted() {#onunmounted}
 
-Registers a callback to be called after the component has been unmounted.
+Komponent unmount qilingandan keyin chaqiriladigan callback'ni ro'yxatdan o'tkazadi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function onUnmounted(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  A component is considered unmounted after:
+  Komponent quyidagilardan keyin unmount qilingan hisoblanadi:
 
-  - All of its child components have been unmounted.
+  - Uning barcha farzand komponentlari unmount qilingan.
 
-  - All of its associated reactive effects (render effect and computed / watchers created during `setup()`) have been stopped.
+  - Uning barcha bog'liq reaktiv ta'sirlari (render ta'siri va `setup()` paytida yaratilgan computed / kuzatuvchilar) to'xtatilgan.
 
-  Use this hook to clean up manually created side effects such as timers, DOM event listeners or server connections.
+  Bu hook'ni qo'lda yaratilgan yon ta'sirlarni, masalan, taymerlar, DOM hodisa tinglovchilari yoki server ulanishlarini tozalash uchun ishlating.
 
-  **This hook is not called during server-side rendering.**
+  **Bu hook server-side rendering paytida chaqirilmaydi.**
 
-- **Example**
+- **Misol**
 
   ```vue
   <script setup>
@@ -130,57 +130,57 @@ Registers a callback to be called after the component has been unmounted.
 
 ## onBeforeMount() {#onbeforemount}
 
-Registers a hook to be called right before the component is to be mounted.
+Komponent mount qilinishidan oldin chaqiriladigan hook'ni ro'yxatdan o'tkazadi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function onBeforeMount(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  When this hook is called, the component has finished setting up its reactive state, but no DOM nodes have been created yet. It is about to execute its DOM render effect for the first time.
+  Bu hook chaqirilganda, komponent o'z reaktiv holatini sozlashni tugatgan, lekin hali DOM tugunlari yaratilmagan. U birinchi marta o'z DOM render ta'sirini bajarish arafasida.
 
-  **This hook is not called during server-side rendering.**
+  **Bu hook server-side rendering paytida chaqirilmaydi.**
 
 ## onBeforeUpdate() {#onbeforeupdate}
 
-Registers a hook to be called right before the component is about to update its DOM tree due to a reactive state change.
+Komponent reaktiv holat o'zgarishi tufayli o'z DOM daraxtini yangilashidan oldin chaqiriladigan hook'ni ro'yxatdan o'tkazadi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function onBeforeUpdate(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  This hook can be used to access the DOM state before Vue updates the DOM. It is also safe to modify component state inside this hook.
+  Bu hook Vue DOM'ni yangilashidan oldin DOM holatiga kirish uchun ishlatilishi mumkin. Bu hook ichida komponent holatini o'zgartirish ham xavfsiz.
 
-  **This hook is not called during server-side rendering.**
+  **Bu hook server-side rendering paytida chaqirilmaydi.**
 
 ## onBeforeUnmount() {#onbeforeunmount}
 
-Registers a hook to be called right before a component instance is to be unmounted.
+Komponent instansiyasi unmount qilinishidan oldin chaqiriladigan hook'ni ro'yxatdan o'tkazadi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function onBeforeUnmount(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  When this hook is called, the component instance is still fully functional.
+  Bu hook chaqirilganda, komponent instansiyasi hali to'liq ishlaydi.
 
-  **This hook is not called during server-side rendering.**
+  **Bu hook server-side rendering paytida chaqirilmaydi.**
 
 ## onErrorCaptured() {#onerrorcaptured}
 
-Registers a hook to be called when an error propagating from a descendant component has been captured.
+Avlod komponentdan tarqalayotgan xatani ushlaganda chaqiriladigan hook'ni ro'yxatdan o'tkazadi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function onErrorCaptured(callback: ErrorCapturedHook): void
@@ -192,45 +192,45 @@ Registers a hook to be called when an error propagating from a descendant compon
   ) => boolean | void
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Errors can be captured from the following sources:
+  Xatolar quyidagi manbalardan ushlanishi mumkin:
 
-  - Component renders
-  - Event handlers
-  - Lifecycle hooks
-  - `setup()` function
-  - Watchers
-  - Custom directive hooks
-  - Transition hooks
+  - Komponent renderlari
+  - Hodisa ishlovchilari
+  - Hayot aylanishi hook'lari
+  - `setup()` funksiyasi
+  - Kuzatuvchilar
+  - Maxsus direktiva hook'lari
+  - O'tish hook'lari
 
-  The hook receives three arguments: the error, the component instance that triggered the error, and an information string specifying the error source type.
+  Hook uchta argument oladi: xato, xatoni ishga tushirgan komponent instansiyasi va xato manba turini belgilaydigan ma'lumot stringi.
 
   :::tip
-  In production, the 3rd argument (`info`) will be a shortened code instead of the full information string. You can find the code to string mapping in the [Production Error Code Reference](/error-reference/#runtime-errors).
+  Production'da, 3-argument (`info`) to'liq ma'lumot stringi o'rniga qisqartirilgan kod bo'ladi. Siz kodni string mapping'ini [Production Error Code Reference](/error-reference/#runtime-errors)da topishingiz mumkin.
   :::
 
-  You can modify component state in `onErrorCaptured()` to display an error state to the user. However, it is important that the error state should not render the original content that caused the error; otherwise the component will be thrown into an infinite render loop.
+  Siz `onErrorCaptured()`da komponent holatini foydalanuvchiga xato holatini ko'rsatish uchun o'zgartirishingiz mumkin. Biroq, xato holati xatoga sabab bo'lgan asl mazmunni render qilmasligi muhim; aks holda komponent cheksiz render tsikliga tushadi.
 
-  The hook can return `false` to stop the error from propagating further. See error propagation details below.
+  Hook xatoni keyingi tarqalishini to'xtatish uchun `false` qaytarishi mumkin. Xato tarqalish tafsilotlarini quyida ko'ring.
 
-  **Error Propagation Rules**
+  **Xato Tarqalish Qoidalari**
 
-  - By default, all errors are still sent to the application-level [`app.config.errorHandler`](/api/application#app-config-errorhandler) if it is defined, so that these errors can still be reported to an analytics service in a single place.
+  - Default bo'yicha, barcha xatolar agar aniqlangan bo'lsa, ilova darajasidagi [`app.config.errorHandler`](/api/application#app-config-errorhandler)ga yuboriladi, shunda bu xatolar hali ham analitika xizmatiga bitta joyda xabar qilinishi mumkin.
 
-  - If multiple `errorCaptured` hooks exist on a component's inheritance chain or parent chain, all of them will be invoked on the same error, in the order of bottom to top. This is similar to the bubbling mechanism of native DOM events.
+  - Agar komponentning meros zanjiri yoki ota-ona zanjirida bir nechta `errorCaptured` hook'lari mavjud bo'lsa, ularning barchasi bir xil xatoda, pastdan yuqoriga qarab chaqiriladi. Bu asosiy DOM hodisalarining bubbling mexanizmi bilan o'xshash.
 
-  - If the `errorCaptured` hook itself throws an error, both this error and the original captured error are sent to `app.config.errorHandler`.
+  - Agar `errorCaptured` hook'i o'zi xatoni chiqarsa, ham bu xato, ham asl ushlangan xato `app.config.errorHandler`ga yuboriladi.
 
-  - An `errorCaptured` hook can return `false` to prevent the error from propagating further. This is essentially saying "this error has been handled and should be ignored." It will prevent any additional `errorCaptured` hooks or `app.config.errorHandler` from being invoked for this error.
+  - `errorCaptured` hook'i xatoni keyingi tarqalishini oldini olish uchun `false` qaytarishi mumkin. Bu asosan "bu xato boshqarilgan va e'tibor berilmasligi kerak" degani. Bu bu xato uchun qo'shimcha `errorCaptured` hook'lari yoki `app.config.errorHandler` chaqirilishini oldini oladi.
 
 ## onRenderTracked() <sup class="vt-badge dev-only" /> {#onrendertracked}
 
-Registers a debug hook to be called when a reactive dependency has been tracked by the component's render effect.
+Komponentning render ta'siri tomonidan reaktiv bog'liqlik kuzatilganda chaqiriladigan debug hook'ni ro'yxatdan o'tkazadi.
 
-**This hook is development-mode-only and not called during server-side rendering.**
+**Bu hook faqat development rejimida va server-side rendering paytida chaqirilmaydi.**
 
-- **Type**
+- **Turi**
 
   ```ts
   function onRenderTracked(callback: DebuggerHook): void
@@ -245,7 +245,7 @@ Registers a debug hook to be called when a reactive dependency has been tracked 
   }
   ```
 
-- **See also** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+- **Qarang** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
 
 ## onRenderTriggered() <sup class="vt-badge dev-only" /> {#onrendertriggered}
 

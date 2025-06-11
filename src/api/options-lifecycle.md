@@ -1,14 +1,14 @@
-# Options: Lifecycle {#options-lifecycle}
+# Options: Hayot Aylanishi {#options-lifecycle}
 
-:::info See also
-For shared usage of lifecycle hooks, see [Guide - Lifecycle Hooks](/guide/essentials/lifecycle)
+:::info Qarang
+Hayot aylanishi hook'larining umumiy ishlatilishi uchun [Guide - Lifecycle Hooks](/guide/essentials/lifecycle)ni tekshiring
 :::
 
 ## beforeCreate {#beforecreate}
 
-Called when the instance is initialized.
+Instansiya ishga tushirilganda chaqiriladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -16,19 +16,19 @@ Called when the instance is initialized.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Called immediately when the instance is initialized and props are resolved.
+  Instansiya ishga tushirilganda va props'lar hal qilinganda darhol chaqiriladi.
 
-  Then the props will be defined as reactive properties and the state such as `data()` or `computed` will be set up.
+  Keyin props'lar reaktiv xususiyatlar sifatida va `data()` yoki `computed` kabi holat sozlanadi.
 
-  Note that the `setup()` hook of Composition API is called before any Options API hooks, even `beforeCreate()`.
+  E'tibor bering, Composition API'ning `setup()` hook'i har qanday Options API hook'laridan oldin, hatto `beforeCreate()`dan ham oldin chaqiriladi.
 
 ## created {#created}
 
-Called after the instance has finished processing all state-related options.
+Instansiya barcha holat bilan bog'liq opsiyalarni qayta ishlashni tugatgandan keyin chaqiriladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -36,15 +36,15 @@ Called after the instance has finished processing all state-related options.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  When this hook is called, the following have been set up: reactive data, computed properties, methods, and watchers. However, the mounting phase has not been started, and the `$el` property will not be available yet.
+  Bu hook chaqirilganda, quyidagilar sozlanadi: reaktiv ma'lumotlar, computed xususiyatlar, metodlar va kuzatuvchilar. Biroq, mount bosqichi boshlanmagan va `$el` xususiyati hali mavjud bo'lmaydi.
 
 ## beforeMount {#beforemount}
 
-Called right before the component is to be mounted.
+Komponent mount qilinishidan oldin chaqiriladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -52,17 +52,17 @@ Called right before the component is to be mounted.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  When this hook is called, the component has finished setting up its reactive state, but no DOM nodes have been created yet. It is about to execute its DOM render effect for the first time.
+  Bu hook chaqirilganda, komponent o'z reaktiv holatini sozlashni tugatgan, lekin hali DOM tugunlari yaratilmagan. U birinchi marta o'z DOM render ta'sirini bajarish arafasida.
 
-  **This hook is not called during server-side rendering.**
+  **Bu hook server-side rendering paytida chaqirilmaydi.**
 
 ## mounted {#mounted}
 
-Called after the component has been mounted.
+Komponent mount qilingandan keyin chaqiriladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -70,23 +70,23 @@ Called after the component has been mounted.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  A component is considered mounted after:
+  Komponent quyidagilardan keyin mount qilingan hisoblanadi:
 
-  - All of its synchronous child components have been mounted (does not include async components or components inside `<Suspense>` trees).
+  - Uning barcha sinxron farzand komponentlari mount qilingan (bu async komponentlar yoki `<Suspense>` daraxtlari ichidagi komponentlarni o'z ichiga olmaydi).
 
-  - Its own DOM tree has been created and inserted into the parent container. Note it only guarantees that the component's DOM tree is in-document if the application's root container is also in-document.
+  - Uning o'z DOM daraxti yaratilgan va ota-ona konteynerga kiritilgan. E'tibor bering, u faqat ilovaning ildiz konteyneri ham hujjatda bo'lsa, komponentning DOM daraxti hujjatda ekanligini kafolatlaydi.
 
-  This hook is typically used for performing side effects that need access to the component's rendered DOM, or for limiting DOM-related code to the client in a [server-rendered application](/guide/scaling-up/ssr).
+  Bu hook odatda komponentning render qilingan DOM'iga kirishni talab qiladigan yon ta'sirlarni bajarish yoki DOM bilan bog'liq kodni [server-render qilingan ilovada](/guide/scaling-up/ssr) mijozga cheklash uchun ishlatiladi.
 
-  **This hook is not called during server-side rendering.**
+  **Bu hook server-side rendering paytida chaqirilmaydi.**
 
 ## beforeUpdate {#beforeupdate}
 
-Called right before the component is about to update its DOM tree due to a reactive state change.
+Komponent reaktiv holat o'zgarishi tufayli o'z DOM daraxtini yangilashidan oldin chaqiriladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -94,17 +94,17 @@ Called right before the component is about to update its DOM tree due to a react
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  This hook can be used to access the DOM state before Vue updates the DOM. It is also safe to modify component state inside this hook.
+  Bu hook Vue DOM'ni yangilashidan oldin DOM holatiga kirish uchun ishlatilishi mumkin. Bu hook ichida komponent holatini o'zgartirish ham xavfsiz.
 
-  **This hook is not called during server-side rendering.**
+  **Bu hook server-side rendering paytida chaqirilmaydi.**
 
 ## updated {#updated}
 
-Called after the component has updated its DOM tree due to a reactive state change.
+Komponent reaktiv holat o'zgarishi tufayli o'z DOM daraxtini yangilagandan keyin chaqiriladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -112,23 +112,23 @@ Called after the component has updated its DOM tree due to a reactive state chan
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  A parent component's updated hook is called after that of its child components.
+  Ota-ona komponentning updated hook'i uning farzand komponentlaridan keyin chaqiriladi.
 
-  This hook is called after any DOM update of the component, which can be caused by different state changes. If you need to access the updated DOM after a specific state change, use [nextTick()](/api/general#nexttick) instead.
+  Bu hook komponentning har qanday DOM yangilanishidan keyin chaqiriladi, bu turli holat o'zgarishlari tufayli bo'lishi mumkin. Agar siz ma'lum bir holat o'zgarishidan keyin yangilangan DOM'ga kirishni xohlasangiz, buning o'rniga [nextTick()](/api/general#nexttick)ni ishlating.
 
-  **This hook is not called during server-side rendering.**
+  **Bu hook server-side rendering paytida chaqirilmaydi.**
 
   :::warning
-  Do not mutate component state in the updated hook - this will likely lead to an infinite update loop!
+  Updated hook'da komponent holatini o'zgartirmang - bu cheksiz yangilanish tsikliga olib kelishi mumkin!
   :::
 
 ## beforeUnmount {#beforeunmount}
 
-Called right before a component instance is to be unmounted.
+Komponent instansiyasi unmount qilinishidan oldin chaqiriladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -136,17 +136,17 @@ Called right before a component instance is to be unmounted.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  When this hook is called, the component instance is still fully functional.
+  Bu hook chaqirilganda, komponent instansiyasi hali to'liq ishlaydi.
 
-  **This hook is not called during server-side rendering.**
+  **Bu hook server-side rendering paytida chaqirilmaydi.**
 
 ## unmounted {#unmounted}
 
-Called after the component has been unmounted.
+Komponent unmount qilingandan keyin chaqiriladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -154,23 +154,23 @@ Called after the component has been unmounted.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  A component is considered unmounted after:
+  Komponent quyidagilardan keyin unmount qilingan hisoblanadi:
 
-  - All of its child components have been unmounted.
+  - Uning barcha farzand komponentlari unmount qilingan.
 
-  - All of its associated reactive effects (render effect and computed / watchers created during `setup()`) have been stopped.
+  - Uning barcha bog'liq reaktiv ta'sirlari (render ta'siri va `setup()` paytida yaratilgan computed / kuzatuvchilar) to'xtatilgan.
 
-  Use this hook to clean up manually created side effects such as timers, DOM event listeners or server connections.
+  Bu hook'ni qo'lda yaratilgan yon ta'sirlarni, masalan, taymerlar, DOM hodisa tinglovchilari yoki server ulanishlarini tozalash uchun ishlating.
 
-  **This hook is not called during server-side rendering.**
+  **Bu hook server-side rendering paytida chaqirilmaydi.**
 
 ## errorCaptured {#errorcaptured}
 
-Called when an error propagating from a descendant component has been captured.
+Avlod komponentdan tarqalayotgan xatani ushlaganda chaqiriladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -183,51 +183,51 @@ Called when an error propagating from a descendant component has been captured.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Errors can be captured from the following sources:
+  Xatolar quyidagi manbalardan ushlanishi mumkin:
 
-  - Component renders
-  - Event handlers
-  - Lifecycle hooks
-  - `setup()` function
-  - Watchers
-  - Custom directive hooks
-  - Transition hooks
+  - Komponent renderlari
+  - Hodisa ishlovchilari
+  - Hayot aylanishi hook'lari
+  - `setup()` funksiyasi
+  - Kuzatuvchilar
+  - Maxsus direktiva hook'lari
+  - O'tish hook'lari
 
-  The hook receives three arguments: the error, the component instance that triggered the error, and an information string specifying the error source type.
+  Hook uchta argument oladi: xato, xatoni ishga tushirgan komponent instansiyasi va xato manba turini belgilaydigan ma'lumot stringi.
 
   :::tip
-  In production, the 3rd argument (`info`) will be a shortened code instead of the full information string. You can find the code to string mapping in the [Production Error Code Reference](/error-reference/#runtime-errors).
+  Production'da, 3-argument (`info`) to'liq ma'lumot stringi o'rniga qisqartirilgan kod bo'ladi. Siz kodni string mapping'ini [Production Error Code Reference](/error-reference/#runtime-errors)da topishingiz mumkin.
   :::
 
-  You can modify component state in `errorCaptured()` to display an error state to the user. However, it is important that the error state should not render the original content that caused the error; otherwise the component will be thrown into an infinite render loop.
+  Siz `errorCaptured()`da komponent holatini foydalanuvchiga xato holatini ko'rsatish uchun o'zgartirishingiz mumkin. Biroq, xato holati xatoga sabab bo'lgan asl mazmunni render qilmasligi muhim; aks holda komponent cheksiz render tsikliga tushadi.
 
-  The hook can return `false` to stop the error from propagating further. See error propagation details below.
+  Hook xatoni keyingi tarqalishini to'xtatish uchun `false` qaytarishi mumkin. Xato tarqalish tafsilotlarini quyida ko'ring.
 
-  **Error Propagation Rules**
+  **Xato Tarqalish Qoidalari**
 
-  - By default, all errors are still sent to the application-level [`app.config.errorHandler`](/api/application#app-config-errorhandler) if it is defined, so that these errors can still be reported to an analytics service in a single place.
+  - Default bo'yicha, barcha xatolar agar aniqlangan bo'lsa, ilova darajasidagi [`app.config.errorHandler`](/api/application#app-config-errorhandler)ga yuboriladi, shunda bu xatolar hali ham analitika xizmatiga bitta joyda xabar qilinishi mumkin.
 
-  - If multiple `errorCaptured` hooks exist on a component's inheritance chain or parent chain, all of them will be invoked on the same error, in the order of bottom to top. This is similar to the bubbling mechanism of native DOM events.
+  - Agar komponentning meros zanjiri yoki ota-ona zanjirida bir nechta `errorCaptured` hook'lari mavjud bo'lsa, ularning barchasi bir xil xatoda, pastdan yuqoriga qarab chaqiriladi. Bu asosiy DOM hodisalarining bubbling mexanizmi bilan o'xshash.
 
-  - If the `errorCaptured` hook itself throws an error, both this error and the original captured error are sent to `app.config.errorHandler`.
+  - Agar `errorCaptured` hook'i o'zi xatoni chiqarsa, ham bu xato, ham asl ushlangan xato `app.config.errorHandler`ga yuboriladi.
 
-  - An `errorCaptured` hook can return `false` to prevent the error from propagating further. This is essentially saying "this error has been handled and should be ignored." It will prevent any additional `errorCaptured` hooks or `app.config.errorHandler` from being invoked for this error.
+  - `errorCaptured` hook'i xatoni keyingi tarqalishini oldini olish uchun `false` qaytarishi mumkin. Bu asosan "bu xato boshqarilgan va e'tibor berilmasligi kerak" degani. Bu bu xato uchun qo'shimcha `errorCaptured` hook'lari yoki `app.config.errorHandler` chaqirilishini oldini oladi.
 
-  **Error Capturing Caveats**
+  **Xato Ushlash Ogohlantirishlari**
   
-  - In components with async `setup()` function (with top-level `await`) Vue **will always** try to render component template, even if `setup()` throwed error. This will likely cause more errors because during render component's template might try to access non-existing properties of failed `setup()` context. When capturing errors in such components, be ready to handle errors from both failed async `setup()` (they will always come first) and failed render process.
+  - Async `setup()` funksiyasi (yuqori darajadagi `await` bilan) komponentlarda Vue komponent shablonini render qilishga har doim harakat qiladi, hatto `setup()` xatolik chiqarsa ham. Bu ko'proq xatolarga olib kelishi mumkin, chunki render paytida komponentning shablonu muvaffaqiyatsiz `setup()` kontekstining mavjud bo'lmagan xususiyatlariga kirishga harakat qilishi mumkin. Bunday komponentlarda xatolarni ushlashda, ham muvaffaqiyatsiz async `setup()` (ular har doim birinchi keladi), ham muvaffaqiyatsiz render jarayonidan kelib chiqadigan xatolarni boshqarishga tayyor bo'ling.
 
-  - <sup class="vt-badge" data-text="SSR only"></sup> Replacing errored child component in parent component deep inside `<Suspense>` will cause hydration mismatches in SSR. Instead, try to separate logic that can possibly throw from child `setup()` into separate function and execute it in the parent component's `setup()`, where you can safely `try/catch` the execution process and make replacement if needed before rendering the actual child component.
+  - <sup class="vt-badge" data-text="SSR only"></sup> `<Suspense>` ichida chuqur joylashgan ota-ona komponentda xatolik chiqarish mumkin bo'lgan mantiqni farzand `setup()`dan alohida funksiyaga ajratib, uni ota-ona komponentning `setup()`ida bajarishga harakat qiling, u yerda siz bajarish jarayonini xavfsiz `try/catch` qilishingiz va kerak bo'lsa, haqiqiy farzand komponentni render qilishdan oldin almashtirishingiz mumkin.
 
 ## renderTracked <sup class="vt-badge dev-only" /> {#rendertracked}
 
-Called when a reactive dependency has been tracked by the component's render effect.
+Komponentning render ta'siri tomonidan reaktiv bog'liqlik kuzatilganda chaqiriladi.
 
-**This hook is development-mode-only and not called during server-side rendering.**
+**Bu hook faqat development rejimida va server-side rendering paytida chaqirilmaydi.**
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -242,15 +242,15 @@ Called when a reactive dependency has been tracked by the component's render eff
   }
   ```
 
-- **See also** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+- **Qarang** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
 
 ## renderTriggered <sup class="vt-badge dev-only" /> {#rendertriggered}
 
-Called when a reactive dependency triggers the component's render effect to be re-run.
+Reaktiv bog'liqlik komponentning render ta'sirini qayta ishga tushirishga sabab bo'lganda chaqiriladi.
 
-**This hook is development-mode-only and not called during server-side rendering.**
+**Bu hook faqat development rejimida va server-side rendering paytida chaqirilmaydi.**
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -268,15 +268,15 @@ Called when a reactive dependency triggers the component's render effect to be r
   }
   ```
 
-- **See also** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+- **Qarang** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
 
 ## activated {#activated}
 
-Called after the component instance is inserted into the DOM as part of a tree cached by [`<KeepAlive>`](/api/built-in-components#keepalive).
+Komponent instansiyasi [`<KeepAlive>`](/api/built-in-components#keepalive) tomonidan keshga olingan daraxtning bir qismi sifatida DOM'ga kiritilgandan keyin chaqiriladi.
 
-**This hook is not called during server-side rendering.**
+**Bu hook server-side rendering paytida chaqirilmaydi.**
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -284,15 +284,15 @@ Called after the component instance is inserted into the DOM as part of a tree c
   }
   ```
 
-- **See also** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **Qarang** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## deactivated {#deactivated}
 
-Called after the component instance is removed from the DOM as part of a tree cached by [`<KeepAlive>`](/api/built-in-components#keepalive).
+Komponent instansiyasi [`<KeepAlive>`](/api/built-in-components#keepalive) tomonidan keshga olingan daraxtning bir qismi sifatida DOM'dan olib tashlangandan keyin chaqiriladi.
 
-**This hook is not called during server-side rendering.**
+**Bu hook server-side rendering paytida chaqirilmaydi.**
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -300,13 +300,13 @@ Called after the component instance is removed from the DOM as part of a tree ca
   }
   ```
 
-- **See also** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **Qarang** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## serverPrefetch <sup class="vt-badge" data-text="SSR only" /> {#serverprefetch}
 
-Async function to be resolved before the component instance is to be rendered on the server.
+Komponent instansiyasi serverda render qilinishidan oldin hal qilish uchun async funksiyani ro'yxatdan o'tkazadi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -314,35 +314,36 @@ Async function to be resolved before the component instance is to be rendered on
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  If the hook returns a Promise, the server renderer will wait until the Promise is resolved before rendering the component.
+  Agar funksiya Promise qaytarsa, server renderer komponentni render qilishdan oldin Promise hal qilinishini kutadi.
 
-  This hook is only called during server-side rendering can be used to perform server-only data fetching.
+  Bu hook faqat server-side rendering paytida chaqiriladi va server-side ma'lumotlarni olish uchun ishlatilishi mumkin.
 
-- **Example**
+- **Misol**
 
-  ```js
+  ```vue
+  <script>
   export default {
     data() {
       return {
-        data: null
+        items: []
       }
     },
     async serverPrefetch() {
-      // component is rendered as part of the initial request
-      // pre-fetch data on server as it is faster than on the client
-      this.data = await fetchOnServer(/* ... */)
+      // server-side ma'lumotlarni olish
+      this.items = await fetchOnServer(/* ... */)
     },
     async mounted() {
-      if (!this.data) {
-        // if data is null on mount, it means the component
-        // is dynamically rendered on the client. Perform a
-        // client-side fetch instead.
-        this.data = await fetchOnClient(/* ... */)
+      if (!this.items.length) {
+        // agar ma'lumotlar bo'sh bo'lsa, bu komponent
+        // mijozda dinamik ravishda render qilingan.
+        // Buning o'rniga mijozda ma'lumotlarni olish.
+        this.items = await fetchOnClient(/* ... */)
       }
     }
   }
+  </script>
   ```
 
-- **See also** [Server-Side Rendering](/guide/scaling-up/ssr)
+- **Qarang** [Server-Side Rendering](/guide/scaling-up/ssr)

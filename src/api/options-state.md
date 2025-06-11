@@ -1,10 +1,10 @@
-# Options: State {#options-state}
+# Options: Holat {#options-state}
 
 ## data {#data}
 
-A function that returns the initial reactive state for the component instance.
+Komponent instansiyasi uchun boshlang'ich reaktiv holatni qaytaradigan funksiya.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -15,17 +15,17 @@ A function that returns the initial reactive state for the component instance.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  The function is expected to return a plain JavaScript object, which will be made reactive by Vue. After the instance is created, the reactive data object can be accessed as `this.$data`. The component instance also proxies all the properties found on the data object, so `this.a` will be equivalent to `this.$data.a`.
+  Funksiya oddiy JavaScript obyektini qaytarishi kutiladi, u Vue tomonidan reaktiv qilinadi. Instansiya yaratilgandan so'ng, reaktiv ma'lumotlar obyektiga `this.$data` orqali kirish mumkin. Komponent instansiyasi, shuningdek, ma'lumotlar obyektida topilgan barcha xususiyatlarni proxy qiladi, shuning uchun `this.a` `this.$data.a`ga ekvivalent bo'ladi.
 
-  All top-level data properties must be included in the returned data object. Adding new properties to `this.$data` is possible, but it is **not** recommended. If the desired value of a property is not yet available then an empty value such as `undefined` or `null` should be included as a placeholder to ensure that Vue knows that the property exists.
+  Barcha yuqori darajadagi ma'lumotlar xususiyatlari qaytarilgan ma'lumotlar obyektida kiritilishi kerak. `this.$data`ga yangi xususiyatlarni qo'shish mumkin, lekin bu **tavsiya etilmaydi**. Agar xususiyatning kerakli qiymati hali mavjud bo'lmasa, u holda `undefined` yoki `null` kabi bo'sh qiymat Vue xususiyat mavjudligini bilishi uchun placeholder sifatida kiritilishi kerak.
 
-  Properties that start with `_` or `$` will **not** be proxied on the component instance because they may conflict with Vue's internal properties and API methods. You will have to access them as `this.$data._property`.
+  `_` yoki `$` bilan boshlanadigan xususiyatlar komponent instansiyasida **proxy qilinmaydi**, chunki ular Vue'ning ichki xususiyatlari va API metodlari bilan to'qnashishi mumkin. Ularga `this.$data._property` orqali kirish kerak bo'ladi.
 
-  It is **not** recommended to return objects with their own stateful behavior like browser API objects and prototype properties. The returned object should ideally be a plain object that only represents the state of the component.
+  Brauzer API obyektlari va prototip xususiyatlari kabi o'zining holatli xatti-harakati bo'lgan obyektlarni qaytarish **tavsiya etilmaydi**. Qaytarilgan obyekt ideal holda faqat komponentning holatini ifodalovchi oddiy obyekt bo'lishi kerak.
 
-- **Example**
+- **Misol**
 
   ```js
   export default {
@@ -39,19 +39,19 @@ A function that returns the initial reactive state for the component instance.
   }
   ```
 
-  Note that if you use an arrow function with the `data` property, `this` won't be the component's instance, but you can still access the instance as the function's first argument:
+  E'tibor bering, agar siz `data` xususiyati bilan o'q funksiyasini ishlatsangiz, `this` komponentning instansiyasi bo'lmaydi, lekin siz hali ham instansiyaga funksiyaning birinchi argumenti sifatida kirishingiz mumkin:
 
   ```js
   data: (vm) => ({ a: vm.myProp })
   ```
 
-- **See also** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+- **Qarang** [Reaktivlik Chuqurligi](/guide/extras/reactivity-in-depth)
 
 ## props {#props}
 
-Declare the props of a component.
+Komponentning props'larini e'lon qiladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -74,30 +74,30 @@ Declare the props of a component.
   type PropType<T> = { new (): T } | { new (): T }[]
   ```
 
-  > Types are simplified for readability.
+  > O'qish osonligi uchun turlar soddalashtirilgan.
 
-- **Details**
+- **Tafsilotlar**
 
-  In Vue, all component props need to be explicitly declared. Component props can be declared in two forms:
+  Vue'da barcha komponent props'lari aniq e'lon qilinishi kerak. Komponent props'lari ikki formada e'lon qilinishi mumkin:
 
-  - Simple form using an array of strings
-  - Full form using an object where each property key is the name of the prop, and the value is the prop's type (a constructor function) or advanced options.
+  - String massividan foydalangan holda oddiy forma
+  - Har bir xususiyat kaliti prop nomi va qiymati prop turi (konstruktor funksiyasi) yoki rivojlangan opsiyalar bo'lgan obyekt yordamida to'liq forma.
 
-  With object-based syntax, each prop can further define the following options:
+  Obyektga asoslangan sintaksis bilan, har bir prop quyidagi opsiyalarni qo'shimcha aniqlashi mumkin:
 
-  - **`type`**: Can be one of the following native constructors: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, any custom constructor function or an array of those. In development mode, Vue will check if a prop's value matches the declared type, and will throw a warning if it doesn't. See [Prop Validation](/guide/components/props#prop-validation) for more details.
+  - **`type`**: Quyidagi mahalliy konstruktorlardan biri bo'lishi mumkin: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, har qanday maxsus konstruktor funksiyasi yoki ularning massivi. Ishlab chiqish rejimida, Vue prop qiymati e'lon qilingan turga mos kelishini tekshiradi va mos kelmasa ogohlantirish chiqaradi. Batafsil ma'lumot uchun [Prop Tekshiruvi](/guide/components/props#prop-validation)ni ko'ring.
 
-    Also note that a prop with `Boolean` type affects its value casting behavior in both development and production. See [Boolean Casting](/guide/components/props#boolean-casting) for more details.
+    Shuningdek, `Boolean` turidagi prop ham ishlab chiqish, ham ishlab chiqarish rejimlarida uning qiymat konvertatsiya xatti-harakatiga ta'sir qilishini unutmang. Batafsil ma'lumot uchun [Boolean Konvertatsiyasi](/guide/components/props#boolean-casting)ni ko'ring.
 
-  - **`default`**: Specifies a default value for the prop when it is not passed by the parent or has `undefined` value. Object or array defaults must be returned using a factory function. The factory function also receives the raw props object as the argument.
+  - **`default`**: Prop ota-onadan o'tkazilmaganda yoki `undefined` qiymatga ega bo'lganda uning standart qiymatini belgilaydi. Obyekt yoki massiv standartlari fabrika funksiyasi yordamida qaytarilishi kerak. Fabrika funksiyasi ham xom props obyektini argument sifatida oladi.
 
-  - **`required`**: Defines if the prop is required. In a non-production environment, a console warning will be thrown if this value is truthy and the prop is not passed.
+  - **`required`**: Prop talab qilinishini aniqlaydi. Ishlab chiqarish bo'lmagan muhitda, agar bu qiymat rost bo'lsa va prop o'tkazilmasa, konsol ogohlantirishi chiqariladi.
 
-  - **`validator`**: Custom validator function that takes the prop value and props object as arguments. In development mode, a console warning will be thrown if this function returns a falsy value (i.e. the validation fails).
+  - **`validator`**: Prop qiymati va props obyektini argumentlar sifatida oladigan maxsus validator funksiyasi. Ishlab chiqish rejimida, agar bu funksiya noto'g'ri qiymat qaytarsa (ya'ni tekshiruv muvaffaqiyatsiz bo'lsa), konsol ogohlantirishi chiqariladi.
 
-- **Example**
+- **Misol**
 
-  Simple declaration:
+  Oddiy e'lon:
 
   ```js
   export default {
@@ -105,14 +105,14 @@ Declare the props of a component.
   }
   ```
 
-  Object declaration with validations:
+  Tekshiruvlar bilan obyekt e'lon:
 
   ```js
   export default {
     props: {
-      // type check
+      // tur tekshiruvi
       height: Number,
-      // type check plus other validations
+      // tur tekshiruvi va boshqa tekshiruvlar
       age: {
         type: Number,
         default: 0,
@@ -125,15 +125,15 @@ Declare the props of a component.
   }
   ```
 
-- **See also**
+- **Qarang**
   - [Guide - Props](/guide/components/props)
-  - [Guide - Typing Component Props](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
+  - [Guide - Komponent Props'larini Tiplash](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
 
 ## computed {#computed}
 
-Declare computed properties to be exposed on the component instance.
+Komponent instansiyasida taqdim etiladigan hisoblangan xususiyatlarni e'lon qiladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -158,13 +158,13 @@ Declare computed properties to be exposed on the component instance.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  The option accepts an object where the key is the name of the computed property, and the value is either a computed getter, or an object with `get` and `set` methods (for writable computed properties).
+  Opsiya kaliti hisoblangan xususiyat nomi va qiymati hisoblangan getter yoki `get` va `set` metodlariga ega obyektni qabul qiladi.
 
-  All getters and setters have their `this` context automatically bound to the component instance.
+  Barcha getter va setter'lar o'zlarining `this` kontekstini avtomatik ravishda komponent instansiyasiga bog'laydi.
 
-  Note that if you use an arrow function with a computed property, `this` won't point to the component's instance, but you can still access the instance as the function's first argument:
+  E'tibor bering, agar siz hisoblangan xususiyat bilan o'q funksiyasini ishlatsangiz, `this` komponentning instansiyasiga ishora qilmaydi, lekin siz hali ham instansiyaga funksiyaning birinchi argumenti sifatida kirishingiz mumkin:
 
   ```js
   export default {
@@ -174,7 +174,7 @@ Declare computed properties to be exposed on the component instance.
   }
   ```
 
-- **Example**
+- **Misol**
 
   ```js
   export default {
@@ -182,11 +182,11 @@ Declare computed properties to be exposed on the component instance.
       return { a: 1 }
     },
     computed: {
-      // readonly
+      // faqat o'qish uchun
       aDouble() {
         return this.a * 2
       },
-      // writable
+      // yozish mumkin
       aPlus: {
         get() {
           return this.a + 1
@@ -207,15 +207,15 @@ Declare computed properties to be exposed on the component instance.
   }
   ```
 
-- **See also**
-  - [Guide - Computed Properties](/guide/essentials/computed)
-  - [Guide - Typing Computed Properties](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
+- **Qarang**
+  - [Guide - Hisoblangan Xususiyatlar](/guide/essentials/computed)
+  - [Guide - Hisoblangan Xususiyatlarni Tiplash](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
 
 ## methods {#methods}
 
-Declare methods to be mixed into the component instance.
+Komponent instansiyasiga aralashadigan metodlarni e'lon qiladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -225,13 +225,13 @@ Declare methods to be mixed into the component instance.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Declared methods can be directly accessed on the component instance, or used in template expressions. All methods have their `this` context automatically bound to the component instance, even when passed around.
+  E'lon qilingan metodlarga komponent instansiyasida to'g'ridan-to'g'ri kirish yoki shablon ifodalarida ishlatish mumkin. Barcha metodlar o'zlarining `this` kontekstini avtomatik ravishda komponent instansiyasiga bog'laydi, hatto ular o'tkazilganda ham.
 
-  Avoid using arrow functions when declaring methods, as they will not have access to the component instance via `this`.
+  Metodlarni e'lon qilishda o'q funksiyalarini ishlatishdan saqlaning, chunki ular `this` orqali komponent instansiyasiga kirish imkoniyatiga ega bo'lmaydi.
 
-- **Example**
+- **Misol**
 
   ```js
   export default {
@@ -250,13 +250,11 @@ Declare methods to be mixed into the component instance.
   }
   ```
 
-- **See also** [Event Handling](/guide/essentials/event-handling)
-
 ## watch {#watch}
 
-Declare watch callbacks to be invoked on data change.
+Ma'lumotlar o'zgarganda chaqiriladigan kuzatuv callback'larini e'lon qiladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -283,24 +281,24 @@ Declare watch callbacks to be invoked on data change.
   }
   ```
 
-  > Types are simplified for readability.
+  > O'qish osonligi uchun turlar soddalashtirilgan.
 
-- **Details**
+- **Tafsilotlar**
 
-  The `watch` option expects an object where keys are the reactive component instance properties to watch (e.g. properties declared via `data` or `computed`) — and values are the corresponding callbacks. The callback receives the new value and the old value of the watched source.
+  `watch` opsiyasi kalitlari kuzatiladigan reaktiv komponent instansiya xususiyatlari (masalan, `data` yoki `computed` orqali e'lon qilingan xususiyatlar) va qiymatlari mos keladigan callback'lar bo'lgan obyektni kutadi. Callback kuzatilayotgan manbaning yangi qiymati va eski qiymatini oladi.
 
-  In addition to a root-level property, the key can also be a simple dot-delimited path, e.g. `a.b.c`. Note that this usage does **not** support complex expressions - only dot-delimited paths are supported. If you need to watch complex data sources, use the imperative [`$watch()`](/api/component-instance#watch) API instead.
+  Yuqori darajadagi xususiyatdan tashqari, kalit oddiy nuqta bilan ajratilgan yo'l ham bo'lishi mumkin, masalan `a.b.c`. E'tibor bering, bu ishlatish **murakkab ifodalarni** qo'llab-quvvatlamaydi - faqat nuqta bilan ajratilgan yo'llar qo'llab-quvvatlanadi. Agar siz murakkab ma'lumotlar manbalarini kuzatishni xohlasangiz, buning o'rniga buyruq beruvchi [`$watch()`](/api/component-instance#watch) API'ni ishlating.
 
-  The value can also be a string of a method name (declared via `methods`), or an object that contains additional options. When using the object syntax, the callback should be declared under the `handler` field. Additional options include:
+  Qiymat `methods` orqali e'lon qilingan metod nomi string'i yoki qo'shimcha opsiyalarni o'z ichiga olgan obyekt ham bo'lishi mumkin. Obyekt sintaksisini ishlatganda, callback `handler` maydoni ostida e'lon qilinishi kerak. Qo'shimcha opsiyalar quyidagilarni o'z ichiga oladi:
 
-  - **`immediate`**: trigger the callback immediately on watcher creation. Old value will be `undefined` on the first call.
-  - **`deep`**: force deep traversal of the source if it is an object or an array, so that the callback fires on deep mutations. See [Deep Watchers](/guide/essentials/watchers#deep-watchers).
-  - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) and [`watchEffect()`](/api/reactivity-core#watcheffect).
-  - **`onTrack / onTrigger`**: debug the watcher's dependencies. See [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging).
+  - **`immediate`**: kuzatuvchi yaratilganda callback'ni darhol ishga tushirish. Birinchi chaqiruvda eski qiymat `undefined` bo'ladi.
+  - **`deep`**: agar manba obyekt yoki massiv bo'lsa, uning chuqur ko'rib chiqilishini majburlash, shunda callback chuqur o'zgarishlarda ishga tushadi. [Chuqur Kuzatuvchilar](/guide/essentials/watchers#deep-watchers)ni ko'ring.
+  - **`flush`**: callback'ning flush vaqtini sozlash. [Callback Flush Vaqti](/guide/essentials/watchers#callback-flush-timing) va [`watchEffect()`](/api/reactivity-core#watcheffect)ni ko'ring.
+  - **`onTrack / onTrigger`**: kuzatuvchining bog'liqliklarini debug qilish. [Kuzatuvchi Debugging](/guide/extras/reactivity-in-depth#watcher-debugging)ni ko'ring.
 
-  Avoid using arrow functions when declaring watch callbacks as they will not have access to the component instance via `this`.
+  Kuzatuv callback'larini e'lon qilishda o'q funksiyalarini ishlatishdan saqlaning, chunki ular `this` orqali komponent instansiyasiga kirish imkoniyatiga ega bo'lmaydi.
 
-- **Example**
+- **Misol**
 
   ```js
   export default {
@@ -316,31 +314,31 @@ Declare watch callbacks to be invoked on data change.
       }
     },
     watch: {
-      // watching top-level property
+      // yuqori darajadagi xususiyatni kuzatish
       a(val, oldVal) {
         console.log(`new: ${val}, old: ${oldVal}`)
       },
-      // string method name
+      // string metod nomi
       b: 'someMethod',
-      // the callback will be called whenever any of the watched object properties change regardless of their nested depth
+      // callback kuzatilayotgan obyektning har qanday xususiyati o'zgarganda, ularning ichki chuqurligidan qat'i nazar, chaqiriladi
       c: {
         handler(val, oldVal) {
           console.log('c changed')
         },
         deep: true
       },
-      // watching a single nested property:
+      // bitta ichki xususiyatni kuzatish:
       'c.d': function (val, oldVal) {
-        // do something
+        // biror narsa qilish
       },
-      // the callback will be called immediately after the start of the observation
+      // callback kuzatish boshlangandan keyin darhol chaqiriladi
       e: {
         handler(val, oldVal) {
           console.log('e changed')
         },
         immediate: true
       },
-      // you can pass array of callbacks, they will be called one-by-one
+      // callback'lar massivini o'tkazishingiz mumkin, ular birma-bir chaqiriladi
       f: [
         'handle1',
         function handle2(val, oldVal) {
@@ -368,13 +366,13 @@ Declare watch callbacks to be invoked on data change.
   }
   ```
 
-- **See also** [Watchers](/guide/essentials/watchers)
+- **Qarang** [Kuzatuvchilar](/guide/essentials/watchers)
 
 ## emits {#emits}
 
-Declare the custom events emitted by the component.
+Komponent tomonidan chiqariladigan maxsus hodisalarni e'lon qiladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -388,20 +386,20 @@ Declare the custom events emitted by the component.
   type EmitValidator = (...args: unknown[]) => boolean
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Emitted events can be declared in two forms:
+  Chiqarilgan hodisalar ikki formada e'lon qilinishi mumkin:
 
-  - Simple form using an array of strings
-  - Full form using an object where each property key is the name of the event, and the value is either `null` or a validator function.
+  - String massividan foydalangan holda oddiy forma
+  - Har bir xususiyat kaliti hodisa nomi va qiymati `null` yoki validator funksiyasi bo'lgan obyekt yordamida to'liq forma.
 
-  The validation function will receive the additional arguments passed to the component's `$emit` call. For example, if `this.$emit('foo', 1)` is called, the corresponding validator for `foo` will receive the argument `1`. The validator function should return a boolean to indicate whether the event arguments are valid.
+  Tekshiruv funksiyasi komponentning `$emit` chaqiruviga o'tkazilgan qo'shimcha argumentlarni oladi. Masalan, agar `this.$emit('foo', 1)` chaqirilsa, `foo` uchun mos keladigan validator `1` argumentini oladi. Validator funksiyasi hodisa argumentlari to'g'ri ekanligini ko'rsatish uchun boolean qaytarishi kerak.
 
-  Note that the `emits` option affects which event listeners are considered component event listeners, rather than native DOM event listeners. The listeners for declared events will be removed from the component's `$attrs` object, so they will not be passed through to the component's root element. See [Fallthrough Attributes](/guide/components/attrs) for more details.
+  E'tibor bering, `emits` opsiyasi qaysi hodisa tinglovchilari komponent hodisa tinglovchilari hisoblanishini ta'sir qiladi, mahalliy DOM hodisa tinglovchilari emas. E'lon qilingan hodisalar uchun tinglovchilar komponentning `$attrs` obyektidan olib tashlanadi, shuning uchun ular komponentning root elementi orqali o'tkazilmaydi. Batafsil ma'lumot uchun [Fallthrough Xususiyatlar](/guide/components/attrs)ni ko'ring.
 
-- **Example**
+- **Misol**
 
-  Array syntax:
+  Massiv sintaksisi:
 
   ```js
   export default {
@@ -412,15 +410,15 @@ Declare the custom events emitted by the component.
   }
   ```
 
-  Object syntax:
+  Obyekt sintaksisi:
 
   ```js
   export default {
     emits: {
-      // no validation
+      // tekshiruv yo'q
       click: null,
 
-      // with validation
+      // tekshiruv bilan
       submit: (payload) => {
         if (payload.email && payload.password) {
           return true
@@ -433,15 +431,15 @@ Declare the custom events emitted by the component.
   }
   ```
 
-- **See also**
-  - [Guide - Fallthrough Attributes](/guide/components/attrs)
-  - [Guide - Typing Component Emits](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
+- **Qarang**
+  - [Guide - Fallthrough Xususiyatlar](/guide/components/attrs)
+  - [Guide - Komponent Emits'larini Tiplash](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
 
 ## expose {#expose}
 
-Declare exposed public properties when the component instance is accessed by a parent via template refs.
+Komponent instansiyasiga ota-onadan template refs orqali kirilganda taqdim etiladigan ommaviy xususiyatlarni e'lon qiladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -449,19 +447,19 @@ Declare exposed public properties when the component instance is accessed by a p
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  By default, a component instance exposes all instance properties to the parent when accessed via `$parent`, `$root`, or template refs. This can be undesirable, since a component most likely has internal state or methods that should be kept private to avoid tight coupling.
+  Standart bo'yicha, komponent instansiyasi `$parent`, `$root` yoki template refs orqali kirilganda barcha instansiya xususiyatlarini ota-onaga taqdim etadi. Bu istalmagan bo'lishi mumkin, chunki komponent ko'pincha qattiq bog'lanishni oldini olish uchun maxfiy saqlanishi kerak bo'lgan ichki holat yoki metodlarga ega.
 
-  The `expose` option expects a list of property name strings. When `expose` is used, only the properties explicitly listed will be exposed on the component's public instance.
+  `expose` opsiyasi xususiyat nomlari string'larining ro'yxatini kutadi. `expose` ishlatilganda, faqat aniq ro'yxatga kiritilgan xususiyatlar komponentning ommaviy instansiyasida taqdim etiladi.
 
-  `expose` only affects user-defined properties - it does not filter out built-in component instance properties.
+  `expose` faqat foydalanuvchi tomonidan aniqlangan xususiyatlarni ta'sir qiladi - u o'rnatilgan komponent instansiya xususiyatlarini filtrlashni amalga oshirmaydi.
 
-- **Example**
+- **Misol**
 
   ```js
   export default {
-    // only `publicMethod` will be available on the public instance
+    // faqat `publicMethod` ommaviy instansiyada mavjud bo'ladi
     expose: ['publicMethod'],
     methods: {
       publicMethod() {

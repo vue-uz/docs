@@ -1,10 +1,10 @@
-# Options: Composition {#options-composition}
+# Options: Kompozitsiya {#options-composition}
 
 ## provide {#provide}
 
-Provide values that can be injected by descendant components.
+Avlod komponentlari tomonidan in'ektsiya qilish mumkin bo'lgan qiymatlarni ta'minlaydi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -12,15 +12,15 @@ Provide values that can be injected by descendant components.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  `provide` and [`inject`](#inject) are used together to allow an ancestor component to serve as a dependency injector for all its descendants, regardless of how deep the component hierarchy is, as long as they are in the same parent chain.
+  `provide` va [`inject`](#inject) birgalikda ishlatiladi, bu esa ajdod komponentiga uning barcha avlodlari uchun bog'liqlik in'ektsiyasi sifatida xizmat qilish imkonini beradi, ular bir xil ota-ona zanjirida bo'lsa, komponent ierarxiyasi qanchalik chuqur bo'lishidan qat'i nazar.
 
-  The `provide` option should be either an object or a function that returns an object. This object contains the properties that are available for injection into its descendants. You can use Symbols as keys in this object.
+  `provide` opsiyasi ob'ekt yoki ob'ekt qaytaradigan funksiya bo'lishi kerak. Bu ob'ekt uning avlodlariga in'ektsiya qilish uchun mavjud bo'lgan xususiyatlarni o'z ichiga oladi. Bu ob'ektda kalitlar sifatida Symbol'lardan foydalanishingiz mumkin.
 
-- **Example**
+- **Misol**
 
-  Basic usage:
+  Asosiy foydalanish:
 
   ```js
   const s = Symbol()
@@ -33,7 +33,7 @@ Provide values that can be injected by descendant components.
   }
   ```
 
-  Using a function to provide per-component state:
+  Har bir komponent holatini ta'minlash uchun funksiyadan foydalanish:
 
   ```js
   export default {
@@ -50,15 +50,15 @@ Provide values that can be injected by descendant components.
   }
   ```
 
-  Note in the above example, the provided `msg` will NOT be reactive. See [Working with Reactivity](/guide/components/provide-inject#working-with-reactivity) for more details.
+  Yuqoridagi misolda, ta'minlangan `msg` reaktiv bo'lmaydi. Batafsil ma'lumot uchun [Reaktivlik bilan ishlash](/guide/components/provide-inject#working-with-reactivity) ga qarang.
 
-- **See also** [Provide / Inject](/guide/components/provide-inject)
+- **Qarang** [Provide / Inject](/guide/components/provide-inject)
 
 ## inject {#inject}
 
-Declare properties to inject into the current component by locating them from ancestor providers.
+Ajdod provayderlaridan topish orqali joriy komponentga in'ektsiya qilish uchun xususiyatlarni e'lon qiladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -75,24 +75,24 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  The `inject` option should be either:
+  `inject` opsiyasi quyidagilardan biri bo'lishi kerak:
 
-  - An array of strings, or
-  - An object where the keys are the local binding name and the value is either:
-    - The key (string or Symbol) to search for in available injections, or
-    - An object where:
-      - The `from` property is the key (string or Symbol) to search for in available injections, and
-      - The `default` property is used as fallback value. Similar to props default values, a factory function is needed for object types to avoid value sharing between multiple component instances.
+  - Stringlar massivi, yoki
+  - Kalitlar mahalliy bog'lash nomi va qiymat quyidagilardan biri bo'lgan ob'ekt:
+    - Mavjud in'ektsiyalarda qidirish uchun kalit (string yoki Symbol), yoki
+    - Quyidagilarni o'z ichiga olgan ob'ekt:
+      - `from` xususiyati mavjud in'ektsiyalarda qidirish uchun kalit (string yoki Symbol), va
+      - `default` xususiyati zaxira qiymati sifatida ishlatiladi. Props default qiymatlariga o'xshab, ob'ekt turlari uchun qiymatni bir nechta komponent instansiyalari o'rtasida baham ko'rishdan saqlash uchun fabrika funksiyasi kerak.
 
-  An injected property will be `undefined` if neither a matching property nor a default value was provided.
+  Agar mos keladigan xususiyat yoki default qiymat ta'minlanmagan bo'lsa, in'ektsiya qilingan xususiyat `undefined` bo'ladi.
 
-  Note that injected bindings are NOT reactive. This is intentional. However, if the injected value is a reactive object, properties on that object do remain reactive. See [Working with Reactivity](/guide/components/provide-inject#working-with-reactivity) for more details.
+  E'tibor bering, in'ektsiya qilingan bog'lamalar reaktiv EMAS. Bu atayin qilingan. Biroq, agar in'ektsiya qilingan qiymat reaktiv ob'ekt bo'lsa, o'sha ob'ektning xususiyatlari reaktiv bo'lib qoladi. Batafsil ma'lumot uchun [Reaktivlik bilan ishlash](/guide/components/provide-inject#working-with-reactivity) ga qarang.
 
-- **Example**
+- **Misol**
 
-  Basic usage:
+  Asosiy foydalanish:
 
   ```js
   export default {
@@ -103,7 +103,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Using an injected value as the default for a prop:
+  In'ektsiya qilingan qiymatni prop uchun default sifatida ishlatish:
 
   ```js
   const Child = {
@@ -118,7 +118,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Using an injected value as data entry:
+  In'ektsiya qilingan qiymatni ma'lumotlar kirishi sifatida ishlatish:
 
   ```js
   const Child = {
@@ -131,7 +131,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Injections can be optional with default value:
+  In'ektsiyalar default qiymat bilan ixtiyoriy bo'lishi mumkin:
 
   ```js
   const Child = {
@@ -141,7 +141,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  If it needs to be injected from a property with a different name, use `from` to denote the source property:
+  Agar u boshqa nomli xususiyatdan in'ektsiya qilish kerak bo'lsa, manba xususiyatini belgilash uchun `from` dan foydalaning:
 
   ```js
   const Child = {
@@ -154,7 +154,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Similar to prop defaults, you need to use a factory function for non-primitive values:
+  Prop defaultlariga o'xshab, primitiv bo'lmagan qiymatlar uchun fabrika funksiyasidan foydalanish kerak:
 
   ```js
   const Child = {
@@ -167,13 +167,13 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-- **See also** [Provide / Inject](/guide/components/provide-inject)
+- **Qarang** [Provide / Inject](/guide/components/provide-inject)
 
 ## mixins {#mixins}
 
-An array of option objects to be mixed into the current component.
+Joriy komponentga aralashish uchun opsiya ob'ektlari massivi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -181,17 +181,17 @@ An array of option objects to be mixed into the current component.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  The `mixins` option accepts an array of mixin objects. These mixin objects can contain instance options like normal instance objects, and they will be merged against the eventual options using the certain option merging logic. For example, if your mixin contains a `created` hook and the component itself also has one, both functions will be called.
+  `mixins` opsiyasi mixin ob'ektlari massivini qabul qiladi. Bu mixin ob'ektlari oddiy instansiya ob'ektlari kabi instansiya opsiyalarini o'z ichiga olishi mumkin va ular ma'lum bir opsiya birlashtirish mantiqidan foydalangan holda yakuniy opsiyalarga qarshi birlashtiriladi. Masalan, agar sizning mixiningiz `created` hook'ini o'z ichiga olsa va komponentning o'zida ham bitta bo'lsa, ikkala funksiya ham chaqiriladi.
 
-  Mixin hooks are called in the order they are provided, and called before the component's own hooks.
+  Mixin hook'lari ular ta'minlangan tartibda chaqiriladi va komponentning o'z hook'laridan oldin chaqiriladi.
 
-  :::warning No Longer Recommended
-  In Vue 2, mixins were the primary mechanism for creating reusable chunks of component logic. While mixins continue to be supported in Vue 3, [Composable functions using Composition API](/guide/reusability/composables) is now the preferred approach for code reuse between components.
+  :::warning Endi Tavsiya Etilmaydi
+  Vue 2 da mixinlar komponent mantiqining qayta ishlatiladigan qismlarini yaratishning asosiy mexanizmi edi. Vue 3 da mixinlar qo'llab-quvvatlansa-da, [Composition API yordamida Composable funksiyalar](/guide/reusability/composables) endi komponentlar o'rtasida kodni qayta ishlatish uchun afzal usul hisoblanadi.
   :::
 
-- **Example**
+- **Misol**
 
   ```js
   const mixin = {
@@ -213,9 +213,9 @@ An array of option objects to be mixed into the current component.
 
 ## extends {#extends}
 
-A "base class" component to extend from.
+Kengaytirish uchun "asosiy sinf" komponenti.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -223,17 +223,17 @@ A "base class" component to extend from.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Allows one component to extend another, inheriting its component options.
+  Bir komponentga boshqasini kengaytirish va uning komponent opsiyalarini meros olish imkonini beradi.
 
-  From an implementation perspective, `extends` is almost identical to `mixins`. The component specified by `extends` will be treated as though it were the first mixin.
+  Amalga oshirish nuqtai nazaridan, `extends` deyarli `mixins` bilan bir xil. `extends` tomonidan ko'rsatilgan komponent birinchi mixin bo'lgandek muomala qilinadi.
 
-  However, `extends` and `mixins` express different intents. The `mixins` option is primarily used to compose chunks of functionality, whereas `extends` is primarily concerned with inheritance.
+  Biroq, `extends` va `mixins` turli xil maqsadlarni ifodalaydi. `mixins` opsiyasi asosan funksionallik qismlarini tuzish uchun ishlatiladi, `extends` esa asosan meros olish bilan bog'liq.
 
-  As with `mixins`, any options (except for `setup()`) will be merged using the relevant merge strategy.
+  `mixins` bilan bir xil, har qanday opsiyalar (`setup()` dan tashqari) tegishli birlashtirish strategiyasidan foydalangan holda birlashtiriladi.
 
-- **Example**
+- **Misol**
 
   ```js
   const CompA = { ... }
@@ -244,12 +244,12 @@ A "base class" component to extend from.
   }
   ```
 
-  :::warning Not Recommended for Composition API
-  `extends` is designed for Options API and does not handle the merging of the `setup()` hook.
+  :::warning Composition API uchun Tavsiya Etilmaydi
+  `extends` Options API uchun mo'ljallangan va `setup()` hook'ini birlashtirishni boshqarmaydi.
 
-  In Composition API, the preferred mental model for logic reuse is "compose" over "inheritance". If you have logic from a component that needs to be reused in another one, consider extracting the relevant logic into a [Composable](/guide/reusability/composables#composables).
+  Composition API da mantiqni qayta ishlatish uchun afzal model "meros" emas, balki "kompozitsiya" hisoblanadi. Agar sizda bir komponentdan boshqasida qayta ishlatilishi kerak bo'lgan mantiq bo'lsa, tegishli mantiqni [Composable](/guide/reusability/composables#composables) ga ajratishni ko'rib chiqing.
 
-  If you still intend to "extend" a component using Composition API, you can call the base component's `setup()` in the extending component's `setup()`:
+  Agar siz hali ham Composition API yordamida komponentni "kengaytirish" niyatida bo'lsangiz, kengaytiruvchi komponentning `setup()` da asosiy komponentning `setup()` ni chaqirishingiz mumkin:
 
   ```js
   import Base from './Base.js'
@@ -258,7 +258,7 @@ A "base class" component to extend from.
     setup(props, ctx) {
       return {
         ...Base.setup(props, ctx),
-        // local bindings
+        // mahalliy bog'lamalar
       }
     }
   }

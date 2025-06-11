@@ -43,7 +43,7 @@ const toggleShowAll = (event: Event) => {
         class="developer-proficiencies__toggle"
         @click.stop="toggleShowAll"
       >
-        {{ showAll ? 'Show less' : 'Show all' }}
+        {{ showAll ? 'Kamroq ko\'rsatish' : 'Barchasini ko\'rsatish' }}
       </button>
     </div>
   </div>

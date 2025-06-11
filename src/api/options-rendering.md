@@ -1,10 +1,10 @@
-# Options: Rendering {#options-rendering}
+# Options: Renderlash {#options-rendering}
 
 ## template {#template}
 
-A string template for the component.
+Komponent uchun string shablon.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -12,25 +12,25 @@ A string template for the component.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  A template provided via the `template` option will be compiled on-the-fly at runtime. It is only supported when using a build of Vue that includes the template compiler. The template compiler is **NOT** included in Vue builds that have the word `runtime` in their names, e.g. `vue.runtime.esm-bundler.js`. Consult the [dist file guide](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) for more details about the different builds.
+  `template` opsiyasi orqali ta'minlangan shablon runtime paytida on-the-fly kompilyatsiya qilinadi. Bu faqat shablon kompilyatorini o'z ichiga olgan Vue build'ini ishlatganda qo'llab-quvvatlanadi. Shablon kompilyatori nomida `runtime` so'zi bo'lgan Vue build'larida **YO'Q**, masalan `vue.runtime.esm-bundler.js`. Turli xil build'lar haqida batafsil ma'lumot uchun [dist fayl qo'llanmasi](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) ga qarang.
 
-  If the string starts with `#` it will be used as a `querySelector` and use the selected element's `innerHTML` as the template string. This allows the source template to be authored using native `<template>` elements.
+  Agar string `#` bilan boshlansa, u `querySelector` sifatida ishlatiladi va tanlangan elementning `innerHTML` ni shablon string sifatida ishlatadi. Bu manba shablonini native `<template>` elementlaridan foydalangan holda yaratishga imkon beradi.
 
-  If the `render` option is also present in the same component, `template` will be ignored.
+  Agar bir xil komponentda `render` opsiyasi ham mavjud bo'lsa, `template` e'tiborga olinmaydi.
 
-  If the root component of your application doesn't have a `template` or `render` option specified, Vue will try to use the `innerHTML` of the mounted element as the template instead.
+  Agar ilovangizning ildiz komponentida `template` yoki `render` opsiyasi ko'rsatilmagan bo'lsa, Vue o'rnatilgan elementning `innerHTML` ni shablon sifatida ishlatishga harakat qiladi.
 
-  :::warning Security Note
-  Only use template sources that you can trust. Do not use user-provided content as your template. See [Security Guide](/guide/best-practices/security#rule-no-1-never-use-non-trusted-templates) for more details.
+  :::warning Xavfsizlik Eslatmasi
+  Faqat ishonchli shablon manbalaridan foydalaning. Foydalanuvchi tomonidan ta'minlangan kontentni shablon sifatida ishlatmang. Batafsil ma'lumot uchun [Xavfsizlik Qo'llanmasi](/guide/best-practices/security#rule-no-1-never-use-non-trusted-templates) ga qarang.
   :::
 
 ## render {#render}
 
-A function that programmatically returns the virtual DOM tree of the component.
+Komponentning virtual DOM daraxtini dasturli ravishda qaytaradigan funksiya.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -51,21 +51,21 @@ A function that programmatically returns the virtual DOM tree of the component.
   type VNodeArrayChildren = (VNodeArrayChildren | VNodeChildAtom)[]
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  `render` is an alternative to string templates that allows you to leverage the full programmatic power of JavaScript to declare the render output of the component.
+  `render` string shablonlariga alternativa bo'lib, komponentning render chiqishini e'lon qilish uchun JavaScript'ning to'liq dasturli kuchidan foydalanish imkonini beradi.
 
-  Pre-compiled templates, for example those in Single-File Components, are compiled into the `render` option at build time. If both `render` and `template` are present in a component, `render` will take higher priority.
+  Pre-kompilyatsiya qilingan shablonlar, masalan Single-File Components dagilari, build vaqtida `render` opsiyasiga kompilyatsiya qilinadi. Agar komponentda `render` va `template` ikkalasi ham mavjud bo'lsa, `render` yuqoriroq ustuvorlikka ega bo'ladi.
 
-- **See also**
-  - [Rendering Mechanism](/guide/extras/rendering-mechanism)
-  - [Render Functions](/guide/extras/render-function)
+- **Qarang**
+  - [Renderlash Mexanizmi](/guide/extras/rendering-mechanism)
+  - [Render Funksiyalari](/guide/extras/render-function)
 
 ## compilerOptions {#compileroptions}
 
-Configure runtime compiler options for the component's template.
+Komponent shablonining runtime kompilyator opsiyalarini sozlash.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentOptions {
@@ -78,21 +78,21 @@ Configure runtime compiler options for the component's template.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  This config option is only respected when using the full build (i.e. the standalone `vue.js` that can compile templates in the browser). It supports the same options as the app-level [app.config.compilerOptions](/api/application#app-config-compileroptions), and has higher priority for the current component.
+  Bu sozlash opsiyasi faqat to'liq build ishlatilganda (ya'ni brauzerda shablonlarni kompilyatsiya qila oladigan mustaqil `vue.js`) hurmat qilinadi. U ilova darajasidagi [app.config.compilerOptions](/api/application#app-config-compileroptions) bilan bir xil opsiyalarni qo'llab-quvvatlaydi va joriy komponent uchun yuqoriroq ustuvorlikka ega.
 
-- **See also** [app.config.compilerOptions](/api/application#app-config-compileroptions)
+- **Qarang** [app.config.compilerOptions](/api/application#app-config-compileroptions)
 
 ## slots<sup class="vt-badge ts"/> {#slots}
 
-- Only supported in 3.3+
+- Faqat 3.3+ da qo'llab-quvvatlanadi
 
-An option to assist with type inference when using slots programmatically in render functions.
+Render funksiyalarida slotlardan dasturli ravishda foydalanishda tur aniqlamasiga yordam beradigan opsiya.
 
-- **Details**
+- **Tafsilotlar**
 
-  This option's runtime value is not used. The actual types should be declared via type casting using the `SlotsType` type helper:
+  Bu opsiyaning runtime qiymati ishlatilmaydi. Haqiqiy turlar `SlotsType` tur yordamchisidan foydalangan holda tur konvertatsiyasi orqali e'lon qilinishi kerak:
 
   ```ts
   import { SlotsType } from 'vue'

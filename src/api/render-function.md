@@ -1,20 +1,20 @@
-# Render Function APIs {#render-function-apis}
+# Render Funksiyasi API'lari {#render-function-apis}
 
 ## h() {#h}
 
-Creates virtual DOM nodes (vnodes).
+Virtual DOM tugunlarini (vnodes) yaratadi.
 
-- **Type**
+- **Turi**
 
   ```ts
-  // full signature
+  // to'liq imzo
   function h(
     type: string | Component,
     props?: object | null,
     children?: Children | Slot | Slots
   ): VNode
 
-  // omitting props
+  // props'ni tashlab ketish
   function h(type: string | Component, children?: Children | Slot): VNode
 
   type Children = string | number | boolean | VNode | null | Children[]
@@ -24,68 +24,68 @@ Creates virtual DOM nodes (vnodes).
   type Slots = { [name: string]: Slot }
   ```
 
-  > Types are simplified for readability.
+  > Turlar o'qilishni osonlashtirish uchun soddalashtirilgan.
 
-- **Details**
+- **Tafsilotlar**
 
-  The first argument can either be a string (for native elements) or a Vue component definition. The second argument is the props to be passed, and the third argument is the children.
+  Birinchi argument string (mahalliy elementlar uchun) yoki Vue komponenti ta'rifi bo'lishi mumkin. Ikkinchi argument uzatiladigan prop'lar, uchinchi argument esa farzand elementlar.
 
-  When creating a component vnode, the children must be passed as slot functions. A single slot function can be passed if the component expects only the default slot. Otherwise, the slots must be passed as an object of slot functions.
+  Komponent vnode yaratishda, farzand elementlar slot funksiyalari sifatida uzatilishi kerak. Agar komponent faqat default slot kutayotgan bo'lsa, bitta slot funksiyasi uzatilishi mumkin. Aks holda, slotlar slot funksiyalari ob'ekti sifatida uzatilishi kerak.
 
-  For convenience, the props argument can be omitted when the children is not a slots object.
+  Qulaylik uchun, farzand elementlar slot ob'ekti bo'lmaganda props argumenti tashlab ketilishi mumkin.
 
-- **Example**
+- **Misol**
 
-  Creating native elements:
+  Mahalliy elementlarni yaratish:
 
   ```js
   import { h } from 'vue'
 
-  // all arguments except the type are optional
+  // type'dan tashqari barcha argumentlar ixtiyoriy
   h('div')
   h('div', { id: 'foo' })
 
-  // both attributes and properties can be used in props
-  // Vue automatically picks the right way to assign it
+  // prop'larda ham atributlar, ham xususiyatlar ishlatilishi mumkin
+  // Vue uni tayinlashning to'g'ri usulini avtomatik tanlaydi
   h('div', { class: 'bar', innerHTML: 'hello' })
 
-  // class and style have the same object / array
-  // value support like in templates
+  // class va style shablonlardagi kabi ob'ekt / massiv
+  // qiymat qo'llab-quvvatlashiga ega
   h('div', { class: [foo, { bar }], style: { color: 'red' } })
 
-  // event listeners should be passed as onXxx
+  // hodisa tinglovchilari onXxx sifatida uzatilishi kerak
   h('div', { onClick: () => {} })
 
-  // children can be a string
+  // farzand elementlar string bo'lishi mumkin
   h('div', { id: 'foo' }, 'hello')
 
-  // props can be omitted when there are no props
+  // prop'lar bo'lmasa, ular tashlab ketilishi mumkin
   h('div', 'hello')
   h('div', [h('span', 'hello')])
 
-  // children array can contain mixed vnodes and strings
+  // farzand elementlar massivi aralash vnode va string'larni o'z ichiga olishi mumkin
   h('div', ['hello', h('span', 'hello')])
   ```
 
-  Creating components:
+  Komponentlarni yaratish:
 
   ```js
   import Foo from './Foo.vue'
 
-  // passing props
+  // prop'larni uzatish
   h(Foo, {
-    // equivalent of some-prop="hello"
+    // some-prop="hello" bilan ekvivalent
     someProp: 'hello',
-    // equivalent of @update="() => {}"
+    // @update="() => {}" bilan ekvivalent
     onUpdate: () => {}
   })
 
-  // passing single default slot
+  // bitta default slot uzatish
   h(Foo, () => 'default slot')
 
-  // passing named slots
-  // notice the `null` is required to avoid
-  // slots object being treated as props
+  // nomlangan slotlarni uzatish
+  // e'tibor bering, `null` kerak
+  // slot ob'ekti prop'lar sifatida ko'rilishini oldini olish uchun
   h(MyComponent, null, {
     default: () => 'default slot',
     foo: () => h('div', 'foo'),
@@ -93,29 +93,29 @@ Creates virtual DOM nodes (vnodes).
   })
   ```
 
-- **See also** [Guide - Render Functions - Creating VNodes](/guide/extras/render-function#creating-vnodes)
+- **Qarang** [Qo'llanma - Render Funksiyalari - VNode'lar Yaratish](/guide/extras/render-function#creating-vnodes)
 
 ## mergeProps() {#mergeprops}
 
-Merge multiple props objects with special handling for certain props.
+Maxsus prop'lar uchun maxsus ishlov berish bilan bir nechta prop ob'ektlarini birlashtiradi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function mergeProps(...args: object[]): object
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  `mergeProps()` supports merging multiple props objects with special handling for the following props:
+  `mergeProps()` quyidagi prop'lar uchun maxsus ishlov berish bilan bir nechta prop ob'ektlarini birlashtirishni qo'llab-quvvatlaydi:
 
   - `class`
   - `style`
-  - `onXxx` event listeners - multiple listeners with the same name will be merged into an array.
+  - `onXxx` hodisa tinglovchilari - bir xil nomga ega bir nechta tinglovchilar massivga birlashtiriladi.
 
-  If you do not need the merge behavior and want simple overwrites, native object spread can be used instead.
+  Agar siz birlashtirish xatti-harakatini kerak bo'lmasa va oddiy yozib o'chirishni xohlasangiz, o'rniga mahalliy ob'ekt tarqatishidan foydalanish mumkin.
 
-- **Example**
+- **Misol**
 
   ```js
   import { mergeProps } from 'vue'
@@ -141,23 +141,23 @@ Merge multiple props objects with special handling for certain props.
 
 ## cloneVNode() {#clonevnode}
 
-Clones a vnode.
+Vnode'ni klonlaydi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function cloneVNode(vnode: VNode, extraProps?: object): VNode
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Returns a cloned vnode, optionally with extra props to merge with the original.
+  Ixtiyoriy ravishda original bilan birlashtirish uchun qo'shimcha prop'lar bilan klonlangan vnode'ni qaytaradi.
 
-  Vnodes should be considered immutable once created, and you should not mutate the props of an existing vnode. Instead, clone it with different / extra props.
+  Vnode'lar yaratilgandan keyin o'zgarmas deb hisoblanishi kerak va mavjud vnode'ning prop'larini o'zgartirishga urinmasligingiz kerak. O'rniga, uni boshqa / qo'shimcha prop'lar bilan klonlang.
 
-  Vnodes have special internal properties, so cloning them is not as simple as an object spread. `cloneVNode()` handles most of the internal logic.
+  Vnode'lar maxsus ichki xususiyatlarga ega, shuning uchun ularni klonlash ob'ekt tarqatish kabi oddiy emas. `cloneVNode()` ichki mantiqning ko'p qismini boshqaradi.
 
-- **Example**
+- **Misol**
 
   ```js
   import { h, cloneVNode } from 'vue'
@@ -168,9 +168,9 @@ Clones a vnode.
 
 ## isVNode() {#isvnode}
 
-Checks if a value is a vnode.
+Qiymat vnode ekanligini tekshiradi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function isVNode(value: unknown): boolean
@@ -178,23 +178,23 @@ Checks if a value is a vnode.
 
 ## resolveComponent() {#resolvecomponent}
 
-For manually resolving a registered component by name.
+Ro'yxatdan o'tkazilgan komponentni nomi bo'yicha qo'lda aniqlash uchun.
 
-- **Type**
+- **Turi**
 
   ```ts
   function resolveComponent(name: string): Component | string
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  **Note: you do not need this if you can import the component directly.**
+  **Eslatma: agar siz komponentni to'g'ridan-to'g'ri import qila olsangiz, sizga bu kerak emas.**
 
-  `resolveComponent()` must be called inside<span class="composition-api"> either `setup()` or</span> the render function in order to resolve from the correct component context.
+  `resolveComponent()` to'g'ri komponent kontekstidan aniqlash uchun<span class="composition-api"> `setup()` yoki</span> render funksiyasi ichida chaqirilishi kerak.
 
-  If the component is not found, a runtime warning will be emitted, and the name string is returned.
+  Agar komponent topilmasa, runtime ogohlantirish chiqariladi va nom string'i qaytariladi.
 
-- **Example**
+- **Misol**
 
   <div class="composition-api">
 
@@ -228,33 +228,33 @@ For manually resolving a registered component by name.
 
   </div>
 
-- **See also** [Guide - Render Functions - Components](/guide/extras/render-function#components)
+- **Qarang** [Qo'llanma - Render Funksiyalari - Komponentlar](/guide/extras/render-function#components)
 
 ## resolveDirective() {#resolvedirective}
 
-For manually resolving a registered directive by name.
+Ro'yxatdan o'tkazilgan direktivani nomi bo'yicha qo'lda aniqlash uchun.
 
-- **Type**
+- **Turi**
 
   ```ts
   function resolveDirective(name: string): Directive | undefined
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  **Note: you do not need this if you can import the directive directly.**
+  **Eslatma: agar siz direktivani to'g'ridan-to'g'ri import qila olsangiz, sizga bu kerak emas.**
 
-  `resolveDirective()` must be called inside<span class="composition-api"> either `setup()` or</span> the render function in order to resolve from the correct component context.
+  `resolveDirective()` to'g'ri komponent kontekstidan aniqlash uchun<span class="composition-api"> `setup()` yoki</span> render funksiyasi ichida chaqirilishi kerak.
 
-  If the directive is not found, a runtime warning will be emitted, and the function returns `undefined`.
+  Agar direktiva topilmasa, runtime ogohlantirish chiqariladi va funksiya `undefined` qaytaradi.
 
-- **See also** [Guide - Render Functions - Custom Directives](/guide/extras/render-function#custom-directives)
+- **Qarang** [Qo'llanma - Render Funksiyalari - Maxsus Direktivalar](/guide/extras/render-function#custom-directives)
 
 ## withDirectives() {#withdirectives}
 
-For adding custom directives to vnodes.
+Vnode'larga maxsus direktivalar qo'shish uchun.
 
-- **Type**
+- **Turi**
 
   ```ts
   function withDirectives(
@@ -271,16 +271,16 @@ For adding custom directives to vnodes.
   >
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Wraps an existing vnode with custom directives. The second argument is an array of custom directives. Each custom directive is also represented as an array in the form of `[Directive, value, argument, modifiers]`. Tailing elements of the array can be omitted if not needed.
+  Mavjud vnode'ni maxsus direktivalar bilan o'raydi. Ikkinchi argument maxsus direktivalar massivi. Har bir maxsus direktiva ham `[Directive, value, argument, modifiers]` ko'rinishidagi massiv sifatida ifodalanadi. Massivning oxirgi elementlari kerak bo'lmasa tashlab ketilishi mumkin.
 
-- **Example**
+- **Misol**
 
   ```js
   import { h, withDirectives } from 'vue'
 
-  // a custom directive
+  // maxsus direktiva
   const pin = {
     mounted() {
       /* ... */
@@ -296,29 +296,29 @@ For adding custom directives to vnodes.
   ])
   ```
 
-- **See also** [Guide - Render Functions - Custom Directives](/guide/extras/render-function#custom-directives)
+- **Qarang** [Qo'llanma - Render Funksiyalari - Maxsus Direktivalar](/guide/extras/render-function#custom-directives)
 
 ## withModifiers() {#withmodifiers}
 
-For adding built-in [`v-on` modifiers](/guide/essentials/event-handling#event-modifiers) to an event handler function.
+Hodisa boshqaruvchi funksiyasiga mahalliy [`v-on` modifikatorlarini](/guide/essentials/event-handling#event-modifiers) qo'shish uchun.
 
-- **Type**
+- **Turi**
 
   ```ts
   function withModifiers(fn: Function, modifiers: ModifierGuardsKeys[]): Function
   ```
 
-- **Example**
+- **Misol**
 
   ```js
   import { h, withModifiers } from 'vue'
 
   const vnode = h('button', {
-    // equivalent of v-on:click.stop.prevent
+    // v-on:click.stop.prevent bilan ekvivalent
     onClick: withModifiers(() => {
       // ...
     }, ['stop', 'prevent'])
   })
   ```
 
-- **See also** [Guide - Render Functions - Event Modifiers](/guide/extras/render-function#event-modifiers)
+- **Qarang** [Qo'llanma - Render Funksiyalari - Hodisa Modifikatorlari](/guide/extras/render-function#event-modifiers)

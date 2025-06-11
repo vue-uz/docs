@@ -1,60 +1,60 @@
-# Composition API: <br>Dependency Injection {#composition-api-dependency-injection}
+# Composition API: <br>Bog'liqlik In'ektsiyasi {#composition-api-dependency-injection}
 
 ## provide() {#provide}
 
-Provides a value that can be injected by descendant components.
+Avlod komponentlar tomonidan in'ektsiya qilish mumkin bo'lgan qiymatni ta'minlaydi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function provide<T>(key: InjectionKey<T> | string, value: T): void
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  `provide()` takes two arguments: the key, which can be a string or a symbol, and the value to be injected.
+  `provide()` ikkita argument oladi: kalit, bu string yoki symbol bo'lishi mumkin, va in'ektsiya qilinadigan qiymat.
 
-  When using TypeScript, the key can be a symbol casted as `InjectionKey` - a Vue provided utility type that extends `Symbol`, which can be used to sync the value type between `provide()` and `inject()`.
+  TypeScript ishlatganda, kalit `InjectionKey` sifatida cast qilingan symbol bo'lishi mumkin - bu Vue tomonidan ta'minlangan `Symbol`ni kengaytiruvchi utility turi, u `provide()` va `inject()` o'rtasidagi qiymat turini sinxronlashtirish uchun ishlatilishi mumkin.
 
-  Similar to lifecycle hook registration APIs, `provide()` must be called synchronously during a component's `setup()` phase.
+  Hayot aylanishi hook'larini ro'yxatdan o'tkazish API'lari singari, `provide()` komponentning `setup()` bosqichida sinxron ravishda chaqirilishi kerak.
 
-- **Example**
+- **Misol**
 
   ```vue
   <script setup>
   import { ref, provide } from 'vue'
   import { countSymbol } from './injectionSymbols'
 
-  // provide static value
+  // statik qiymatni ta'minlash
   provide('path', '/project/')
 
-  // provide reactive value
+  // reaktiv qiymatni ta'minlash
   const count = ref(0)
   provide('count', count)
 
-  // provide with Symbol keys
+  // Symbol kalitlari bilan ta'minlash
   provide(countSymbol, count)
   </script>
   ```
 
-- **See also**
+- **Qarang**
   - [Guide - Provide / Inject](/guide/components/provide-inject)
   - [Guide - Typing Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
 ## inject() {#inject}
 
-Injects a value provided by an ancestor component or the application (via `app.provide()`).
+Ota-ona komponent yoki ilova tomonidan ta'minlangan qiymatni in'ektsiya qiladi (`app.provide()` orqali).
 
-- **Type**
+- **Turi**
 
   ```ts
-  // without default value
+  // default qiymatsiz
   function inject<T>(key: InjectionKey<T> | string): T | undefined
 
-  // with default value
+  // default qiymat bilan
   function inject<T>(key: InjectionKey<T> | string, defaultValue: T): T
 
-  // with factory
+  // factory bilan
   function inject<T>(
     key: InjectionKey<T> | string,
     defaultValue: () => T,
@@ -62,58 +62,58 @@ Injects a value provided by an ancestor component or the application (via `app.p
   ): T
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  The first argument is the injection key. Vue will walk up the parent chain to locate a provided value with a matching key. If multiple components in the parent chain provide the same key, the one closest to the injecting component will "shadow" those higher up the chain and its value will be used. If no value with matching key was found, `inject()` returns `undefined` unless a default value is provided.
+  Birinchi argument in'ektsiya kaliti. Vue ota-ona zanjirini yuqoriga ko'tarib, mos keladigan kalitga ega ta'minlangan qiymatni topadi. Agar ota-ona zanjiridagi bir nechta komponentlar bir xil kalitni ta'minlasa, in'ektsiya qiluvchi komponentga eng yaqin bo'lgani zanjirdagi yuqoridagilarni "soya" qiladi va uning qiymati ishlatiladi. Agar mos keladigan kalitga ega qiymat topilmasa, `inject()` default qiymat ta'minlanmaguncha `undefined` qaytaradi.
 
-  The second argument is optional and is the default value to be used when no matching value was found.
+  Ikkinchi argument ixtiyoriy va mos keladigan qiymat topilmaganda ishlatiladigan default qiymat.
 
-  The second argument can also be a factory function that returns values that are expensive to create. In this case, `true` must be passed as the third argument to indicate that the function should be used as a factory instead of the value itself.
+  Ikkinchi argument shuningdek, yaratish qimmat bo'lgan qiymatlarni qaytaruvchi factory funksiyasi bo'lishi mumkin. Bu holatda, funksiya o'z-o'zidan qiymat o'rniga factory sifatida ishlatilishi kerakligini ko'rsatish uchun uchinchi argument sifatida `true` o'tkazilishi kerak.
 
-  Similar to lifecycle hook registration APIs, `inject()` must be called synchronously during a component's `setup()` phase.
+  Hayot aylanishi hook'larini ro'yxatdan o'tkazish API'lari singari, `inject()` komponentning `setup()` bosqichida sinxron ravishda chaqirilishi kerak.
 
-  When using TypeScript, the key can be of type of `InjectionKey` - a Vue-provided utility type that extends `Symbol`, which can be used to sync the value type between `provide()` and `inject()`.
+  TypeScript ishlatganda, kalit `InjectionKey` turida bo'lishi mumkin - bu Vue tomonidan ta'minlangan `Symbol`ni kengaytiruvchi utility turi, u `provide()` va `inject()` o'rtasidagi qiymat turini sinxronlashtirish uchun ishlatilishi mumkin.
 
-- **Example**
+- **Misol**
 
-  Assuming a parent component has provided values as shown in the previous `provide()` example:
+  Ota-ona komponent oldingi `provide()` misolidagi kabi qiymatlarni ta'minlagan deb faraz qilamiz:
 
   ```vue
   <script setup>
   import { inject } from 'vue'
   import { countSymbol } from './injectionSymbols'
 
-  // inject static value without default
+  // default qiymatsiz statik qiymatni in'ektsiya qilish
   const path = inject('path')
 
-  // inject reactive value
+  // reaktiv qiymatni in'ektsiya qilish
   const count = inject('count')
 
-  // inject with Symbol keys
+  // Symbol kalitlari bilan in'ektsiya qilish
   const count2 = inject(countSymbol)
 
-  // inject with default value
+  // default qiymat bilan in'ektsiya qilish
   const bar = inject('path', '/default-path')
 
-  // inject with function default value
+  // funksiya default qiymati bilan in'ektsiya qilish
   const fn = inject('function', () => {})
 
-  // inject with default value factory
+  // default qiymat factory bilan in'ektsiya qilish
   const baz = inject('factory', () => new ExpensiveObject(), true)
   </script>
   ```
   
-- **See also**
+- **Qarang**
   - [Guide - Provide / Inject](/guide/components/provide-inject)
   - [Guide - Typing Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
 ## hasInjectionContext() {#has-injection-context}
 
-- Only supported in 3.3+
+- Faqat 3.3+ versiyasida qo'llab-quvvatlanadi
 
-Returns true if [inject()](#inject) can be used without warning about being called in the wrong place (e.g. outside of `setup()`). This method is designed to be used by libraries that want to use `inject()` internally without triggering a warning to the end user.
+Agar [inject()](#inject) noto'g'ri joyda chaqirilgani haqida ogohlantirishsiz ishlatilishi mumkin bo'lsa (masalan, `setup()`dan tashqarida), `true` qaytaradi. Bu metod `inject()`ni ichki ishlatishni xohlaydigan va oxirgi foydalanuvchiga ogohlantirishni ishga tushirmasdan ishlatish uchun mo'ljallangan kutubxonalar uchun mo'ljallangan.
 
-- **Type**
+- **Turi**
 
   ```ts
   function hasInjectionContext(): boolean

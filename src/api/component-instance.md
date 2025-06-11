@@ -1,16 +1,16 @@
-# Component Instance {#component-instance}
+# Komponent Instansi {#component-instance}
 
 :::info
-This page documents the built-in properties and methods exposed on the component public instance, i.e. `this`.
+Bu sahifa komponentning ommaviy instansiyasida, ya'ni `this`da ochilgan o'rnatilgan xususiyatlar va metodlarni hujjatlashtiradi.
 
-All properties listed on this page are readonly (except nested properties in `$data`).
+Bu sahifada ro'yxatdan o'tkazilgan barcha xususiyatlar faqat o'qish uchun (agar `$data` ichidagi ichki xususiyatlar bo'lmasa).
 :::
 
 ## $data {#data}
 
-The object returned from the [`data`](./options-state#data) option, made reactive by the component. The component instance proxies access to the properties on its data object.
+[`data`](./options-state#data) opsiyasidan qaytarilgan ob'ekt, komponent tomonidan reaktiv qilingan. Komponent instansiyasi uning ma'lumotlar ob'ekti xususiyatlariga kirishni proxy qiladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -20,9 +20,9 @@ The object returned from the [`data`](./options-state#data) option, made reactiv
 
 ## $props {#props}
 
-An object representing the component's current, resolved props.
+Komponentning joriy, hal qilingan props'larini ifodalovchi ob'ekt.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -30,15 +30,15 @@ An object representing the component's current, resolved props.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Only props declared via the [`props`](./options-state#props) option will be included. The component instance proxies access to the properties on its props object.
+  Faqat [`props`](./options-state#props) opsiyasi orqali e'lon qilingan props'lar kiritiladi. Komponent instansiyasi uning props ob'ekti xususiyatlariga kirishni proxy qiladi.
 
 ## $el {#el}
 
-The root DOM node that the component instance is managing.
+Komponent instansiyasi boshqarayotgan ildiz DOM tuguni.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -46,23 +46,23 @@ The root DOM node that the component instance is managing.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  `$el` will be `undefined` until the component is [mounted](./options-lifecycle#mounted).
+  `$el` komponent [mount](./options-lifecycle#mounted) qilinmaguncha `undefined` bo'ladi.
 
-  - For components with a single root element, `$el` will point to that element.
-  - For components with text root, `$el` will point to the text node.
-  - For components with multiple root nodes, `$el` will be the placeholder DOM node that Vue uses to keep track of the component's position in the DOM (a text node, or a comment node in SSR hydration mode).
+  - Bitta ildiz elementiga ega komponentlar uchun, `$el` o'sha elementga ishora qiladi.
+  - Matn ildiziga ega komponentlar uchun, `$el` matn tuguniga ishora qiladi.
+  - Bir nechta ildiz tugunlariga ega komponentlar uchun, `$el` Vue komponentning DOM'dagi o'rnini kuzatish uchun ishlatadigan placeholder DOM tuguni bo'ladi (matn tuguni yoki SSR hydration rejimida izoh tuguni).
 
   :::tip
-  For consistency, it is recommended to use [template refs](/guide/essentials/template-refs) for direct access to elements instead of relying on `$el`.
+  Izchillik uchun, elementlarga to'g'ridan-to'g'ri kirish uchun `$el`ga tayanmasdan [template refs](/guide/essentials/template-refs)dan foydalanish tavsiya etiladi.
   :::
 
 ## $options {#options}
 
-The resolved component options used for instantiating the current component instance.
+Joriy komponent instansiyasini yaratish uchun ishlatilgan hal qilingan komponent opsiyalari.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -70,15 +70,15 @@ The resolved component options used for instantiating the current component inst
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  The `$options` object exposes the resolved options for the current component and is the merge result of these possible sources:
+  `$options` ob'ekti joriy komponent uchun hal qilingan opsiyalarni ochadi va bu mumkin bo'lgan manbalarning birlashtirilgan natijasi:
 
-  - Global mixins
-  - Component `extends` base
-  - Component mixins
+  - Global mixinlar
+  - Komponent `extends` bazasi
+  - Komponent mixinlari
 
-  It is typically used to support custom component options:
+  U odatda maxsus komponent opsiyalarini qo'llab-quvvatlash uchun ishlatiladi:
 
   ```js
   const app = createApp({
@@ -89,13 +89,13 @@ The resolved component options used for instantiating the current component inst
   })
   ```
 
-- **See also** [`app.config.optionMergeStrategies`](/api/application#app-config-optionmergestrategies)
+- **Qarang** [`app.config.optionMergeStrategies`](/api/application#app-config-optionmergestrategies)
 
 ## $parent {#parent}
 
-The parent instance, if the current instance has one. It will be `null` for the root instance itself.
+Ota-ona instansiyasi, agar joriy instansiyaning biri bo'lsa. Bu ildiz instansiyasi uchun o'zida `null` bo'ladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -105,9 +105,9 @@ The parent instance, if the current instance has one. It will be `null` for the 
 
 ## $root {#root}
 
-The root component instance of the current component tree. If the current instance has no parents this value will be itself.
+Joriy komponent daraxtining ildiz komponenti instansiyasi. Agar joriy instansiyaning ota-onalari bo'lmasa, bu qiymat o'zi bo'ladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -117,9 +117,9 @@ The root component instance of the current component tree. If the current instan
 
 ## $slots {#slots}
 
-An object representing the [slots](/guide/components/slots) passed by the parent component.
+Ota-ona komponent tomonidan o'tkazilgan [slots](/guide/components/slots)ni ifodalovchi ob'ekt.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -129,21 +129,21 @@ An object representing the [slots](/guide/components/slots) passed by the parent
   type Slot = (...args: any[]) => VNode[]
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  Typically used when manually authoring [render functions](/guide/extras/render-function), but can also be used to detect whether a slot is present.
+  Odatda [render funksiyalari](/guide/extras/render-function)ni qo'lda yozishda ishlatiladi, lekin slot mavjudligini aniqlash uchun ham ishlatilishi mumkin.
 
-  Each slot is exposed on `this.$slots` as a function that returns an array of vnodes under the key corresponding to that slot's name. The default slot is exposed as `this.$slots.default`.
+  Har bir slot `this.$slots`da o'sha slotning nomiga mos keladigan kalit ostida vnode'lar massivini qaytaruvchi funksiya sifatida ochiladi. Default slot `this.$slots.default` sifatida ochiladi.
 
-  If a slot is a [scoped slot](/guide/components/slots#scoped-slots), arguments passed to the slot functions are available to the slot as its slot props.
+  Agar slot [scoped slot](/guide/components/slots#scoped-slots) bo'lsa, slot funksiyalariga o'tkazilgan argumentlar slotga uning slot props'lari sifatida mavjud.
 
-- **See also** [Render Functions - Rendering Slots](/guide/extras/render-function#rendering-slots)
+- **Qarang** [Render Functions - Rendering Slots](/guide/extras/render-function#rendering-slots)
 
 ## $refs {#refs}
 
-An object of DOM elements and component instances, registered via [template refs](/guide/essentials/template-refs).
+[template refs](/guide/essentials/template-refs) orqali ro'yxatdan o'tkazilgan DOM elementlari va komponent instansiyalarining ob'ekti.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -151,16 +151,16 @@ An object of DOM elements and component instances, registered via [template refs
   }
   ```
 
-- **See also**
+- **Qarang**
 
   - [Template refs](/guide/essentials/template-refs)
   - [Special Attributes - ref](./built-in-special-attributes.md#ref)
 
 ## $attrs {#attrs}
 
-An object that contains the component's fallthrough attributes.
+Komponentning fallthrough atributlarini o'z ichiga olgan ob'ekt.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -168,21 +168,21 @@ An object that contains the component's fallthrough attributes.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  [Fallthrough Attributes](/guide/components/attrs) are attributes and event handlers passed by the parent component, but not declared as a prop or an emitted event by the child.
+  [Fallthrough Attributes](/guide/components/attrs) ota-ona komponent tomonidan o'tkazilgan, lekin farzand tomonidan prop yoki chiqarilgan hodisa sifatida e'lon qilinmagan atributlar va hodisa ishlovchilari.
 
-  By default, everything in `$attrs` will be automatically inherited on the component's root element if there is only a single root element. This behavior is disabled if the component has multiple root nodes, and can be explicitly disabled with the [`inheritAttrs`](./options-misc#inheritattrs) option.
+  Default bo'yicha, `$attrs`dagi hamma narsa agar faqat bitta ildiz elementi bo'lsa, komponentning ildiz elementida avtomatik ravishda meros qilinadi. Bu xatti-harakat komponent bir nechta ildiz tugunlariga ega bo'lsa o'chiriladi va [`inheritAttrs`](./options-misc#inheritattrs) opsiyasi bilan aniq o'chirilishi mumkin.
 
-- **See also**
+- **Qarang**
 
   - [Fallthrough Attributes](/guide/components/attrs)
 
 ## $watch() {#watch}
 
-Imperative API for creating watchers.
+Kuzatuvchilarni yaratish uchun imperativ API.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -210,62 +210,62 @@ Imperative API for creating watchers.
   type StopHandle = () => void
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  The first argument is the watch source. It can be a component property name string, a simple dot-delimited path string, or a [getter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description).
+  Birinchi argument kuzatish manbai. Bu komponent xususiyati nomi stringi, oddiy nuqta bilan ajratilgan yo'l stringi yoki [getter funksiyasi](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description) bo'lishi mumkin.
 
-  The second argument is the callback function. The callback receives the new value and the old value of the watched source.
+  Ikkinchi argument callback funksiyasi. Callback kuzatilayotgan manbaning yangi qiymati va eski qiymatini oladi.
 
-  - **`immediate`**: trigger the callback immediately on watcher creation. Old value will be `undefined` on the first call.
-  - **`deep`**: force deep traversal of the source if it is an object, so that the callback fires on deep mutations. See [Deep Watchers](/guide/essentials/watchers#deep-watchers).
-  - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) and [`watchEffect()`](/api/reactivity-core#watcheffect).
-  - **`onTrack / onTrigger`**: debug the watcher's dependencies. See [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging).
+  - **`immediate`**: kuzatuvchi yaratilganda callbackni darhol ishga tushirish. Birinchi chaqiruvda eski qiymat `undefined` bo'ladi.
+  - **`deep`**: agar ob'ekt bo'lsa, manbaning chuqur o'tishini majburlash, shunda callback chuqur o'zgarishlarda ishga tushadi. [Deep Watchers](/guide/essentials/watchers#deep-watchers)ni tekshiring.
+  - **`flush`**: callback'ning flush vaqtini sozlash. [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) va [`watchEffect()`](/api/reactivity-core#watcheffect)ni tekshiring.
+  - **`onTrack / onTrigger`**: kuzatuvchining bog'liqliklarini debug qilish. [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging)ni tekshiring.
 
-- **Example**
+- **Misol**
 
-  Watch a property name:
+  Xususiyat nomini kuzatish:
 
   ```js
   this.$watch('a', (newVal, oldVal) => {})
   ```
 
-  Watch a dot-delimited path:
+  Nuqta bilan ajratilgan yo'lni kuzatish:
 
   ```js
   this.$watch('a.b', (newVal, oldVal) => {})
   ```
 
-  Using getter for more complex expressions:
+  Murakkab ifodalar uchun getter ishlatish:
 
   ```js
   this.$watch(
-    // every time the expression `this.a + this.b` yields
-    // a different result, the handler will be called.
-    // It's as if we were watching a computed property
-    // without defining the computed property itself.
+    // har safar `this.a + this.b` ifodasi
+    // boshqa natija berganida, handler chaqiriladi.
+    // Bu xuddi biz computed xususiyatni
+    // computed xususiyatni o'zini aniqlamasdan kuzatayotgandek.
     () => this.a + this.b,
     (newVal, oldVal) => {}
   )
   ```
 
-  Stopping the watcher:
+  Kuzatuvchini to'xtatish:
 
   ```js
   const unwatch = this.$watch('a', cb)
 
-  // later...
+  // keyinroq...
   unwatch()
   ```
 
-- **See also**
+- **Qarang**
   - [Options - `watch`](/api/options-state#watch)
   - [Guide - Watchers](/guide/essentials/watchers)
 
 ## $emit() {#emit}
 
-Trigger a custom event on the current instance. Any additional arguments will be passed into the listener's callback function.
+Joriy instansiyada maxsus hodisani ishga tushirish. Qo'shimcha argumentlar tinglovchining callback funksiyasiga o'tkaziladi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -273,29 +273,29 @@ Trigger a custom event on the current instance. Any additional arguments will be
   }
   ```
 
-- **Example**
+- **Misol**
 
   ```js
   export default {
     created() {
-      // only event
+      // faqat hodisa
       this.$emit('foo')
-      // with additional arguments
+      // qo'shimcha argumentlar bilan
       this.$emit('bar', 1, 2, 3)
     }
   }
   ```
 
-- **See also**
+- **Qarang**
 
   - [Component - Events](/guide/components/events)
   - [`emits` option](./options-state#emits)
 
 ## $forceUpdate() {#forceupdate}
 
-Force the component instance to re-render.
+Komponent instansiyasini qayta render qilishni majburlash.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -303,15 +303,15 @@ Force the component instance to re-render.
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  This should be rarely needed given Vue's fully automatic reactivity system. The only cases where you may need it is when you have explicitly created non-reactive component state using advanced reactivity APIs.
+  Vue'ning to'liq avtomatik reaktiv tizimi berilgani uchun, bunaqa narsa kamdan-kam kerak bo'ladi. Sizga bunaqa narsa kerak bo'lishi mumkin bo'lgan yagona holatlar - bu siz ilg'or reaktiv API'lardan foydalanib, aniq non-reaktiv komponent holatini yaratganingizda.
 
 ## $nextTick() {#nexttick}
 
-Instance-bound version of the global [`nextTick()`](./general#nexttick).
+Global [`nextTick()`](./general#nexttick)ning instansiyaga bog'langan versiyasi.
 
-- **Type**
+- **Turi**
 
   ```ts
   interface ComponentPublicInstance {
@@ -319,8 +319,8 @@ Instance-bound version of the global [`nextTick()`](./general#nexttick).
   }
   ```
 
-- **Details**
+- **Tafsilotlar**
 
-  The only difference from the global version of `nextTick()` is that the callback passed to `this.$nextTick()` will have its `this` context bound to the current component instance.
+  Global versiyadan yagona farq shundaki, `this.$nextTick()`ga o'tkazilgan callback'ning `this` konteksti joriy komponent instansiyasiga bog'langan.
 
-- **See also** [`nextTick()`](./general#nexttick)
+- **Qarang** [`nextTick()`](./general#nexttick)

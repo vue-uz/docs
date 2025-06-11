@@ -2,9 +2,9 @@
 
 ## renderToString() {#rendertostring}
 
-- **Exported from `vue/server-renderer`**
+- **`vue/server-renderer`dan eksport qilingan**
 
-- **Type**
+- **Turi**
 
   ```ts
   function renderToString(
@@ -13,7 +13,7 @@
   ): Promise<string>
   ```
 
-- **Example**
+- **Misol**
 
   ```js
   import { createSSRApp } from 'vue'
@@ -32,7 +32,7 @@
 
   ### SSR Context {#ssr-context}
 
-  You can pass an optional context object, which can be used to record additional data during the render, for example [accessing content of Teleports](/guide/scaling-up/ssr#teleports):
+  Siz ixtiyoriy context ob'ektini o'tkazishingiz mumkin, u render paytida qo'shimcha ma'lumotlarni yozib olish uchun ishlatilishi mumkin, masalan [Teleports mazmuniga kirish](/guide/scaling-up/ssr#teleports):
 
   ```js
   const ctx = {}
@@ -41,17 +41,17 @@
   console.log(ctx.teleports) // { '#teleported': 'teleported content' }
   ```
 
-  Most other SSR APIs on this page also optionally accept a context object. The context object can be accessed in component code via the [useSSRContext](#usessrcontext) helper.
+  Bu sahifadagi boshqa ko'p SSR API'lar ham ixtiyoriy ravishda context ob'ektini qabul qiladi. Context ob'ektiga komponent kodi orqali [useSSRContext](#usessrcontext) yordamchisi orqali kirish mumkin.
 
-- **See also** [Guide - Server-Side Rendering](/guide/scaling-up/ssr)
+- **Qarang** [Guide - Server-Side Rendering](/guide/scaling-up/ssr)
 
 ## renderToNodeStream() {#rendertonodestream}
 
-Renders input as a [Node.js Readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable).
+Kirishni [Node.js Readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) sifatida render qiladi.
 
-- **Exported from `vue/server-renderer`**
+- **`vue/server-renderer`dan eksport qilingan**
 
-- **Type**
+- **Turi**
 
   ```ts
   function renderToNodeStream(
@@ -60,24 +60,24 @@ Renders input as a [Node.js Readable stream](https://nodejs.org/api/stream.html#
   ): Readable
   ```
 
-- **Example**
+- **Misol**
 
   ```js
-  // inside a Node.js http handler
+  // Node.js http handler ichida
   renderToNodeStream(app).pipe(res)
   ```
 
-  :::tip Note
-  This method is not supported in the ESM build of `vue/server-renderer`, which is decoupled from Node.js environments. Use [`pipeToNodeWritable`](#pipetonodewritable) instead.
+  :::tip Eslatma
+  Bu metod `vue/server-renderer`ning ESM buildida qo'llab-quvvatlanmaydi, u Node.js muhitidan ajratilgan. O'rniga [`pipeToNodeWritable`](#pipetonodewritable)ni ishlating.
   :::
 
 ## pipeToNodeWritable() {#pipetonodewritable}
 
-Render and pipe to an existing [Node.js Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) instance.
+Mavjud [Node.js Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) instansiyasiga render qiladi va pipe qiladi.
 
-- **Exported from `vue/server-renderer`**
+- **`vue/server-renderer`dan eksport qilingan**
 
-- **Type**
+- **Turi**
 
   ```ts
   function pipeToNodeWritable(
@@ -87,20 +87,20 @@ Render and pipe to an existing [Node.js Writable stream](https://nodejs.org/api/
   ): void
   ```
 
-- **Example**
+- **Misol**
 
   ```js
-  // inside a Node.js http handler
+  // Node.js http handler ichida
   pipeToNodeWritable(app, {}, res)
   ```
 
 ## renderToWebStream() {#rendertowebstream}
 
-Renders input as a [Web ReadableStream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API).
+Kirishni [Web ReadableStream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) sifatida render qiladi.
 
-- **Exported from `vue/server-renderer`**
+- **`vue/server-renderer`dan eksport qilingan**
 
-- **Type**
+- **Turi**
 
   ```ts
   function renderToWebStream(
@@ -109,24 +109,24 @@ Renders input as a [Web ReadableStream](https://developer.mozilla.org/en-US/docs
   ): ReadableStream
   ```
 
-- **Example**
+- **Misol**
 
   ```js
-  // inside an environment with ReadableStream support
+  // ReadableStream qo'llab-quvvatlash mavjud muhitda
   return new Response(renderToWebStream(app))
   ```
 
-  :::tip Note
-  In environments that do not expose `ReadableStream` constructor in the global scope, [`pipeToWebWritable()`](#pipetowebwritable) should be used instead.
+  :::tip Eslatma
+  Global scope'da `ReadableStream` konstruktorini ochib bermaydigan muhitlarda, o'rniga [`pipeToWebWritable()`](#pipetowebwritable) ishlatilishi kerak.
   :::
 
 ## pipeToWebWritable() {#pipetowebwritable}
 
-Render and pipe to an existing [Web WritableStream](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream) instance.
+Mavjud [Web WritableStream](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream) instansiyasiga render qiladi va pipe qiladi.
 
-- **Exported from `vue/server-renderer`**
+- **`vue/server-renderer`dan eksport qilingan**
 
-- **Type**
+- **Turi**
 
   ```ts
   function pipeToWebWritable(
@@ -136,13 +136,13 @@ Render and pipe to an existing [Web WritableStream](https://developer.mozilla.or
   ): void
   ```
 
-- **Example**
+- **Misol**
 
-  This is typically used in combination with [`TransformStream`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStream):
+  Bu odatda [`TransformStream`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStream) bilan birgalikda ishlatiladi:
 
   ```js
-  // TransformStream is available in environments such as CloudFlare workers.
-  // in Node.js, TransformStream needs to be explicitly imported from 'stream/web'
+  // TransformStream CloudFlare workers kabi muhitlarda mavjud.
+  // Node.js da, TransformStream 'stream/web'dan aniq import qilish kerak
   const { readable, writable } = new TransformStream()
   pipeToWebWritable(app, {}, writable)
 
@@ -151,11 +151,11 @@ Render and pipe to an existing [Web WritableStream](https://developer.mozilla.or
 
 ## renderToSimpleStream() {#rendertosimplestream}
 
-Renders input in streaming mode using a simple readable interface.
+Oddiy o'qiladigan interfeys yordamida streaming rejimida kirishni render qiladi.
 
-- **Exported from `vue/server-renderer`**
+- **`vue/server-renderer`dan eksport qilingan**
 
-- **Type**
+- **Turi**
 
   ```ts
   function renderToSimpleStream(
@@ -170,7 +170,7 @@ Renders input in streaming mode using a simple readable interface.
   }
   ```
 
-- **Example**
+- **Misol**
 
   ```js
   let res = ''
@@ -181,14 +181,14 @@ Renders input in streaming mode using a simple readable interface.
     {
       push(chunk) {
         if (chunk === null) {
-          // done
+          // tugadi
           console(`render complete: ${res}`)
         } else {
           res += chunk
         }
       },
       destroy(err) {
-        // error encountered
+        // xatolik yuz berdi
       }
     }
   )
@@ -196,47 +196,47 @@ Renders input in streaming mode using a simple readable interface.
 
 ## useSSRContext() {#usessrcontext}
 
-A runtime API used to retrieve the context object passed to `renderToString()` or other server render APIs.
+`renderToString()` yoki boshqa server render API'lariga o'tkazilgan context ob'ektini olish uchun ishlatiladigan runtime API.
 
-- **Type**
+- **Turi**
 
   ```ts
   function useSSRContext<T = Record<string, any>>(): T | undefined
   ```
 
-- **Example**
+- **Misol**
 
-  The retrieved context can be used to attach information that is needed for rendering the final HTML (e.g. head metadata).
+  Olingan context yakuniy HTMLni render qilish uchun kerakli ma'lumotlarni biriktirish uchun ishlatilishi mumkin (masalan. head metadata).
 
   ```vue
   <script setup>
   import { useSSRContext } from 'vue'
 
-  // make sure to only call it during SSR
+  // faqat SSR paytida chaqirilishiga ishonch hosil qiling
   // https://vitejs.dev/guide/ssr.html#conditional-logic
   if (import.meta.env.SSR) {
     const ctx = useSSRContext()
-    // ...attach properties to the context
+    // ...contextga xususiyatlarni biriktirish
   }
   </script>
   ```
 
 ## data-allow-mismatch <sup class="vt-badge" data-text="3.5+" /> {#data-allow-mismatch}
 
-A special attribute that can be used to suppress [hydration mismatch](/guide/scaling-up/ssr#hydration-mismatch) warnings.
+[hydration mismatch](/guide/scaling-up/ssr#hydration-mismatch) ogohlantirishlarini bostirish uchun ishlatilishi mumkin bo'lgan maxsus atribut.
 
-- **Example**
+- **Misol**
 
   ```html
   <div data-allow-mismatch="text">{{ data.toLocaleString() }}</div>
   ```
 
-  The value can limit the allowed mismatch to a specific type. Allowed values are:
+  Qiymat ruxsat etilgan nomuvofiqlikni ma'lum turga cheklashi mumkin. Ruxsat etilgan qiymatlar:
 
   - `text`
-  - `children` (only allows mismatch for direct children)
+  - `children` (faqat to'g'ridan-to'g'ri farzandlar uchun nomuvofiqlikka ruxsat beradi)
   - `class`
   - `style`
   - `attribute`
 
-  If no value is provided, all types of mismatches will be allowed.
+  Agar qiymat taqdim etilmagan bo'lsa, barcha turdagi nomuvofiqliklarga ruxsat beriladi.

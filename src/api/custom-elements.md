@@ -1,10 +1,10 @@
-# Custom Elements API {#custom-elements-api}
+# Maxsus Elementlar API {#custom-elements-api}
 
 ## defineCustomElement() {#definecustomelement}
 
-This method accepts the same argument as [`defineComponent`](#definecomponent), but instead returns a native [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) class constructor.
+Bu metod [`defineComponent`](#definecomponent) bilan bir xil argumentni qabul qiladi, lekin o'rniga [Maxsus Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) klass konstruktorini qaytaradi.
 
-- **Type**
+- **Turi**
 
   ```ts
   function defineCustomElement(
@@ -19,28 +19,28 @@ This method accepts the same argument as [`defineComponent`](#definecomponent), 
   interface CustomElementsOptions {
     styles?: string[]
 
-    // the following options are 3.5+
+    // quyidagi opsiyalar 3.5+ versiyasidan
     configureApp?: (app: App) => void
     shadowRoot?: boolean
     nonce?: string
   }
   ```
 
-  > Type is simplified for readability.
+  > O'qish osonligi uchun tur soddalashtirilgan.
 
-- **Details**
+- **Tafsilotlar**
 
-  In addition to normal component options, `defineCustomElement()` also supports a number of options that are custom-elements-specific:
+  Oddiy komponent opsiyalaridan tashqari, `defineCustomElement()` quyidagi maxsus elementlarga xos opsiyalarni ham qo'llab-quvvatlaydi:
 
-  - **`styles`**: an array of inlined CSS strings for providing CSS that should be injected into the element's shadow root.
+  - **`styles`**: elementning shadow root'iga kiritilishi kerak bo'lgan CSS'ni ta'minlash uchun inlined CSS stringlarining massivi.
 
-  - **`configureApp`** <sup class="vt-badge" data-text="3.5+"/>: a function that can be used to configure the Vue app instance for the custom element.
+  - **`configureApp`** <sup class="vt-badge" data-text="3.5+"/>: maxsus element uchun Vue ilova instansiyasini sozlash uchun ishlatilishi mumkin bo'lgan funksiya.
 
-  - **`shadowRoot`** <sup class="vt-badge" data-text="3.5+"/>: `boolean`, defaults to `true`. Set to `false` to render the custom element without a shadow root. This means `<style>` in custom element SFCs will no longer be encapsulated.
+  - **`shadowRoot`** <sup class="vt-badge" data-text="3.5+"/>: `boolean`, default qiymati `true`. Maxsus elementni shadow root'siz render qilish uchun `false` qo'ying. Bu maxsus element SFC'laridagi `<style>` endi inkapsulyatsiya qilinmasligini anglatadi.
 
-  - **`nonce`** <sup class="vt-badge" data-text="3.5+"/>: `string`, if provided, will be set as the `nonce` attribute on style tags injected to the shadow root.
+  - **`nonce`** <sup class="vt-badge" data-text="3.5+"/>: `string`, agar taqdim etilgan bo'lsa, shadow root'ga kiritilgan style teglarida `nonce` atributi sifatida o'rnatiladi.
 
-  Note that instead of being passed as part of the component itself, these options can also be passed via a second argument:
+  E'tibor bering, bu opsiyalar komponentning o'zining bir qismi sifatida o'tkazilish o'rniga, ikkinchi argument orqali ham o'tkazilishi mumkin:
 
   ```js
   import Element from './MyElement.ce.vue'
@@ -52,35 +52,35 @@ This method accepts the same argument as [`defineComponent`](#definecomponent), 
   })
   ```
 
-  The return value is a custom element constructor that can be registered using [`customElements.define()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define).
+  Qaytarilgan qiymat [`customElements.define()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define) yordamida ro'yxatdan o'tkazilishi mumkin bo'lgan maxsus element konstruktoridir.
 
-- **Example**
+- **Misol**
 
   ```js
   import { defineCustomElement } from 'vue'
 
   const MyVueElement = defineCustomElement({
-    /* component options */
+    /* komponent opsiyalari */
   })
 
-  // Register the custom element.
+  // Maxsus elementni ro'yxatdan o'tkazish.
   customElements.define('my-vue-element', MyVueElement)
   ```
 
-- **See also**
+- **Qarang**
 
-  - [Guide - Building Custom Elements with Vue](/guide/extras/web-components#building-custom-elements-with-vue)
+  - [Guide - Vue bilan Maxsus Elementlar Yaratish](/guide/extras/web-components#building-custom-elements-with-vue)
 
-  - Also note that `defineCustomElement()` requires [special config](/guide/extras/web-components#sfc-as-custom-element) when used with Single-File Components.
+  - Shuningdek, `defineCustomElement()` Single-File Components bilan ishlatilganda [maxsus konfiguratsiya](/guide/extras/web-components#sfc-as-custom-element) talab qilinishini unutmang.
 
 ## useHost() <sup class="vt-badge" data-text="3.5+"/> {#usehost}
 
-A Composition API helper that returns the host element of the current Vue custom element.
+Joriy Vue maxsus elementining host elementini qaytaruvchi Composition API yordamchisi.
 
 ## useShadowRoot() <sup class="vt-badge" data-text="3.5+"/> {#useshadowroot}
 
-A Composition API helper that returns the shadow root of the current Vue custom element.
+Joriy Vue maxsus elementining shadow root'ini qaytaruvchi Composition API yordamchisi.
 
 ## this.$host <sup class="vt-badge" data-text="3.5+"/> {#this-host}
 
-An Options API property that exposes the host element of the current Vue custom element.
+Joriy Vue maxsus elementining host elementini taqdim etuvchi Options API xususiyati.

@@ -1,14 +1,14 @@
 # Utility Types {#utility-types}
 
 :::info
-This page only lists a few commonly used utility types that may need explanation for their usage. For a full list of exported types, consult the [source code](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/index.ts#L131).
+Bu sahifa faqat ularning ishlatilishi tushuntirilishi kerak bo'lgan bir nechta keng tarqalgan utility tiplarini ro'yxatlaydi. Eksport qilingan tiplarning to'liq ro'yxati uchun [source code](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/index.ts#L131)ni tekshiring.
 :::
 
 ## PropType\<T> {#proptype-t}
 
-Used to annotate a prop with more advanced types when using runtime props declarations.
+Runtime props e'lonlarini ishlatganda, prop'ni yanada rivojlangan tiplar bilan belgilash uchun ishlatiladi.
 
-- **Example**
+- **Misol**
 
   ```ts
   import type { PropType } from 'vue'
@@ -22,7 +22,7 @@ Used to annotate a prop with more advanced types when using runtime props declar
   export default {
     props: {
       book: {
-        // provide more specific type to `Object`
+        // `Object`ga aniqroq tip ta'minlash
         type: Object as PropType<Book>,
         required: true
       }
@@ -30,27 +30,27 @@ Used to annotate a prop with more advanced types when using runtime props declar
   }
   ```
 
-- **See also** [Guide - Typing Component Props](/guide/typescript/options-api#typing-component-props)
+- **Qarang** [Guide - Typing Component Props](/guide/typescript/options-api#typing-component-props)
 
 ## MaybeRef\<T> {#mayberef}
 
-- Only supported in 3.3+
+- Faqat 3.3+ versiyasida qo'llab-quvvatlanadi
 
-Alias for `T | Ref<T>`. Useful for annotating arguments of [Composables](/guide/reusability/composables.html).
+`T | Ref<T>` uchun taxallus. [Composables](/guide/reusability/composables.html) argumentlarini belgilash uchun foydali.
 
 ## MaybeRefOrGetter\<T> {#maybereforgetter}
 
-- Only supported in 3.3+
+- Faqat 3.3+ versiyasida qo'llab-quvvatlanadi
 
-Alias for `T | Ref<T> | (() => T)`. Useful for annotating arguments of [Composables](/guide/reusability/composables.html).
+`T | Ref<T> | (() => T)` uchun taxallus. [Composables](/guide/reusability/composables.html) argumentlarini belgilash uchun foydali.
 
 ## ExtractPropTypes\<T> {#extractproptypes}
 
-Extract prop types from a runtime props options object. The extracted types are internal facing - i.e. the resolved props received by the component. This means boolean props and props with default values are always defined, even if they are not required.
+Runtime props opsiyalari ob'ektidan prop tiplarini ajratib oladi. Ajratilgan tiplar ichki tomonga yo'naltirilgan - ya'ni komponent tomonidan qabul qilingan hal qilingan propslar. Bu shuni anglatadiki, boolean propslar va default qiymatlarga ega propslar har doim aniqlangan, hatto ular talab qilinmasa ham.
 
-To extract public facing props, i.e. props that the parent is allowed to pass, use [`ExtractPublicPropTypes`](#extractpublicproptypes).
+Ota-ona o'tkazishga ruxsat berilgan public propslarni ajratib olish uchun [`ExtractPublicPropTypes`](#extractpublicproptypes)ni ishlating.
 
-- **Example**
+- **Misol**
 
   ```ts
   const propsOptions = {
@@ -77,11 +77,11 @@ To extract public facing props, i.e. props that the parent is allowed to pass, u
 
 ## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
 
-- Only supported in 3.3+
+- Faqat 3.3+ versiyasida qo'llab-quvvatlanadi
 
-Extract prop types from a runtime props options object. The extracted types are public facing - i.e. the props that the parent is allowed to pass.
+Runtime props opsiyalari ob'ektidan prop tiplarini ajratib oladi. Ajratilgan tiplar public tomonga yo'naltirilgan - ya'ni ota-ona o'tkazishga ruxsat berilgan propslar.
 
-- **Example**
+- **Misol**
 
   ```ts
   const propsOptions = {
@@ -108,9 +108,9 @@ Extract prop types from a runtime props options object. The extracted types are 
 
 ## ComponentCustomProperties {#componentcustomproperties}
 
-Used to augment the component instance type to support custom global properties.
+Komponent instansiyasi tipini maxsus global xususiyatlarni qo'llab-quvvatlash uchun kengaytirish uchun ishlatiladi.
 
-- **Example**
+- **Misol**
 
   ```ts
   import axios from 'axios'
@@ -124,16 +124,16 @@ Used to augment the component instance type to support custom global properties.
   ```
 
   :::tip
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties) for more details.
+  Kengaytirishlar `.ts` yoki `.d.ts` modul faylida joylashgan bo'lishi kerak. Batafsil ma'lumot uchun [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties)ni tekshiring.
   :::
 
-- **See also** [Guide - Augmenting Global Properties](/guide/typescript/options-api#augmenting-global-properties)
+- **Qarang** [Guide - Augmenting Global Properties](/guide/typescript/options-api#augmenting-global-properties)
 
 ## ComponentCustomOptions {#componentcustomoptions}
 
-Used to augment the component options type to support custom options.
+Komponent opsiyalari tipini maxsus opsiyalarni qo'llab-quvvatlash uchun kengaytirish uchun ishlatiladi.
 
-- **Example**
+- **Misol**
 
   ```ts
   import { Route } from 'vue-router'
@@ -146,16 +146,16 @@ Used to augment the component options type to support custom options.
   ```
 
   :::tip
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties) for more details.
+  Kengaytirishlar `.ts` yoki `.d.ts` modul faylida joylashgan bo'lishi kerak. Batafsil ma'lumot uchun [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties)ni tekshiring.
   :::
 
-- **See also** [Guide - Augmenting Custom Options](/guide/typescript/options-api#augmenting-custom-options)
+- **Qarang** [Guide - Augmenting Custom Options](/guide/typescript/options-api#augmenting-custom-options)
 
 ## ComponentCustomProps {#componentcustomprops}
 
-Used to augment allowed TSX props in order to use non-declared props on TSX elements.
+TSX elementlarida e'lon qilinmagan propslarni ishlatish uchun ruxsat berilgan TSX propslarini kengaytirish uchun ishlatiladi.
 
-- **Example**
+- **Misol**
 
   ```ts
   declare module 'vue' {
@@ -168,21 +168,21 @@ Used to augment allowed TSX props in order to use non-declared props on TSX elem
   ```
 
   ```tsx
-  // now works even if hello is not a declared prop
+  // endi hello e'lon qilinmagan prop bo'lsa ham ishlaydi
   <MyComponent hello="world" />
   ```
 
   :::tip
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties) for more details.
+  Kengaytirishlar `.ts` yoki `.d.ts` modul faylida joylashgan bo'lishi kerak. Batafsil ma'lumot uchun [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties)ni tekshiring.
   :::
 
 ## CSSProperties {#cssproperties}
 
-Used to augment allowed values in style property bindings.
+Style xususiyati bog'lanishlarida ruxsat berilgan qiymatlarni kengaytirish uchun ishlatiladi.
 
-- **Example**
+- **Misol**
 
-  Allow any custom CSS property
+  Har qanday maxsus CSS xususiyatiga ruxsat berish
 
   ```ts
   declare module 'vue' {
@@ -201,11 +201,11 @@ Used to augment allowed values in style property bindings.
   ```
 
 :::tip
-Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties) for more details.
+Kengaytirishlar `.ts` yoki `.d.ts` modul faylida joylashgan bo'lishi kerak. Batafsil ma'lumot uchun [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties)ni tekshiring.
 :::
 
-:::info See also
-SFC `<style>` tags support linking CSS values to dynamic component state using the `v-bind` CSS function. This allows for custom properties without type augmentation.
+:::info Qarang
+SFC `<style>` teglari `v-bind` CSS funksiyasidan foydalanib, CSS qiymatlarini dinamik komponent holatiga bog'lashni qo'llab-quvvatlaydi. Bu tip kengaytirishisiz maxsus xususiyatlarni imkonini beradi.
 
 - [v-bind() in CSS](/api/sfc-css-features#v-bind-in-css)
   :::

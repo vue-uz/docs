@@ -2,43 +2,43 @@
 outline: deep
 ---
 
-# Compile-Time Flags {#compile-time-flags}
+# Kompilyatsiya Vaqti Bayroqlari {#compile-time-flags}
 
 :::tip
-Compile-time flags only apply when using the `esm-bundler` build of Vue (i.e. `vue/dist/vue.esm-bundler.js`).
+Kompilyatsiya vaqti bayroqlari faqat Vue'ning `esm-bundler` buildini ishlatganda qo'llaniladi (ya'ni `vue/dist/vue.esm-bundler.js`).
 :::
 
-When using Vue with a build step, it is possible to configure a number of compile-time flags to enable / disable certain features. The benefit of using compile-time flags is that features disabled this way can be removed from the final bundle via tree-shaking.
+Vue'ni build qadamida ishlatganda, ma'lum xususiyatlarni yoqish/o'chirish uchun bir qator kompilyatsiya vaqti bayroqlarini sozlash mumkin. Kompilyatsiya vaqti bayroqlaridan foydalanishning afzalligi shundaki, shu tarzda o'chirilgan xususiyatlar yakuniy bundle'dan tree-shaking orqali olib tashlanishi mumkin.
 
-Vue will work even if these flags are not explicitly configured. However, it is recommended to always configure them so that the relevant features can be properly removed when possible.
+Vue bu bayroqlar aniq sozlanmasa ham ishlaydi. Biroq, tegishli xususiyatlarni iloji boricha to'g'ri olib tashlash uchun ularni har doim sozlash tavsiya etiladi.
 
-See [Configuration Guides](#configuration-guides) on how to configure them depending on your build tool.
+Ularni build vositangizga qarab qanday sozlash haqida [Configuration Guides](#configuration-guides)ni tekshiring.
 
 ## `__VUE_OPTIONS_API__` {#VUE_OPTIONS_API}
 
 - **Default:** `true`
 
-  Enable / disable Options API support. Disabling this will result in smaller bundles, but may affect compatibility with 3rd party libraries if they rely on Options API.
+  Options API qo'llab-quvvatlashni yoqish/o'chirish. Buni o'chirish kichikroq bundle'larga olib keladi, lekin uchinchi tomon kutubxonalari Options API'ga tayanadigan bo'lsa, moslikni ta'sir qilishi mumkin.
 
 ## `__VUE_PROD_DEVTOOLS__` {#VUE_PROD_DEVTOOLS}
 
 - **Default:** `false`
 
-  Enable / disable devtools support in production builds. This will result in more code included in the bundle, so it is recommended to only enable this for debugging purposes.
+  Production build'larida devtools qo'llab-quvvatlashni yoqish/o'chirish. Bu bundle'ga ko'proq kod kiritilishiga olib keladi, shuning uchun uni faqat debug maqsadlarida yoqish tavsiya etiladi.
 
 ## `__VUE_PROD_HYDRATION_MISMATCH_DETAILS__` {#VUE_PROD_HYDRATION_MISMATCH_DETAILS}
 
 - **Default:** `false`
 
-  Enable/disable detailed warnings for hydration mismatches in production builds. This will result in more code included in the bundle, so it is recommended to only enable this for debugging purposes.
+  Production build'larida hydration nomuvofiqliklari uchun batafsil ogohlantirishlarni yoqish/o'chirish. Bu bundle'ga ko'proq kod kiritilishiga olib keladi, shuning uchun uni faqat debug maqsadlarida yoqish tavsiya etiladi.
 
-- Only available in 3.4+
+- Faqat 3.4+ versiyasida mavjud
 
-## Configuration Guides {#configuration-guides}
+## Sozlash Yo'riqnomalari {#configuration-guides}
 
 ### Vite {#vite}
 
-`@vitejs/plugin-vue` automatically provides default values for these flags. To change the default values, use Vite's [`define` config option](https://vitejs.dev/config/shared-options.html#define):
+`@vitejs/plugin-vue` bu bayroqlar uchun default qiymatlarni avtomatik ravishda ta'minlaydi. Default qiymatlarni o'zgartirish uchun Vite'ning [`define` config opsiyasidan](https://vitejs.dev/config/shared-options.html#define) foydalaning:
 
 ```js
 // vite.config.js
@@ -46,7 +46,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   define: {
-    // enable hydration mismatch details in production build
+    // production build'da hydration nomuvofiqliklari tafsilotlarini yoqish
     __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true'
   }
 })
@@ -54,7 +54,7 @@ export default defineConfig({
 
 ### vue-cli {#vue-cli}
 
-`@vue/cli-service` automatically provides default values for some of these flags. To configure /change the values:
+`@vue/cli-service` bu bayroqlarning ba'zilari uchun default qiymatlarni avtomatik ravishda ta'minlaydi. Qiymatlarni sozlash/o'zgartirish uchun:
 
 ```js
 // vue.config.js
@@ -74,7 +74,7 @@ module.exports = {
 
 ### webpack {#webpack}
 
-Flags should be defined using webpack's [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
+Bayroqlar webpack'ning [DefinePlugin](https://webpack.js.org/plugins/define-plugin/)idan foydalanib aniqlanishi kerak:
 
 ```js
 // webpack.config.js
@@ -92,7 +92,7 @@ module.exports = {
 
 ### Rollup {#rollup}
 
-Flags should be defined using [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace):
+Bayroqlar [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace)dan foydalanib aniqlanishi kerak:
 
 ```js
 // rollup.config.js

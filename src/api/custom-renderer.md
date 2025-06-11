@@ -1,10 +1,10 @@
-# Custom Renderer API {#custom-renderer-api}
+# Maxsus Renderer API {#custom-renderer-api}
 
 ## createRenderer() {#createrenderer}
 
-Creates a custom renderer. By providing platform-specific node creation and manipulation APIs, you can leverage Vue's core runtime to target non-DOM environments.
+Maxsus renderer yaratadi. Platformaga xos tugun yaratish va manipulyatsiya qilish API'larini taqdim etish orqali, Vue'ning asosiy runtime'idan DOM bo'lmagan muhitlarni nishonlash uchun foydalanish mumkin.
 
-- **Type**
+- **Turi**
 
   ```ts
   function createRenderer<HostNode, HostElement>(
@@ -53,7 +53,7 @@ Creates a custom renderer. By providing platform-specific node creation and mani
   }
   ```
 
-- **Example**
+- **Misol**
 
   ```js
   import { createRenderer } from '@vue/runtime-core'
@@ -66,12 +66,12 @@ Creates a custom renderer. By providing platform-specific node creation and mani
     // ...
   })
 
-  // `render` is the low-level API
-  // `createApp` returns an app instance
+  // `render` - bu past darajali API
+  // `createApp` - ilova instansiyasini qaytaradi
   export { render, createApp }
 
-  // re-export Vue core APIs
+  // Vue core API'larini qayta eksport qilish
   export * from '@vue/runtime-core'
   ```
 
-  Vue's own `@vue/runtime-dom` is [implemented using the same API](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts). For a simpler implementation, check out [`@vue/runtime-test`](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts) which is a private package for Vue's own unit testing.
+  Vue'ning o'zining `@vue/runtime-dom` [xuddi shu API yordamida amalga oshirilgan](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts). Soddaroq amalga oshirish uchun, Vue'ning o'zining unit testlari uchun maxfiy paket bo'lgan [`@vue/runtime-test`](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts)ni tekshiring.

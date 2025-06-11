@@ -1,17 +1,17 @@
 # Composition API: setup() {#composition-api-setup}
 
-## Basic Usage {#basic-usage}
+## Asosiy Ishlatilishi {#basic-usage}
 
-The `setup()` hook serves as the entry point for Composition API usage in components in the following cases:
+`setup()` hook'i quyidagi holatlarda komponentlarda Composition API'ni ishlatish uchun kirish nuqtasi vazifasini bajaradi:
 
-1. Using Composition API without a build step;
-2. Integrating with Composition-API-based code in an Options API component.
+1. Build qadami bo'lmagan holda Composition API'ni ishlatish;
+2. Options API komponentida Composition-API-ga asoslangan kod bilan integratsiya qilish.
 
-:::info Note
-If you are using Composition API with Single-File Components, [`<script setup>`](/api/sfc-script-setup) is strongly recommended for a more succinct and ergonomic syntax.
+:::info Eslatma
+Agar siz Composition API'ni Single-File Components bilan ishlatayotgan bo'lsangiz, yanada ixcham va ergonomik sintaksis uchun [`<script setup>`](/api/sfc-script-setup)ni ishlatish tavsiya etiladi.
 :::
 
-We can declare reactive state using [Reactivity APIs](./reactivity-core) and expose them to the template by returning an object from `setup()`. The properties on the returned object will also be made available on the component instance (if other options are used):
+[Reactivity APIs](./reactivity-core) yordamida reaktiv holatni e'lon qilishimiz va `setup()`dan qaytarilgan obyekt orqali ularni shablonga taqdim etishimiz mumkin. Qaytarilgan obyektning xususiyatlari komponent instansiyasida ham mavjud bo'ladi (agar boshqa opsiyalar ishlatilgan bo'lsa):
 
 ```vue
 <script>
@@ -21,7 +21,7 @@ export default {
   setup() {
     const count = ref(0)
 
-    // expose to template and other options API hooks
+    // shablon va boshqa options API hook'lariga taqdim etish
     return {
       count
     }
@@ -38,15 +38,15 @@ export default {
 </template>
 ```
 
-[refs](/api/reactivity-core#ref) returned from `setup` are [automatically shallow unwrapped](/guide/essentials/reactivity-fundamentals#deep-reactivity) when accessed in the template so you do not need to use `.value` when accessing them. They are also unwrapped in the same way when accessed on `this`.
+`setup`dan qaytarilgan [refs](/api/reactivity-core#ref) shablonda ishlatilganda [avtomatik ravishda shallow unwrap qilinadi](/guide/essentials/reactivity-fundamentals#deep-reactivity), shuning uchun ularga kirishda `.value` ishlatishning hojati yo'q. Ular `this` orqali kirishda ham xuddi shunday unwrap qilinadi.
 
-`setup()` itself does not have access to the component instance - `this` will have a value of `undefined` inside `setup()`. You can access Composition-API-exposed values from Options API, but not the other way around.
+`setup()`ning o'zi komponent instansiyasiga kira olmaydi - `setup()` ichida `this` `undefined` qiymatiga ega bo'ladi. Siz Options API'dan Composition-API orqali taqdim etilgan qiymatlarga kira olasiz, lekin aksincha emas.
 
-`setup()` should return an object _synchronously_. The only case when `async setup()` can be used is when the component is a descendant of a [Suspense](../guide/built-ins/suspense) component.
+`setup()` _sinxron_ ravishda obyekt qaytarishi kerak. `async setup()` ishlatilishi mumkin bo'lgan yagona holat - bu komponent [Suspense](../guide/built-ins/suspense) komponentining avlodi bo'lgandir.
 
-## Accessing Props {#accessing-props}
+## Props'larga Kirish {#accessing-props}
 
-The first argument in the `setup` function is the `props` argument. Just as you would expect in a standard component, `props` inside of a `setup` function are reactive and will be updated when new props are passed in.
+`setup` funksiyasidagi birinchi argument `props` argumentidir. Oddiy komponentda kutilganidek, `setup` funksiyasi ichidagi `props` reaktiv va yangi props'lar kiritilganda yangilanadi.
 
 ```js
 export default {
@@ -59,49 +59,49 @@ export default {
 }
 ```
 
-Note that if you destructure the `props` object, the destructured variables will lose reactivity. It is therefore recommended to always access props in the form of `props.xxx`.
+E'tibor bering, agar siz `props` obyektini destrukturalizatsiya qilsangiz, destrukturalizatsiya qilingan o'zgaruvchilar reaktivlikni yo'qotadi. Shuning uchun props'larga har doim `props.xxx` ko'rinishida kirish tavsiya etiladi.
 
-If you really need to destructure the props, or need to pass a prop into an external function while retaining reactivity, you can do so with the [toRefs()](./reactivity-utilities#torefs) and [toRef()](/api/reactivity-utilities#toref) utility APIs:
+Agar siz props'larni haqiqatan ham destrukturalizatsiya qilishingiz kerak bo'lsa yoki reaktivlikni saqlab qolgan holda prop'ni tashqi funksiyaga o'tkazishingiz kerak bo'lsa, buni [toRefs()](./reactivity-utilities#torefs) va [toRef()](/api/reactivity-utilities#toref) utility API'lari yordamida qilishingiz mumkin:
 
 ```js
 import { toRefs, toRef } from 'vue'
 
 export default {
   setup(props) {
-    // turn `props` into an object of refs, then destructure
+    // `props`ni ref'lar obyektiga aylantirish, keyin destrukturalizatsiya qilish
     const { title } = toRefs(props)
-    // `title` is a ref that tracks `props.title`
+    // `title` - bu `props.title`ni kuzatib boruvchi ref
     console.log(title.value)
 
-    // OR, turn a single property on `props` into a ref
+    // YOKI, `props`dagi bitta xususiyatni ref'ga aylantirish
     const title = toRef(props, 'title')
   }
 }
 ```
 
-## Setup Context {#setup-context}
+## Setup Konteksti {#setup-context}
 
-The second argument passed to the `setup` function is a **Setup Context** object. The context object exposes other values that may be useful inside `setup`:
+`setup` funksiyasiga o'tkazilgan ikkinchi argument **Setup Konteksti** obyektidir. Kontekst obyekti `setup` ichida foydali bo'lishi mumkin bo'lgan boshqa qiymatlarni taqdim etadi:
 
 ```js
 export default {
   setup(props, context) {
-    // Attributes (Non-reactive object, equivalent to $attrs)
+    // Xususiyatlar (Reaktiv bo'lmagan obyekt, $attrs'ga ekvivalent)
     console.log(context.attrs)
 
-    // Slots (Non-reactive object, equivalent to $slots)
+    // Slotlar (Reaktiv bo'lmagan obyekt, $slots'ga ekvivalent)
     console.log(context.slots)
 
-    // Emit events (Function, equivalent to $emit)
+    // Hodisalarni chiqarish (Funksiya, $emit'ga ekvivalent)
     console.log(context.emit)
 
-    // Expose public properties (Function)
+    // Ommaviy xususiyatlarni taqdim etish (Funksiya)
     console.log(context.expose)
   }
 }
 ```
 
-The context object is not reactive and can be safely destructured:
+Kontekst obyekti reaktiv emas va xavfsiz ravishda destrukturalizatsiya qilish mumkin:
 
 ```js
 export default {
@@ -111,30 +111,30 @@ export default {
 }
 ```
 
-`attrs` and `slots` are stateful objects that are always updated when the component itself is updated. This means you should avoid destructuring them and always reference properties as `attrs.x` or `slots.x`. Also note that, unlike `props`, the properties of `attrs` and `slots` are **not** reactive. If you intend to apply side effects based on changes to `attrs` or `slots`, you should do so inside an `onBeforeUpdate` lifecycle hook.
+`attrs` va `slots` - bu komponentning o'zi yangilanganda har doim yangilanadigan holatli obyektlar. Bu shuni anglatadiki, ularni destrukturalizatsiya qilishdan saqlanish kerak va har doim xususiyatlarga `attrs.x` yoki `slots.x` orqali murojaat qilish kerak. Shuningdek, `props`dan farqli ravishda, `attrs` va `slots`ning xususiyatlari reaktiv **emas**. Agar siz `attrs` yoki `slots` o'zgarishlariga asoslangan yon ta'sirlarni qo'llashni niyatlangan bo'lsangiz, buni `onBeforeUpdate` hayot aylanishi hook'i ichida qilishingiz kerak.
 
-### Exposing Public Properties {#exposing-public-properties}
+### Ommaviy Xususiyatlarni Taqdim Etish {#exposing-public-properties}
 
-`expose` is a function that can be used to explicitly limit the properties exposed when the component instance is accessed by a parent component via [template refs](/guide/essentials/template-refs#ref-on-component):
+`expose` - bu ota-ona komponent [template refs](/guide/essentials/template-refs#ref-on-component) orqali komponent instansiyasiga kirganda taqdim etiladigan xususiyatlarni aniq cheklash uchun ishlatilishi mumkin bo'lgan funksiya:
 
 ```js{5,10}
 export default {
   setup(props, { expose }) {
-    // make the instance "closed" -
-    // i.e. do not expose anything to the parent
+    // instansiyani "yopiq" qilish -
+    // ya'ni ota-onaga hech narsani taqdim etmaslik
     expose()
 
     const publicCount = ref(0)
     const privateCount = ref(0)
-    // selectively expose local state
+    // mahalliy holatni tanlab taqdim etish
     expose({ count: publicCount })
   }
 }
 ```
 
-## Usage with Render Functions {#usage-with-render-functions}
+## Render Funksiyalari bilan Ishlatish {#usage-with-render-functions}
 
-`setup` can also return a [render function](/guide/extras/render-function) which can directly make use of the reactive state declared in the same scope:
+`setup` bir xil scope'da e'lon qilingan reaktiv holatdan to'g'ridan-to'g'ri foydalanishi mumkin bo'lgan [render funksiyasi](/guide/extras/render-function)ni ham qaytarishi mumkin:
 
 ```js{6}
 import { h, ref } from 'vue'
@@ -147,9 +147,9 @@ export default {
 }
 ```
 
-Returning a render function prevents us from returning anything else. Internally that shouldn't be a problem, but it can be problematic if we want to expose methods of this component to the parent component via template refs.
+Render funksiyasini qaytarish bizni boshqa narsalarni qaytarishdan to'xtatadi. Ichki jihatdan bu muammo bo'lmasligi kerak, lekin agar biz bu komponentning metodlarini template refs orqali ota-ona komponentga taqdim etishni xohlasak, muammo bo'lishi mumkin.
 
-We can solve this problem by calling [`expose()`](#exposing-public-properties):
+Bu muammoni [`expose()`](#exposing-public-properties)ni chaqirish orqali hal qilishimiz mumkin:
 
 ```js{8-10}
 import { h, ref } from 'vue'
@@ -168,4 +168,4 @@ export default {
 }
 ```
 
-The `increment` method would then be available in the parent component via a template ref.
+`increment` metodi keyin ota-ona komponentda template ref orqali mavjud bo'ladi.

@@ -44,7 +44,7 @@ onMounted(() => {
         target="_blank"
         class="accent-button"
       >
-        Contact {{ partnerConfig.partnerName }} for a tailored fit
+        Aloqa {{partnerConfig.partnerName }} moslashtirilgan moslama uchun
       </a>
     </template>
 
@@ -64,7 +64,7 @@ onMounted(() => {
           target="_blank"
           class="accent-button"
         >
-          Contact {{ partnerConfig.partnerName }} for a tailored fit
+          Aloqa {{partnerConfig.partnerName }} moslashtirilgan moslama uchun
         </a>
       </div>
     </template>
