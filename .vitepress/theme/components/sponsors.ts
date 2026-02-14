@@ -40,7 +40,8 @@ const BANNED_URLS = [
   'big-mumbai.game',
   'fun88thh.com',
   'fortunegames.com',
-  'betwinnerpartner.net'
+  'betwinnerpartner.net',
+  'betwinnerpartner.com'
 ];
 
 export const load = async () => {
