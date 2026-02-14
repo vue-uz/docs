@@ -39,7 +39,8 @@ const BANNED_URLS = [
   'tirangagamesapp.co',
   'big-mumbai.game',
   'fun88thh.com',
-  'fortunegames.com'
+  'fortunegames.com',
+  'betwinnerpartner.net'
 ];
 
 export const load = async () => {
