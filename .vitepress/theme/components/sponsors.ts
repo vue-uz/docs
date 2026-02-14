@@ -32,7 +32,14 @@ export const base = `https://automation.vuejs.org`
 
 // 1. Создаем список запрещенных ресурсов (Blacklist)
 const BANNED_URLS = [
-  'okwingame.io'
+  'okwingame.io',
+  'bdggame.io',
+  'fun88.com',
+  'fun88vnu.com',
+  'tirangagamesapp.co',
+  'big-mumbai.game',
+  'fun88thh.com',
+  'fortunegames.com'
 ];
 
 export const load = async () => {
