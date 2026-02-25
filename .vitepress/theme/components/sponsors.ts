@@ -41,7 +41,8 @@ const BANNED_URLS = [
   'fun88thh.com',
   'fortunegames.com',
   'betwinnerpartner.net',
-  'betwinnerpartner.com'
+  'betwinnerpartner.com',
+  'guidebook.betwinner.com'
 ];
 
 export const load = async () => {
