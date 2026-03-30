@@ -42,7 +42,8 @@ const BANNED_URLS = [
   'fortunegames.com',
   'betwinnerpartner.net',
   'betwinnerpartner.com',
-  'guidebook.betwinner.com'
+  'guidebook.betwinner.com',
+  'laser247.uk.com'
 ];
 
 export const load = async () => {
