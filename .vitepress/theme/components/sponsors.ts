@@ -43,7 +43,9 @@ const BANNED_URLS = [
   'betwinnerpartner.net',
   'betwinnerpartner.com',
   'guidebook.betwinner.com',
-  'laser247.uk.com'
+  'laser247.uk.com',
+  'jbo579.com',
+  'jbo88c.com',
 ];
 
 export const load = async () => {
