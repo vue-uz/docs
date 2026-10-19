@@ -46,6 +46,9 @@ const BANNED_URLS = [
   'laser247.uk.com',
   'jbo579.com',
   'jbo88c.com',
+  'jbo88b.com',
+  'jbo88a.com',
+  'jbo88d.com'
 ];
 
 export const load = async () => {
